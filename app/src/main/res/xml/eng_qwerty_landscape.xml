@@ -2,100 +2,100 @@
 
 <Keypad>
     <Key>
-        <Value>ㅂ</Value>
+        <Value>q</Value>
         <X1>200</X1>
         <Y1>690</Y1>
     </Key>
 
     <Key>
-        <Value>ㅈ</Value>
+        <Value>w</Value>
         <X1>400</X1>
         <Y1>690</Y1>
     </Key>
     <Key>
-        <Value>ㄷ</Value>
+        <Value>e</Value>
         <X1>600</X1>
         <Y1>690</Y1>
     </Key>
     <Key>
-        <Value>ㄱ</Value>
+        <Value>r</Value>
         <X1>800</X1>
         <Y1>690</Y1>
     </Key>
     <Key>
-        <Value>ㅅ</Value>
+        <Value>t</Value>
         <X1>1000</X1>
         <Y1>690</Y1>
     </Key>
     <Key>
-        <Value>ㅛ</Value>
+        <Value>y</Value>
         <X1>1200</X1>
         <Y1>690</Y1>
     </Key>
     <Key>
-        <Value>ㅕ</Value>
+        <Value>u</Value>
         <X1>1400</X1>
         <Y1>690</Y1>
     </Key>
     <Key>
-        <Value>ㅑ</Value>
+        <Value>i</Value>
         <X1>1600</X1>
         <Y1>690</Y1>
     </Key>
     <Key>
-        <Value>ㅐ</Value>
+        <Value>o</Value>
         <X1>1800</X1>
         <Y1>690</Y1>
     </Key>
     <Key>
-        <Value>ㅔ</Value>
+        <Value>p</Value>
         <X1>2000</X1>
         <Y1>690</Y1>
     </Key>
 
     <!-- 2cols -->
     <Key>
-        <Value>ㅁ</Value>
+        <Value>a</Value>
         <X1>300</X1>
         <Y1>800</Y1>
     </Key>
     <Key>
-        <Value>ㄴ</Value>
+        <Value>s</Value>
         <X1>500</X1>
         <Y1>800</Y1>
     </Key>
     <Key>
-        <Value>ㅇ</Value>
+        <Value>d</Value>
         <X1>700</X1>
         <Y1>800</Y1>
     </Key>
     <Key>
-        <Value>ㄹ</Value>
+        <Value>f</Value>
         <X1>900</X1>
         <Y1>800</Y1>
     </Key>
     <Key>
-        <Value>ㅎ</Value>
+        <Value>g</Value>
         <X1>1100</X1>
         <Y1>800</Y1>
     </Key>
     <Key>
-        <Value>ㅗ</Value>
+        <Value>h</Value>
         <X1>1300</X1>
         <Y1>800</Y1>
     </Key>
     <Key>
-        <Value>ㅓ</Value>
+        <Value>j</Value>
         <X1>1500</X1>
         <Y1>800</Y1>
     </Key>
     <Key>
-        <Value>ㅏ</Value>
+        <Value>k</Value>
         <X1>1700</X1>
         <Y1>800</Y1>
     </Key>
     <Key>
-        <Value>ㅣ</Value>
+        <Value>l</Value>
         <X1>1900</X1>
         <Y1>800</Y1>
     </Key>
@@ -103,37 +103,37 @@
 
     <!-- 3cols -->
     <Key>
-        <Value>ㅋ</Value>
+        <Value>z</Value>
         <X1>500</X1>
         <Y1>900</Y1>
     </Key>
     <Key>
-        <Value>ㅌ</Value>
+        <Value>x</Value>
         <X1>700</X1>
         <Y1>900</Y1>
     </Key>
     <Key>
-        <Value>ㅊ</Value>
+        <Value>c</Value>
         <X1>900</X1>
         <Y1>900</Y1>
     </Key>
     <Key>
-        <Value>ㅍ</Value>
+        <Value>v</Value>
         <X1>1100</X1>
         <Y1>900</Y1>
     </Key>
     <Key>
-        <Value>ㅠ</Value>
+        <Value>b</Value>
         <X1>1300</X1>
         <Y1>900</Y1>
     </Key>
     <Key>
-        <Value>ㅜ</Value>
+        <Value>n</Value>
         <X1>1500</X1>
         <Y1>900</Y1>
     </Key>
     <Key>
-        <Value>ㅡ</Value>
+        <Value>m</Value>
         <X1>1700</X1>
         <Y1>900</Y1>
     </Key>
@@ -141,8 +141,8 @@
     <!-- Shift -->
     <Key>
         <Value>↑</Value>
-        <X1>70</X1>
-        <Y1>1880</Y1>
+        <X1>225</X1>
+        <Y1>900</Y1>
     </Key>
 
 
