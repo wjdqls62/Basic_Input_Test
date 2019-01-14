@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Keypad>
+    <Key>
+        <Value>ㅂ</Value>
+        <X1>200</X1>
+        <Y1>690</Y1>
+    </Key>
+
+    <Key>
+        <Value>ㅈ</Value>
+        <X1>400</X1>
+        <Y1>690</Y1>
+    </Key>
+    <Key>
+        <Value>ㄷ</Value>
+        <X1>600</X1>
+        <Y1>690</Y1>
+    </Key>
+    <Key>
+        <Value>ㄱ</Value>
+        <X1>800</X1>
+        <Y1>690</Y1>
+    </Key>
+    <Key>
+        <Value>ㅅ</Value>
+        <X1>1000</X1>
+        <Y1>690</Y1>
+    </Key>
+    <Key>
+        <Value>ㅛ</Value>
+        <X1>1200</X1>
+        <Y1>690</Y1>
+    </Key>
+    <Key>
+        <Value>ㅕ</Value>
+        <X1>1400</X1>
+        <Y1>690</Y1>
+    </Key>
+    <Key>
+        <Value>ㅑ</Value>
+        <X1>1600</X1>
+        <Y1>690</Y1>
+    </Key>
+    <Key>
+        <Value>ㅐ</Value>
+        <X1>1800</X1>
+        <Y1>690</Y1>
+    </Key>
+    <Key>
+        <Value>ㅔ</Value>
+        <X1>2000</X1>
+        <Y1>690</Y1>
+    </Key>
+
+    <!-- 2cols -->
+    <Key>
+        <Value>ㅁ</Value>
+        <X1>300</X1>
+        <Y1>800</Y1>
+    </Key>
+    <Key>
+        <Value>ㄴ</Value>
+        <X1>500</X1>
+        <Y1>800</Y1>
+    </Key>
+    <Key>
+        <Value>ㅇ</Value>
+        <X1>700</X1>
+        <Y1>800</Y1>
+    </Key>
+    <Key>
+        <Value>ㄹ</Value>
+        <X1>900</X1>
+        <Y1>800</Y1>
+    </Key>
+    <Key>
+        <Value>ㅎ</Value>
+        <X1>1100</X1>
+        <Y1>800</Y1>
+    </Key>
+    <Key>
+        <Value>ㅗ</Value>
+        <X1>1300</X1>
+        <Y1>800</Y1>
+    </Key>
+    <Key>
+        <Value>ㅓ</Value>
+        <X1>1500</X1>
+        <Y1>800</Y1>
+    </Key>
+    <Key>
+        <Value>ㅏ</Value>
+        <X1>1700</X1>
+        <Y1>800</Y1>
+    </Key>
+    <Key>
+        <Value>ㅣ</Value>
+        <X1>1900</X1>
+        <Y1>800</Y1>
+    </Key>
+
+
+    <!-- 3cols -->
+    <Key>
+        <Value>ㅋ</Value>
+        <X1>500</X1>
+        <Y1>900</Y1>
+    </Key>
+    <Key>
+        <Value>ㅌ</Value>
+        <X1>700</X1>
+        <Y1>900</Y1>
+    </Key>
+    <Key>
+        <Value>ㅊ</Value>
+        <X1>900</X1>
+        <Y1>900</Y1>
+    </Key>
+    <Key>
+        <Value>ㅍ</Value>
+        <X1>1100</X1>
+        <Y1>900</Y1>
+    </Key>
+    <Key>
+        <Value>ㅠ</Value>
+        <X1>1300</X1>
+        <Y1>900</Y1>
+    </Key>
+    <Key>
+        <Value>ㅜ</Value>
+        <X1>1500</X1>
+        <Y1>900</Y1>
+    </Key>
+    <Key>
+        <Value>ㅡ</Value>
+        <X1>1700</X1>
+        <Y1>900</Y1>
+    </Key>
+
+    <!-- Shift -->
+    <Key>
+        <Value>↑</Value>
+        <X1>70</X1>
+        <Y1>1880</Y1>
+    </Key>
+
+
+    <!-- Spacebar-->
+    <Key>
+        <Value>^</Value>
+        <X1>1200</X1>
+        <Y1>1010</Y1>
+    </Key>
+</Keypad>

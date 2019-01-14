@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Keypad>
+    <Key>
+        <Value>q</Value>
+        <X1>60</X1>
+        <Y1>1585</Y1>
+    </Key>
+
+    <Key>
+        <Value>w</Value>
+        <X1>170</X1>
+        <Y1>1585</Y1>
+    </Key>
+    <Key>
+        <Value>e</Value>
+        <X1>270</X1>
+        <Y1>1585</Y1>
+    </Key>
+    <Key>
+        <Value>r</Value>
+        <X1>380</X1>
+        <Y1>1585</Y1>
+    </Key>
+    <Key>
+        <Value>t</Value>
+        <X1>485</X1>
+        <Y1>1585</Y1>
+    </Key>
+    <Key>
+        <Value>y</Value>
+        <X1>580</X1>
+        <Y1>1585</Y1>
+    </Key>
+    <Key>
+        <Value>u</Value>
+        <X1>700</X1>
+        <Y1>1585</Y1>
+    </Key>
+    <Key>
+        <Value>i</Value>
+        <X1>800</X1>
+        <Y1>1585</Y1>
+    </Key>
+    <Key>
+        <Value>o</Value>
+        <X1>900</X1>
+        <Y1>1585</Y1>
+    </Key>
+    <Key>
+        <Value>p</Value>
+        <X1>1010</X1>
+        <Y1>1585</Y1>
+    </Key>
+
+
+    <!-- 2cols -->
+    <Key>
+        <Value>a</Value>
+        <X1>110</X1>
+        <Y1>1735</Y1>
+    </Key>
+    <Key>
+        <Value>s</Value>
+        <X1>220</X1>
+        <Y1>1735</Y1>
+    </Key>
+    <Key>
+        <Value>d</Value>
+        <X1>320</X1>
+        <Y1>1735</Y1>
+    </Key>
+    <Key>
+        <Value>f</Value>
+        <X1>435</X1>
+        <Y1>1735</Y1>
+    </Key>
+    <Key>
+        <Value>g</Value>
+        <X1>540</X1>
+        <Y1>1735</Y1>
+    </Key>
+    <Key>
+        <Value>h</Value>
+        <X1>645</X1>
+        <Y1>1735</Y1>
+    </Key>
+    <Key>
+        <Value>j</Value>
+        <X1>755</X1>
+        <Y1>1735</Y1>
+    </Key>
+    <Key>
+        <Value>k</Value>
+        <X1>855</X1>
+        <Y1>1735</Y1>
+    </Key>
+    <Key>
+        <Value>l</Value>
+        <X1>965</X1>
+        <Y1>1735</Y1>
+    </Key>
+
+
+    <!-- 3cols -->
+    <Key>
+        <Value>z</Value>
+        <X1>220</X1>
+        <Y1>1880</Y1>
+    </Key>
+    <Key>
+        <Value>x</Value>
+        <X1>330</X1>
+        <Y1>1880</Y1>
+    </Key>
+    <Key>
+        <Value>c</Value>
+        <X1>430</X1>
+        <Y1>1880</Y1>
+    </Key>
+    <Key>
+        <Value>v</Value>
+        <X1>540</X1>
+        <Y1>1880</Y1>
+    </Key>
+    <Key>
+        <Value>b</Value>
+        <X1>645</X1>
+        <Y1>1880</Y1>
+    </Key>
+    <Key>
+        <Value>n</Value>
+        <X1>750</X1>
+        <Y1>1880</Y1>
+    </Key>
+    <Key>
+        <Value>m</Value>
+        <X1>860</X1>
+        <Y1>1880</Y1>
+    </Key>
+
+    <!-- Shift -->
+    <Key>
+        <Value>↑</Value>
+        <X1>70</X1>
+        <Y1>1880</Y1>
+    </Key>
+
+    <!-- Spacebar-->
+    <Key>
+        <Value>^</Value>
+        <X1>590</X1>
+        <Y1>2030</Y1>
+    </Key>
+</Keypad>

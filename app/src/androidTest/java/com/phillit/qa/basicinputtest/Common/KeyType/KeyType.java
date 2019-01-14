@@ -5,5 +5,8 @@ public abstract class KeyType {
     public static final int QWERTY_PORTRAIT = 0;
     public static final int QWERTY_LANDSCAPE = 1;
 
+    public static final int QWERTY_KOREA = 100;
+    public static final int QWERTY_ENGLISH = 101;
+
     abstract public void input(String args);
 }

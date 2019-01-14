@@ -3,24 +3,38 @@ package com.phillit.qa.basicinputtest.Common;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.XmlResourceParser;
+import android.util.Log;
 
 import com.phillit.qa.basicinputtest.Common.KeyType.KeyType;
 import com.phillit.qa.basicinputtest.R;
-
 import org.xmlpull.v1.XmlPullParserException;
-
 import java.io.IOException;
 import java.util.HashMap;
 
-public class XmlParserManager {
+public class XmlParser {
     private XmlResourceParser parser;
     private Key key;
     private HashMap<String, Key> keyList;
     private Context context;
     private Resources resource;
-    private int parsingMode = 0;
+    private int parsingMode, language = 0;
 
-    public XmlParserManager(Context context, int parsingMode){
+
+    public XmlParser(Context context, int parsingMode, int language){
+        this.context = context;
+        this.parsingMode = parsingMode;
+        resource = context.getResources();
+        this.language = language;
+        try {
+            parseXML();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (XmlPullParserException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public XmlParser(Context context, int parsingMode){
         this.context = context;
         this.parsingMode = parsingMode;
         resource = context.getResources();
@@ -40,9 +54,18 @@ public class XmlParserManager {
     private void parseXML() throws IOException, XmlPullParserException {
 
         if(parsingMode == KeyType.QWERTY_PORTRAIT){
-            parser = resource.getXml(R.xml.qwerty_portrait);
+            if(language == KeyType.QWERTY_KOREA){
+                parser = resource.getXml(R.xml.kor_qwerty_portrait);
+            }else if(language == KeyType.QWERTY_ENGLISH){
+                parser = resource.getXml(R.xml.eng_qwerty_portrait);
+            }
+
         }else if(parsingMode == KeyType.QWERTY_LANDSCAPE){
-            parser = resource.getXml(R.xml.qwerty_portrait);
+            if(language == KeyType.QWERTY_KOREA){
+                parser = resource.getXml(R.xml.kor_qwerty_landscape);
+            }else if(language == KeyType.QWERTY_ENGLISH){
+                parser = resource.getXml(R.xml.eng_qwerty_portrait);
+            }
         }
 
         keyList = new HashMap<>();

@@ -54,6 +54,7 @@
     </Key>
 
 
+    <!-- 2cols -->
     <Key>
         <Value>ㅁ</Value>
         <X1>110</X1>
@@ -61,22 +62,17 @@
     </Key>
     <Key>
         <Value>ㄴ</Value>
-        <X1>210</X1>
+        <X1>220</X1>
         <Y1>1735</Y1>
     </Key>
     <Key>
         <Value>ㅇ</Value>
-        <X1>210</X1>
-        <Y1>1735</Y1>
-    </Key>
-    <Key>
-        <Value>ㅇ</Value>
-        <X1>330</X1>
+        <X1>320</X1>
         <Y1>1735</Y1>
     </Key>
     <Key>
         <Value>ㄹ</Value>
-        <X1>430</X1>
+        <X1>435</X1>
         <Y1>1735</Y1>
     </Key>
     <Key>
@@ -86,17 +82,17 @@
     </Key>
     <Key>
         <Value>ㅗ</Value>
-        <X1>640</X1>
+        <X1>645</X1>
         <Y1>1735</Y1>
     </Key>
     <Key>
         <Value>ㅓ</Value>
-        <X1>750</X1>
+        <X1>755</X1>
         <Y1>1735</Y1>
     </Key>
     <Key>
         <Value>ㅏ</Value>
-        <X1>860</X1>
+        <X1>855</X1>
         <Y1>1735</Y1>
     </Key>
     <Key>
@@ -105,6 +101,8 @@
         <Y1>1735</Y1>
     </Key>
 
+
+    <!-- 3cols -->
     <Key>
         <Value>ㅋ</Value>
         <X1>220</X1>
@@ -139,5 +137,64 @@
         <Value>ㅡ</Value>
         <X1>860</X1>
         <Y1>1880</Y1>
+    </Key>
+
+    <!-- ETC (Shift) -->
+    <Key>
+        <Value>ㅃ</Value>
+        <X1>70</X1>
+        <Y1>1880</Y1>
+        <X2>60</X2>
+        <Y2>1585</Y2>
+    </Key>
+
+    <Key>
+        <Value>ㅉ</Value>
+        <X1>70</X1>
+        <Y1>1880</Y1>
+        <X2>170</X2>
+        <Y2>1585</Y2>
+    </Key>
+    <Key>
+        <Value>ㄸ</Value>
+        <X1>70</X1>
+        <Y1>1880</Y1>
+        <X2>270</X2>
+        <Y2>1585</Y2>
+    </Key>
+    <Key>
+        <Value>ㄲ</Value>
+        <X1>70</X1>
+        <Y1>1880</Y1>
+        <X2>380</X2>
+        <Y2>1585</Y2>
+    </Key>
+    <Key>
+        <Value>ㅆ</Value>
+        <X1>70</X1>
+        <Y1>1880</Y1>
+        <X2>485</X2>
+        <Y2>1585</Y2>
+    </Key>
+    <Key>
+        <Value>ㅒ</Value>
+        <X1>70</X1>
+        <Y1>1880</Y1>
+        <X2>900</X2>
+        <Y2>1585</Y2>
+    </Key>
+    <Key>
+        <Value>ㅖ</Value>
+        <X1>70</X1>
+        <Y1>1880</Y1>
+        <X2>1010</X2>
+        <Y2>1585</Y2>
+    </Key>
+
+    <!-- Spacebar-->
+    <Key>
+        <Value>^</Value>
+        <X1>590</X1>
+        <Y1>2030</Y1>
     </Key>
 </Keypad>
