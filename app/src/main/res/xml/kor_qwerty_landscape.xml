@@ -6,7 +6,6 @@
         <X1>200</X1>
         <Y1>690</Y1>
     </Key>
-
     <Key>
         <Value>ㅈ</Value>
         <X1>400</X1>
@@ -195,5 +194,57 @@
         <Value>^</Value>
         <X1>1200</X1>
         <Y1>1010</Y1>
+    </Key>
+
+    <!-- number -->
+    <Key>
+        <Value>1</Value>
+        <X1>200</X1>
+        <Y1>590</Y1>
+    </Key>
+    <Key>
+        <Value>2</Value>
+        <X1>400</X1>
+        <Y1>590</Y1>
+    </Key>
+    <Key>
+        <Value>3</Value>
+        <X1>600</X1>
+        <Y1>590</Y1>
+    </Key>
+    <Key>
+        <Value>4</Value>
+        <X1>800</X1>
+        <Y1>590</Y1>
+    </Key>
+    <Key>
+        <Value>5</Value>
+        <X1>1000</X1>
+        <Y1>590</Y1>
+    </Key>
+    <Key>
+        <Value>6</Value>
+        <X1>1200</X1>
+        <Y1>590</Y1>
+    </Key>
+    <Key>
+        <Value>7</Value>
+        <X1>1400</X1>
+        <Y1>590</Y1>
+    </Key>
+    <Key>
+        <Value>8</Value>
+        <X1>1600</X1>
+        <Y1>590</Y1>
+    </Key>
+    <Key>
+        <Value>9</Value>
+        <X1>1800</X1>
+        <Y1>590</Y1>
+    </Key>
+    <Key>
+        <Value>0</Value>
+        <X1>2000</X1>
+        <Y1>590</Y1>
     </Key>
 </Keypad>

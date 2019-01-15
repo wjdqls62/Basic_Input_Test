@@ -196,4 +196,56 @@
         <X1>590</X1>
         <Y1>2030</Y1>
     </Key>
+
+    <!-- Number -->
+    <Key>
+        <Value>1</Value>
+        <X1>60</X1>
+        <Y1>1460</Y1>
+    </Key>
+    <Key>
+        <Value>2</Value>
+        <X1>170</X1>
+        <Y1>1460</Y1>
+    </Key>
+    <Key>
+        <Value>3</Value>
+        <X1>270</X1>
+        <Y1>1460</Y1>
+    </Key>
+    <Key>
+        <Value>4</Value>
+        <X1>380</X1>
+        <Y1>1460</Y1>
+    </Key>
+    <Key>
+        <Value>5</Value>
+        <X1>485</X1>
+        <Y1>1460</Y1>
+    </Key>
+    <Key>
+        <Value>6</Value>
+        <X1>580</X1>
+        <Y1>1460</Y1>
+    </Key>
+    <Key>
+        <Value>7</Value>
+        <X1>700</X1>
+        <Y1>1460</Y1>
+    </Key>
+    <Key>
+        <Value>8</Value>
+        <X1>800</X1>
+        <Y1>1460</Y1>
+    </Key>
+    <Key>
+        <Value>9</Value>
+        <X1>900</X1>
+        <Y1>1460</Y1>
+    </Key>
+    <Key>
+        <Value>0</Value>
+        <X1>1010</X1>
+        <Y1>1460</Y1>
+    </Key>
 </Keypad>
