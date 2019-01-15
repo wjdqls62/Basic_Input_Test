@@ -191,19 +191,6 @@
         <Y2>1585</Y2>
     </Key>
 
-    <!-- ETC -->
-    <Key>
-        <Value>,</Value>
-        <X1>325</X1>
-        <Y1>2025</Y1>
-    </Key>
-
-    <Key>
-        <Value>.</Value>
-        <X1>855</X1>
-        <Y1>2025</Y1>
-    </Key>
-
     <!-- Spacebar-->
     <Key>
         <Value>^</Value>

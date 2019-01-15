@@ -13,6 +13,7 @@ public class XmlParser {
     private XmlResourceParser parser;
     private Key key;
     private HashMap<String, Key> keyList;
+    private HashMap<String, Key> specialKeyList;
     private Context context;
     private Resources resource;
     private int parsingMode, language = 0;
@@ -49,8 +50,13 @@ public class XmlParser {
         return keyList;
     }
 
+    public HashMap<String,Key> getSpecialKeyList(){
+        return specialKeyList;
+    }
+
     private void parseXML() throws IOException, XmlPullParserException {
 
+        // 일반문자
         if(parsingMode == KeyType.QWERTY_PORTRAIT){
             if(language == KeyType.QWERTY_KOREA){
                 parser = resource.getXml(R.xml.kor_qwerty_portrait);
@@ -87,6 +93,41 @@ public class XmlParser {
                     // Parsing된 Key 정보 출력
                     key.logKeyinfo();
                     keyList.put(key.keyValue, key);
+                    key = null;
+                }
+            }
+            eventType = parser.next();
+        } // End while
+
+
+        // 특수문자
+        if(parsingMode == KeyType.QWERTY_PORTRAIT){
+            parser = resource.getXml(R.xml.common_special_character_portrait);
+        }else if(parsingMode == KeyType.QWERTY_LANDSCAPE){
+            parser = resource.getXml(R.xml.common_special_character_landscape);
+        }
+
+        specialKeyList = new HashMap<>();
+
+        eventType = parser.getEventType();
+
+        while (eventType != XmlResourceParser.END_DOCUMENT){
+            String tagName = parser.getName();
+
+            if(eventType == XmlResourceParser.START_TAG){
+                if(tagName.equals("Value")){
+                    key = new Key();
+                    key.setKeyValue(parser.nextText());
+                }else if(tagName.contains("X")){
+                    key.setX(Integer.parseInt(parser.nextText()));
+                }else if(tagName.contains("Y")){
+                    key.setY(Integer.parseInt(parser.nextText()));
+                }
+            }else if(eventType == XmlResourceParser.END_TAG){
+                if(tagName.equals("Key")){
+                    // Parsing된 Key 정보 출력
+                    key.logKeyinfo();
+                    specialKeyList.put(key.keyValue, key);
                     key = null;
                 }
             }
