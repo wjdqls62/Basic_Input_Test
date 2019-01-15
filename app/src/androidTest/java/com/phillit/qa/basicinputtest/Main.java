@@ -1,11 +1,15 @@
 package com.phillit.qa.basicinputtest;
 
 import android.content.Context;
+import android.os.RemoteException;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.uiautomator.UiDevice;
 
 import com.phillit.qa.basicinputtest.Common.Utility;
 import com.phillit.qa.basicinputtest.TestCase.TestCase_01;
+import com.phillit.qa.basicinputtest.TestCase.TestCase_02;
+import com.phillit.qa.basicinputtest.TestCase.TestCase_03;
+import com.phillit.qa.basicinputtest.TestCase.TestCase_04;
 
 import junit.framework.TestCase;
 
@@ -33,8 +37,20 @@ public class Main {
     }
 
     @Test
-    public void Test() throws IOException {
+    public void Test() throws IOException, RemoteException {
+
+        // 한글, 세로모드 입력
         new TestCase_01(device,"KOR_PORTRAIT").start();
+
+        // 한글, 가로모드 입력
+        new TestCase_02(device,"KOR_LANDSCAPE").start();
+
+        // 영문, 세로모드 입력
+        new TestCase_03(device,"ENG_PORTRAIT").start();
+
+        // 영문, 가로모드 입력
+        new TestCase_04(device,"ENG_LANDSCAPE").start();
+
     }
 
     @After

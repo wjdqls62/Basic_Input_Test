@@ -15,20 +15,20 @@ import java.util.ArrayList;
 
 /**
  * 테스트 명   : TestCase_01
- * 테스트 목적 : 세로모드상태에서 한글QWERTY의 입력을 검증한다.
+ * 테스트 목적 : 세로모드상태에서 영문QWERTY의 입력을 검증한다.
  * 테스트 순서 :
-   1. 네이버 메모 실행
-   2. 새메모 선택
-   3. 3초 대기
-   4. /sdcard/QA/InputTest/TestWord.xls의 한글단어를 순차적으로 입력
+ 1. 네이버 메모 실행
+ 2. 새메모 선택
+ 3. 3초 대기
+ 4. /sdcard/QA/InputTest/TestWord.xls의 단어를 순차적으로 입력
  */
 
-public class TestCase_01 {
+public class TestCase_03 {
     ArrayList<String> wordList;
     String testType = "";
     Utility device;
 
-    public TestCase_01(Utility device, String testType) {
+    public TestCase_03(Utility device, String testType) {
         this.device = device;
         this.testType = testType;
     }
@@ -46,14 +46,18 @@ public class TestCase_01 {
         // 첫번째 메모 선택(메모를 작성하세요)
         device.touchObject("com.nhn.android.navermemo:id/memos_simple_writer_hint_view");
 
+        // 언어변경(영어)
+        device.userWait(1500);
+        device.getUiDevice().click(200, 2030);
+
         // 3초 대기
         // 세로모드
         device.getUiDevice().setOrientationNatural();
-        device.userWait(3000);
+        device.userWait(1000);
     }
     private void Test(){
-        wordList = new TestCaseParser("kor").getWordList();
-        KeyType Qwerty = new Qwerty(device, device.getContext(), KeyType.QWERTY_PORTRAIT, KeyType.QWERTY_KOREA);
+        wordList = new TestCaseParser("eng").getWordList();
+        KeyType Qwerty = new Qwerty(device, device.getContext(), KeyType.QWERTY_PORTRAIT, KeyType.QWERTY_ENGLISH);
         for(int i=0; i<wordList.size(); i++){
             device.inputMethod(wordList.get(i), Qwerty);
         }

@@ -3,8 +3,6 @@ package com.phillit.qa.basicinputtest.Common;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.XmlResourceParser;
-import android.util.Log;
-
 import com.phillit.qa.basicinputtest.Common.KeyType.KeyType;
 import com.phillit.qa.basicinputtest.R;
 import org.xmlpull.v1.XmlPullParserException;
@@ -64,7 +62,7 @@ public class XmlParser {
             if(language == KeyType.QWERTY_KOREA){
                 parser = resource.getXml(R.xml.kor_qwerty_landscape);
             }else if(language == KeyType.QWERTY_ENGLISH){
-                parser = resource.getXml(R.xml.eng_qwerty_portrait);
+                parser = resource.getXml(R.xml.eng_qwerty_landscape);
             }
         }
 

@@ -190,6 +190,19 @@
         <Y2>690</Y2>
     </Key>
 
+    <!-- ETC -->
+    <Key>
+        <Value>,</Value>
+        <X1>700</X1>
+        <Y1>1010</Y1>
+    </Key>
+
+    <Key>
+        <Value>.</Value>
+        <X1>1700</X1>
+        <Y1>1010</Y1>
+    </Key>
+
     <!-- Spacebar-->
     <Key>
         <Value>^</Value>
