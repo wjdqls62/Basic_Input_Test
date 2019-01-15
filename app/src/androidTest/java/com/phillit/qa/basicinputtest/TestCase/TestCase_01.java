@@ -73,9 +73,7 @@ public class TestCase_01 {
         }finally {
             writer.close();
         }
-        device.getUiDevice().pressBack();
-        device.getUiDevice().pressBack();
-        device.getUiDevice().pressBack();
-        device.getUiDevice().pressHome();
+
+        device.goToIdle();
     }
 }

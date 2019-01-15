@@ -81,10 +81,7 @@ public class TestCase_02 {
             e.printStackTrace();
         }finally {
             writer.close();
-            device.getUiDevice().pressBack();
-            device.getUiDevice().pressBack();
-            device.getUiDevice().pressBack();
-            device.getUiDevice().pressHome();
         }
+        device.goToIdle();
     }
 }

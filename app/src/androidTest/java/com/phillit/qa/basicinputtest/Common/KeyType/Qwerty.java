@@ -21,11 +21,15 @@ public class Qwerty extends KeyType {
         parser = new XmlParser(context, screenOrientation, language);
         this.language = language;
 
+        // 문자키, 특수문자키를 XML로부터 읽어온다
         normalKeyList = parser.getKeyList();
         specialKeyList = parser.getSpecialKeyList();
 
+        // 단어입력 후 띄어쓰기를 위해 Spacebar의 좌표를 Preload
         spacebar_x = normalKeyList.get("^").keyCordinates.get(0).x;
         spacebar_y = normalKeyList.get("^").keyCordinates.get(0).y;
+
+        // 영문의 경우 대문자 입력을 위해 Shift의 좌표를 Preload
         if(language == KeyType.QWERTY_ENGLISH){
             shift_x = normalKeyList.get("↑").keyCordinates.get(0).x;
             shift_y = normalKeyList.get("↑").keyCordinates.get(0).y;
@@ -65,13 +69,16 @@ public class Qwerty extends KeyType {
                 }
             }
         }
-        // 단어입력 후 한칸띄우기(Spacebar)
+        // 단어입력 후 한칸띄움(Spacebar)
         utility.getUiDevice().click(spacebar_x, spacebar_y);
     }
 
+    // 대문자 체크
     private boolean isUpper(String str){
         return str.matches("^[A-Z]*$");
     }
+
+    // 특수문자 체크
     private boolean isSpecialCharacter(String str){
         if(TextUtils.isEmpty(str)){
             return false;

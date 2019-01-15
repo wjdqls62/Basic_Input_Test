@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.support.test.uiautomator.UiDevice;
-import android.support.test.uiautomator.UiObject;
 import android.support.test.uiautomator.UiObjectNotFoundException;
 import android.support.test.uiautomator.UiSelector;;
 import com.phillit.qa.basicinputtest.Common.KeyType.KeyType;
@@ -13,11 +12,9 @@ import java.util.List;
 
 public class Utility {
     private UiDevice uiDevice;
-    private UiObject uiIObject;
     private UiSelector uiSelector;
     private Context context;
     private PackageManager packageManager;
-    private KeyType keyType;
 
     public Utility(UiDevice Device, Context context){
         this.uiDevice = Device;
@@ -45,6 +42,16 @@ public class Utility {
 
     public void inputMethod(String text, KeyType keyType){
         keyType.input(text);
+    }
+
+    public void goToIdle(){
+        uiDevice.pressBack();
+        userWait(500);
+        uiDevice.pressBack();
+        userWait(500);
+        uiDevice.pressBack();
+        userWait(500);
+        uiDevice.pressHome();
     }
 
     // 화면상 요소의 text값으로 객체를 터치한다

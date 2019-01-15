@@ -80,9 +80,6 @@ public class TestCase_04 {
         }finally {
             writer.close();
         }
-        device.getUiDevice().pressBack();
-        device.getUiDevice().pressBack();
-        device.getUiDevice().pressBack();
-        device.getUiDevice().pressHome();
+        device.goToIdle();
     }
 }
