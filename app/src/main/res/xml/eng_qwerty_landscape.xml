@@ -3,204 +3,203 @@
 <Keypad>
     <Key>
         <Value>q</Value>
-        <X1>200</X1>
-        <Y1>690</Y1>
+        <X1>95</X1>
+        <Y1>670</Y1>
     </Key>
-
     <Key>
         <Value>w</Value>
-        <X1>400</X1>
-        <Y1>690</Y1>
+        <X1>275</X1>
+        <Y1>670</Y1>
     </Key>
     <Key>
         <Value>e</Value>
-        <X1>600</X1>
-        <Y1>690</Y1>
+        <X1>450</X1>
+        <Y1>670</Y1>
     </Key>
     <Key>
         <Value>r</Value>
-        <X1>800</X1>
-        <Y1>690</Y1>
+        <X1>625</X1>
+        <Y1>670</Y1>
     </Key>
     <Key>
         <Value>t</Value>
-        <X1>1000</X1>
-        <Y1>690</Y1>
+        <X1>800</X1>
+        <Y1>670</Y1>
     </Key>
     <Key>
         <Value>y</Value>
-        <X1>1200</X1>
-        <Y1>690</Y1>
+        <X1>985</X1>
+        <Y1>670</Y1>
     </Key>
     <Key>
         <Value>u</Value>
-        <X1>1400</X1>
-        <Y1>690</Y1>
+        <X1>1165</X1>
+        <Y1>670</Y1>
     </Key>
     <Key>
         <Value>i</Value>
-        <X1>1600</X1>
-        <Y1>690</Y1>
+        <X1>1340</X1>
+        <Y1>670</Y1>
     </Key>
     <Key>
         <Value>o</Value>
-        <X1>1800</X1>
-        <Y1>690</Y1>
+        <X1>1515</X1>
+        <Y1>670</Y1>
     </Key>
     <Key>
         <Value>p</Value>
-        <X1>2000</X1>
-        <Y1>690</Y1>
+        <X1>1670</X1>
+        <Y1>670</Y1>
     </Key>
 
     <!-- 2cols -->
     <Key>
         <Value>a</Value>
-        <X1>300</X1>
-        <Y1>800</Y1>
+        <X1>185</X1>
+        <Y1>780</Y1>
     </Key>
     <Key>
         <Value>s</Value>
-        <X1>500</X1>
-        <Y1>800</Y1>
+        <X1>360</X1>
+        <Y1>780</Y1>
     </Key>
     <Key>
         <Value>d</Value>
-        <X1>700</X1>
-        <Y1>800</Y1>
+        <X1>540</X1>
+        <Y1>780</Y1>
     </Key>
     <Key>
         <Value>f</Value>
-        <X1>900</X1>
-        <Y1>800</Y1>
+        <X1>715</X1>
+        <Y1>780</Y1>
     </Key>
     <Key>
         <Value>g</Value>
-        <X1>1100</X1>
-        <Y1>800</Y1>
+        <X1>895</X1>
+        <Y1>780</Y1>
     </Key>
     <Key>
         <Value>h</Value>
-        <X1>1300</X1>
-        <Y1>800</Y1>
+        <X1>1075</X1>
+        <Y1>780</Y1>
     </Key>
     <Key>
         <Value>j</Value>
-        <X1>1500</X1>
-        <Y1>800</Y1>
+        <X1>1255</X1>
+        <Y1>780</Y1>
     </Key>
     <Key>
         <Value>k</Value>
-        <X1>1700</X1>
-        <Y1>800</Y1>
+        <X1>1430</X1>
+        <Y1>780</Y1>
     </Key>
     <Key>
         <Value>l</Value>
-        <X1>1900</X1>
-        <Y1>800</Y1>
+        <X1>1600</X1>
+        <Y1>780</Y1>
     </Key>
 
 
     <!-- 3cols -->
     <Key>
         <Value>z</Value>
-        <X1>500</X1>
+        <X1>360</X1>
         <Y1>900</Y1>
     </Key>
     <Key>
         <Value>x</Value>
-        <X1>700</X1>
+        <X1>540</X1>
         <Y1>900</Y1>
     </Key>
     <Key>
         <Value>c</Value>
-        <X1>900</X1>
+        <X1>720</X1>
         <Y1>900</Y1>
     </Key>
     <Key>
         <Value>v</Value>
-        <X1>1100</X1>
+        <X1>900</X1>
         <Y1>900</Y1>
     </Key>
     <Key>
         <Value>b</Value>
-        <X1>1300</X1>
+        <X1>1080</X1>
         <Y1>900</Y1>
     </Key>
     <Key>
         <Value>n</Value>
-        <X1>1500</X1>
+        <X1>1250</X1>
         <Y1>900</Y1>
     </Key>
     <Key>
         <Value>m</Value>
-        <X1>1700</X1>
+        <X1>1430</X1>
         <Y1>900</Y1>
     </Key>
 
     <!-- Shift -->
     <Key>
         <Value>↑</Value>
-        <X1>225</X1>
+        <X1>120</X1>
         <Y1>900</Y1>
     </Key>
 
     <!-- Spacebar-->
     <Key>
         <Value>^</Value>
-        <X1>1200</X1>
+        <X1>985</X1>
         <Y1>1010</Y1>
     </Key>
 
     <!-- number -->
     <Key>
         <Value>1</Value>
-        <X1>200</X1>
-        <Y1>590</Y1>
+        <X1>100</X1>
+        <Y1>560</Y1>
     </Key>
     <Key>
         <Value>2</Value>
-        <X1>400</X1>
-        <Y1>590</Y1>
+        <X1>275</X1>
+        <Y1>560</Y1>
     </Key>
     <Key>
         <Value>3</Value>
-        <X1>600</X1>
-        <Y1>590</Y1>
+        <X1>450</X1>
+        <Y1>560</Y1>
     </Key>
     <Key>
         <Value>4</Value>
-        <X1>800</X1>
-        <Y1>590</Y1>
+        <X1>625</X1>
+        <Y1>560</Y1>
     </Key>
     <Key>
         <Value>5</Value>
-        <X1>1000</X1>
-        <Y1>590</Y1>
+        <X1>800</X1>
+        <Y1>560</Y1>
     </Key>
     <Key>
         <Value>6</Value>
-        <X1>1200</X1>
-        <Y1>590</Y1>
+        <X1>985</X1>
+        <Y1>560</Y1>
     </Key>
     <Key>
         <Value>7</Value>
-        <X1>1400</X1>
-        <Y1>590</Y1>
+        <X1>1165</X1>
+        <Y1>560</Y1>
     </Key>
     <Key>
         <Value>8</Value>
-        <X1>1600</X1>
-        <Y1>590</Y1>
+        <X1>1340</X1>
+        <Y1>560</Y1>
     </Key>
     <Key>
         <Value>9</Value>
-        <X1>1800</X1>
-        <Y1>590</Y1>
+        <X1>1515</X1>
+        <Y1>560</Y1>
     </Key>
     <Key>
         <Value>0</Value>
-        <X1>2000</X1>
-        <Y1>590</Y1>
+        <X1>1670</X1>
+        <Y1>560</Y1>
     </Key>
 </Keypad>
