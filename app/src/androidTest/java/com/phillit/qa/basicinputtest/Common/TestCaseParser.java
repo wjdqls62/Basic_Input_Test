@@ -42,7 +42,7 @@ public class TestCaseParser {
                     // 1행에서 2번째열(Word Separate) 값 가져오기
                     HSSFCell cell = sheet.getRow(i).getCell(getContencs);
                     wordList.add(cell.getStringCellValue());
-                    Log.i("@@@", cell.getStringCellValue());
+                    //Log.i("@@@", cell.getStringCellValue());
                 }
             }
 

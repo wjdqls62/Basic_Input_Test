@@ -126,7 +126,7 @@ public class XmlParser {
             }else if(eventType == XmlResourceParser.END_TAG){
                 if(tagName.equals("Key")){
                     // Parsing된 Key 정보 출력
-                    key.logKeyinfo();
+                    //key.logKeyinfo();
                     specialKeyList.put(key.keyValue, key);
                     key = null;
                 }
