@@ -40,27 +40,32 @@ public class TestCase_03 {
     }
 
     private void ReadyTest() throws RemoteException {
-        // 네이버 메모 실행
-        device.launchApplication("네이버 메모");
+        // Monkey Input 실행
+        device.launchApplication("Monkey Input");
 
-        // 첫번째 메모 선택(메모를 작성하세요)
-        device.touchObject("com.nhn.android.navermemo:id/memos_simple_writer_hint_view");
+        // 텍스트필드 터치
+        device.touchObject("com.akeyboard.monkeytest:id/edt_test");
 
         // 언어변경(영어)
         device.userWait(1500);
-        device.getUiDevice().click(200, 2030);
+        device.getUiDevice().click(205, 1690);
 
-        // 3초 대기
         // 세로모드
+        // 3초 대기
         device.getUiDevice().setOrientationNatural();
-        device.userWait(1000);
+        device.userWait(3000);
     }
     private void Test(){
         wordList = new TestCaseParser("eng").getWordList();
         KeyType Qwerty = new Qwerty(device, device.getContext(), KeyType.QWERTY_PORTRAIT, KeyType.QWERTY_ENGLISH);
+
         for(int i=0; i<wordList.size(); i++){
             device.inputMethod(wordList.get(i), Qwerty);
+            wordList.remove(i);
         }
+
+        // 10초 대기
+        device.userWait(10000);
     }
 
     private void FinishTest() throws IOException {
@@ -68,7 +73,7 @@ public class TestCase_03 {
         File file = new File("/sdcard/QA/InputTest/output_" + testType + ".txt");
         FileWriter writer = new FileWriter(file);
         try {
-            result = device.getUiDevice().findObject(new UiSelector().resourceId("wm_editor_body")).getText();
+            result = device.getUiDevice().findObject(new UiSelector().resourceId("com.akeyboard.monkeytest:id/edt_test")).getText();
             Log.i("@@@", "Result : " + result);
             writer.write(result);
         } catch (UiObjectNotFoundException e) {
