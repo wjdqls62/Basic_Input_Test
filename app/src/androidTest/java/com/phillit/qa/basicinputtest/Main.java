@@ -5,18 +5,10 @@ import android.os.RemoteException;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.uiautomator.UiDevice;
 import android.support.test.uiautomator.UiObjectNotFoundException;
-import android.support.test.uiautomator.UiSelector;
-import android.util.Log;
 
-import com.phillit.qa.basicinputtest.Common.KeyType.KeyType;
-import com.phillit.qa.basicinputtest.Common.KeyType.Qwerty;
 import com.phillit.qa.basicinputtest.Common.Utility;
 import com.phillit.qa.basicinputtest.TestCase.TestCase_01;
 import com.phillit.qa.basicinputtest.TestCase.TestCase_02;
-import com.phillit.qa.basicinputtest.TestCase.TestCase_03;
-import com.phillit.qa.basicinputtest.TestCase.TestCase_04;
-
-import junit.framework.TestCase;
 
 import org.junit.After;
 import org.junit.Before;
@@ -48,18 +40,19 @@ public class Main {
         new TestCase_01(device,"KOR_PORTRAIT").start();
 
         // 한글, 가로모드 입력
-        //new TestCase_02(device,"KOR_LANDSCAPE").start();
+        new TestCase_02(device,"KOR_LANDSCAPE").start();
 
         // 영문, 세로모드 입력
         //new TestCase_03(device,"ENG_PORTRAIT").start();
 
         // 영문, 가로모드 입력
         //new TestCase_04(device,"ENG_LANDSCAPE").start();
-
     }
 
     @After
-    public void FinishTest(){
+    public void FinishTest() throws IOException {
+        // 테스트 결과 확인을 위해 Device reboot
+        device.getUiDevice().executeShellCommand("reboot");
     }
 
     private void initTest(){

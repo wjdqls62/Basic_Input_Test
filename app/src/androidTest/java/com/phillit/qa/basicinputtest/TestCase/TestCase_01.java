@@ -1,15 +1,12 @@
 package com.phillit.qa.basicinputtest.TestCase;
 
 import android.os.RemoteException;
-import android.support.test.uiautomator.UiObjectNotFoundException;
-import android.support.test.uiautomator.UiSelector;
 import android.util.Log;
 import com.phillit.qa.basicinputtest.Common.TestCaseParser;
 import com.phillit.qa.basicinputtest.Common.KeyType.KeyType;
 import com.phillit.qa.basicinputtest.Common.KeyType.Qwerty;
 import com.phillit.qa.basicinputtest.Common.Utility;
 import java.io.IOException;
-import java.util.ArrayList;
 
 /**
  * 테스트 명   : TestCase_01
@@ -22,30 +19,27 @@ import java.util.ArrayList;
  */
 
 public class TestCase_01 {
-    ArrayList<String> wordList;
     String testType = "";
+    StringBuffer word;
     Utility device;
-    int failCount, wordCnt = 0;
-    UiSelector editText, btnSave;
     KeyType Qwerty_kor, Qwerty_eng;
+    TestCaseParser parser;
 
     public TestCase_01(Utility device, String testType) {
         this.device = device;
         this.testType = testType;
     }
 
-    public void start() throws IOException, RemoteException, UiObjectNotFoundException {
+    public void start() throws IOException, RemoteException {
         ReadyTest();
         Test();
         FinishTest();
     }
 
-    private void ReadyTest() throws RemoteException, UiObjectNotFoundException {
-        // KeyType, WordList Load
-        editText = new UiSelector().resourceId("com.phillit.qa.monkeyinput:id/edt_input");
-        btnSave = new UiSelector().resourceId("com.phillit.qa.monkeyinput:id/btn_start");
-        wordList = new TestCaseParser("kor").getWordList();
-        wordCnt = wordList.size();
+    private void ReadyTest() throws RemoteException {
+        // Parser, KeyType init
+        parser = new TestCaseParser("kor");
+
         Qwerty_eng = new Qwerty(device, device.getContext(), KeyType.QWERTY_PORTRAIT, KeyType.QWERTY_ENGLISH);
         Qwerty_kor = new Qwerty(device, device.getContext(), KeyType.QWERTY_PORTRAIT, KeyType.QWERTY_KOREA);
 
@@ -57,7 +51,7 @@ public class TestCase_01 {
         device.inputMethod(testType, Qwerty_eng);
 
         // 입력필드 터치
-        device.getUiDevice().findObject(editText).click();
+        device.touchObject("com.phillit.qa.monkeyinput:id/edt_input");
 
         // 언어변경(한글)
         device.userWait(1500);
@@ -69,39 +63,37 @@ public class TestCase_01 {
         device.userWait(3000);
 
     }
-    private void Test(){
-        for(int i=0; i < wordCnt; i++){
-            String temp = wordList.get(0);
-            device.inputMethod(temp, Qwerty_kor);
-            wordList.remove(0);
-            Log.i("@@@", "Word Count : " + i + " / Input Word : " + temp);
+    private void Test() throws IOException {
+        int i=1;
+        while(true){
+            word = parser.getWord(i);
+            if(word == null){
+                break;
+            }else{
+                device.inputMethod(word, Qwerty_kor);
+            }
+            if(i % 1000 == 0){
+                device.touchObject("com.phillit.qa.monkeyinput:id/btn_save");
+                device.dumpsysMemifo(testType + "_meminfo");
+                device.userWait(5000);
+            }
+            Log.i("@@@", "WordCnt : " + i + " / Word : " + word);
+            i++;
         }
-
         // 10초 대기
         device.userWait(10000);
     }
 
-    private void FinishTest() throws IOException {
+    private void FinishTest() {
+        // 언어변경(영어)
+        device.userWait(1500);
+        device.getUiDevice().click(205, 1690);
 
-        // SAVE 버튼
-        device.touchObject("com.phillit.qa.monkeyinput:id/btn_start");
-
-
-        /**
-        String result = "";
-        File file = new File("/sdcard/QA/InputTest/output_" + testType + ".txt");
-        FileWriter writer = new FileWriter(file);
-        try {
-            result = device.getUiDevice().findObject(new UiSelector().resourceId("com.akeyboard.monkeytest:id/edt_test")).getText();
-            writer.write(result);
-        } catch (UiObjectNotFoundException e) {
-            Log.i("@@@", "UI객체를 찾을 수 없음 : " + e.getLocalizedMessage());
-            device.getUiDevice().takeScreenshot(new File("/sdcard/QA/InputTest/Fail_" + failCount + ".png"));
-            failCount++;
-            e.printStackTrace();
-        }finally {
-            writer.close();
-        }
-         **/
+        // 다음 테스트시 불필요한 객체 해제
+        device.Release();
+        // 홈화면 이동
+        device.goToIdle();
+        // 10초 대기
+        device.userWait(10000);
     }
 }

@@ -9,4 +9,5 @@ public abstract class KeyType {
     public static final int QWERTY_ENGLISH = 101;
 
     abstract public void input(String args);
+    abstract public void input(StringBuffer args);
 }

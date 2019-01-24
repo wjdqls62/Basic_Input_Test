@@ -2,6 +2,7 @@ package com.phillit.qa.basicinputtest.Common.KeyType;
 
 import android.content.Context;
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.phillit.qa.basicinputtest.Common.Key;
 import com.phillit.qa.basicinputtest.Common.Utility;
@@ -12,14 +13,18 @@ public class Qwerty extends KeyType {
     private Utility utility;
     private HashMap<String, Key> normalKeyList, specialKeyList;
     private XmlParser parser;
+    private StringBuffer buffer;
+    private char[] arrChar;
     private int spacebar_x, spacebar_y, language;
     private int shift_x, shift_y;
+    boolean isSpecialChar = false;
 
 
     public Qwerty(Utility utility, Context context, int screenOrientation, int language){
         this.utility = utility;
         parser = new XmlParser(context, screenOrientation, language);
         this.language = language;
+        buffer = new StringBuffer();
 
         // 문자키, 특수문자키를 XML로부터 읽어온다
         normalKeyList = parser.getKeyList();
@@ -38,10 +43,50 @@ public class Qwerty extends KeyType {
 
     @Override
     public void input(String args) {
-        char[] arrChar = args.toCharArray();
-        boolean isSpecialChar = false;
-        Key key;
+        arrChar = args.toCharArray();
+        typingKeyboard(arrChar);
+        utility.getUiDevice().click(spacebar_x, spacebar_y);
+    }
 
+    @Override
+    public void input(StringBuffer args) {
+        typingKeyboard(args);
+        utility.getUiDevice().click(spacebar_x, spacebar_y);
+    }
+    private void typingKeyboard(StringBuffer arrChar){
+        Key key;
+        String targetChar = "";
+
+        for(int i=0; i<arrChar.length(); i++){
+            targetChar = String.valueOf(arrChar.charAt(i));
+
+            isSpecialChar = isSpecialCharacter(targetChar);
+
+            // 특수문자가 아닐경우
+            if(!isSpecialChar){
+                // 영문인데 대문자의 경우
+                if(language == KeyType.QWERTY_ENGLISH && isUpper(targetChar)){
+                    utility.getUiDevice().click(shift_x, shift_y);
+                    key = normalKeyList.get(targetChar.toLowerCase());
+                }else{
+                    key = normalKeyList.get(targetChar);
+                }
+
+                for(int j=0; j<key.keyCordinates.size(); j++){
+                    utility.getUiDevice().click(key.keyCordinates.get(j).x, key.keyCordinates.get(j).y);
+                }
+            }
+            // 특수문자의 경우
+            else{
+                key = specialKeyList.get(targetChar);
+                for(int k=0; k<key.keyCordinates.size(); k++){
+                    utility.getUiDevice().click(key.keyCordinates.get(k).x, key.keyCordinates.get(k).y);
+                }
+            }
+        }
+    }
+    private void typingKeyboard(char[] arrChar){
+        Key key;
         for(int i=0; i<arrChar.length; i++){
             String targetChar = String.valueOf(arrChar[i]);
 
@@ -69,8 +114,6 @@ public class Qwerty extends KeyType {
                 }
             }
         }
-        // 단어입력 후 한칸띄움(Spacebar)
-        utility.getUiDevice().click(spacebar_x, spacebar_y);
     }
 
     // 대문자 체크

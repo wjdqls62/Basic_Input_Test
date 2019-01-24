@@ -8,6 +8,11 @@ import android.support.test.uiautomator.UiDevice;
 import android.support.test.uiautomator.UiObjectNotFoundException;
 import android.support.test.uiautomator.UiSelector;;
 import com.phillit.qa.basicinputtest.Common.KeyType.KeyType;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 
 public class Utility {
@@ -15,6 +20,8 @@ public class Utility {
     private UiSelector uiSelector;
     private Context context;
     private PackageManager packageManager;
+    private File meminfoFile;
+    private String meminfo;
 
     public Utility(UiDevice Device, Context context){
         this.uiDevice = Device;
@@ -41,6 +48,10 @@ public class Utility {
     }
 
     public void inputMethod(String text, KeyType keyType){
+        keyType.input(text);
+    }
+
+    public void inputMethod(StringBuffer text, KeyType keyType){
         keyType.input(text);
     }
 
@@ -94,5 +105,20 @@ public class Utility {
 
         intent = context.getPackageManager().getLaunchIntentForPackage(targetPackageName);
         context.startActivity(intent);
+    }
+
+    public void dumpsysMemifo(String fileName) throws IOException {
+        if(meminfoFile == null){
+            meminfoFile = new File("/sdcard/QA/InputTest/" + fileName + ".txt");
+        }
+        FileWriter writer = new FileWriter(meminfoFile, true);
+        meminfo = getUiDevice().executeShellCommand("dumpsys meminfo com.phillit.akeyboard -d");
+        meminfo += "\n======================= " + new Date() + " =======================\n";
+        writer.write(meminfo);
+        writer.close();
+    }
+
+    public void Release(){
+        meminfoFile = null;
     }
 }
