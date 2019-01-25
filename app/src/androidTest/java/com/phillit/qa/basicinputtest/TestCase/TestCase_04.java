@@ -19,19 +19,19 @@ import java.io.IOException;
  4. /sdcard/QA/InputTest/TestWord.xls의 한글단어를 순차적으로 입력
  */
 
-public class TestCase_02 {
+public class TestCase_04 {
     String testType = "";
     StringBuffer word;
     Utility device;
     KeyType Qwerty_kor, Qwerty_eng;
     TestCaseParser parser;
 
-    public TestCase_02(Utility device, String testType) {
+    public TestCase_04(Utility device, String testType) {
         this.device = device;
         this.testType = testType;
     }
 
-    public void start() throws IOException, RemoteException, UiObjectNotFoundException {
+    public void start() throws IOException, RemoteException {
         ReadyTest();
         Test();
         FinishTest();
@@ -39,10 +39,9 @@ public class TestCase_02 {
 
     private void ReadyTest() throws RemoteException {
         // Parser, KeyType init
-        parser = new TestCaseParser("kor");
+        parser = new TestCaseParser("eng");
         // 가로모드에서 파일명입력창이 보이지 않아 파일명을 영어로 타이핑 하기 위해 eng만 PORTRAIT 설정
         Qwerty_eng = new Qwerty(device, device.getContext(), KeyType.QWERTY_PORTRAIT, KeyType.QWERTY_ENGLISH);
-        Qwerty_kor = new Qwerty(device, device.getContext(), KeyType.QWERTY_LANDSCAPE, KeyType.QWERTY_KOREA);
 
         // Monkey Input 실행
         device.launchApplication("Monkey Input");
@@ -54,14 +53,11 @@ public class TestCase_02 {
         // 입력필드 터치
         device.touchObject("com.phillit.qa.monkeyinput:id/edt_input");
 
-        // 가로모드
+        // 가로모드 설정 및 가로모드 좌표 Reload
         // 3초 대기
         device.getUiDevice().setOrientationLeft();
+        Qwerty_eng = new Qwerty(device, device.getContext(), KeyType.QWERTY_LANDSCAPE, KeyType.QWERTY_ENGLISH);
         device.userWait(3000);
-
-        // 언어변경(한글)
-        device.getUiDevice().click(345, 1015);
-        device.userWait(2000);
     }
 
     private void Test() throws IOException {
@@ -71,7 +67,7 @@ public class TestCase_02 {
             if(word == null){
                 break;
             }else{
-                device.inputMethod(word, Qwerty_kor);
+                device.inputMethod(word, Qwerty_eng);
             }
             if(i % 1000 == 0){
                 // 가로모드 상태에서 SAVE버튼이 보이지 않아 Back버튼 1회 터치한다
@@ -92,10 +88,6 @@ public class TestCase_02 {
     }
 
     private void FinishTest() throws RemoteException {
-        // 언어변경(영어)
-        device.userWait(1500);
-        device.getUiDevice().click(345, 1015);
-
         // 세로모드
         // 3초 대기
         device.getUiDevice().setOrientationNatural();
