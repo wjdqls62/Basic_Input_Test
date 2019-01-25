@@ -5,6 +5,7 @@ import android.os.RemoteException;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.uiautomator.UiDevice;
 import android.support.test.uiautomator.UiObjectNotFoundException;
+import android.util.Log;
 
 import com.phillit.qa.basicinputtest.Common.Utility;
 import com.phillit.qa.basicinputtest.TestCase.TestCase_01;
@@ -16,6 +17,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 
 /**
@@ -41,11 +44,20 @@ public class Main {
         // 한글, 세로모드 입력
         new TestCase_01(device,"KOR_PORTRAIT").start();
 
+        // Battery 충전을 위한 1시간 대기
+        device.userWait(3600000);
+
         // 한글, 가로모드 입력
         new TestCase_02(device,"KOR_LANDSCAPE").start();
 
+        // Battery 충전을 위한 1시간 대기
+        device.userWait(3600000);
+
         // 영문, 세로모드 입력
         new TestCase_03(device,"ENG_PORTRAIT").start();
+
+        // Battery 충전을 위한 1시간 대기
+        device.userWait(3600000);
 
         // 영문, 가로모드 입력
         new TestCase_04(device,"ENG_LANDSCAPE").start();
