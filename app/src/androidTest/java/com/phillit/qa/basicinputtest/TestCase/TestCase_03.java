@@ -72,7 +72,7 @@ public class TestCase_03 {
                 device.dumpsysMemifo(testType + "_meminfo");
                 device.userWait(5000);
             }
-            Log.i("@@@", "WordCnt : " + i + " / Word : " + word);
+            //Log.i("@@@", "WordCnt : " + i + " / Word : " + word);
             i++;
         }
         // 10초 대기
