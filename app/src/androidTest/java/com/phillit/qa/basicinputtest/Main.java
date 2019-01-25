@@ -52,7 +52,7 @@ public class Main {
     @After
     public void FinishTest() throws IOException {
         // 테스트 결과 확인을 위해 Device reboot
-        device.getUiDevice().executeShellCommand("reboot");
+        //device.getUiDevice().executeShellCommand("reboot");
     }
 
     private void initTest(){
