@@ -9,6 +9,8 @@ import android.support.test.uiautomator.UiObjectNotFoundException;
 import com.phillit.qa.basicinputtest.Common.Utility;
 import com.phillit.qa.basicinputtest.TestCase.TestCase_01;
 import com.phillit.qa.basicinputtest.TestCase.TestCase_02;
+import com.phillit.qa.basicinputtest.TestCase.TestCase_03;
+import com.phillit.qa.basicinputtest.TestCase.TestCase_04;
 
 import org.junit.After;
 import org.junit.Before;
@@ -43,10 +45,10 @@ public class Main {
         new TestCase_02(device,"KOR_LANDSCAPE").start();
 
         // 영문, 세로모드 입력
-        //new TestCase_03(device,"ENG_PORTRAIT").start();
+        new TestCase_03(device,"ENG_PORTRAIT").start();
 
         // 영문, 가로모드 입력
-        //new TestCase_04(device,"ENG_LANDSCAPE").start();
+        new TestCase_04(device,"ENG_LANDSCAPE").start();
     }
 
     @After
