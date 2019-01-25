@@ -112,8 +112,8 @@ public class Utility {
             meminfoFile = new File("/sdcard/QA/InputTest/" + fileName + ".txt");
         }
         FileWriter writer = new FileWriter(meminfoFile, true);
-        meminfo = getUiDevice().executeShellCommand("dumpsys meminfo com.phillit.akeyboard -d");
-        meminfo += "\n======================= " + new Date() + " =======================\n";
+        meminfo = "======================= " + new Date() + " =======================\n";
+        meminfo += getUiDevice().executeShellCommand("dumpsys meminfo com.phillit.akeyboard -d");
         writer.write(meminfo);
         writer.close();
     }
