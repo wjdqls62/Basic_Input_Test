@@ -18,7 +18,7 @@ public class TestCaseParser {
     private ArrayList<String> wordList;
     private HSSFRow row;
     private HSSFCell cell;
-    private int getContencs = 0; // 행에서 몇번째 데이터를 갖고오는지?
+    private int getContents = 0; // 행에서 몇번째 데이터를 갖고오는지?
     private int rowLength = 0;
 
     public TestCaseParser(String mode){
@@ -32,24 +32,11 @@ public class TestCaseParser {
             workbook = new HSSFWorkbook(fis);
             if(mode.equals("kor")){
                 sheet = workbook.getSheet("한국어");
-                getContencs = 2;
+                getContents = 2;
             }else if(mode.equals("eng")){
                 sheet = workbook.getSheet("영어");
-                getContencs = 0;
+                getContents = 0;
             }
-
-            //rowLength = sheet.getPhysicalNumberOfRows();
-
-            // 행수(1부터 시작)
-            //for(int i=1; i<rowLength; i++){
-            //    row = sheet.getRow(i);
-            //    if(row != null){
-            //        // 1행에서 2번째열(Word Separate) 값 가져오기
-            //        HSSFCell cell = sheet.getRow(i).getCell(getContencs);
-            //        wordList.add(cell.getStringCellValue());
-            //        //Log.i("@@@", cell.getStringCellValue());
-            //    }
-            //}
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -63,7 +50,7 @@ public class TestCaseParser {
     public StringBuffer getWord(int index){
         try{
             word.setLength(0);
-            word.append(sheet.getRow(index).getCell(getContencs).getStringCellValue());
+            word.append(sheet.getRow(index).getCell(getContents).getStringCellValue());
         }catch (NullPointerException e){
             return null;
         }
