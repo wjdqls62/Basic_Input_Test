@@ -44,38 +44,27 @@ public class Main {
     }
 
     @Test
-    public void Test() throws IOException, RemoteException, UiObjectNotFoundException {
+    public void Test() throws IOException, RemoteException {
 
         // 한글, 세로모드 입력
         if(device.getTestPlan().KOR_QWERTY_PORTRAIT){
             new TestCase_01(device,"KOR_PORTRAIT").start();
         }
 
-        // Battery 충전을 위한 1시간 대기
-        //device.userWait(3600000);
-
         // 한글, 가로모드 입력
         if(device.getTestPlan().KOR_QWERTY_LANDSCAPE){
             new TestCase_02(device,"KOR_LANDSCAPE").start();
         }
-
-        // Battery 충전을 위한 1시간 대기
-        //device.userWait(3600000);
 
         // 영문, 세로모드 입력
         if(device.getTestPlan().ENG_QWERTY_PORTRAIT){
             new TestCase_03(device,"ENG_PORTRAIT").start();
         }
 
-        // Battery 충전을 위한 1시간 대기
-        //device.userWait(3600000);
-
         // 영문, 가로모드 입력
         if(device.getTestPlan().ENG_QWERTY_LANDSCAPE){
             new TestCase_04(device,"ENG_LANDSCAPE").start();
         }
-
-
     }
 
     @After
