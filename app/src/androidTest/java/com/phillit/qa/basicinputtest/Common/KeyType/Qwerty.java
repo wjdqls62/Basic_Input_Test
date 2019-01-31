@@ -127,8 +127,10 @@ public class Qwerty extends KeyType {
             return false;
         }
         for(int i=0; i < str.length(); i++){
-            if(!Character.isLetterOrDigit(str.charAt(i))){
-                return true;
+            if(!str.equals("^")){
+                if(!Character.isLetterOrDigit(str.charAt(i))){
+                    return true;
+                }
             }
         }
         return false;
