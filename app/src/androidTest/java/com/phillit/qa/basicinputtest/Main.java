@@ -82,7 +82,11 @@ public class Main {
     public void FinishTest() throws UiObjectNotFoundException {
         device.userWait(10000);
         device.TimeCheck("END");
-        device.sendReport();
+
+        // InternalTest가 아닐경우에만 Report Mail 전송
+        if(!device.getTestPlan().isInternalTest){
+            device.sendReport();
+        }
     }
 
     private void initTest(){
