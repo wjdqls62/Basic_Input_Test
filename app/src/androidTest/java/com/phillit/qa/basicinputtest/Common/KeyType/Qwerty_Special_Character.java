@@ -26,7 +26,7 @@ public class Qwerty_Special_Character extends KeyType {
     @Override
     public void input(String args) {
         String targetChar = args;
-        Nexus5_specialKeyList_Btn();
+        Nexus5_specialKeyList_Btn(screenOrientation);
         key = specialKeyList.get(targetChar);
         if(key != null){
             for(int k=0; k<key.keyCordinates.size(); k++){
@@ -44,8 +44,12 @@ public class Qwerty_Special_Character extends KeyType {
     }
 
     // 넥서스5 특수문자 페이지 버튼튼
-   private void Nexus5_specialKeyList_Btn(){
-       device.getUiDevice().click(70, 1690);
+   private void Nexus5_specialKeyList_Btn(int screenOrientation){
+        if(screenOrientation == KeyType.QWERTY_PORTRAIT){
+            device.getUiDevice().click(70, 1690);
+        }else{
+            device.getUiDevice().click(120,1015);
+        }
     }
 
     // 넥서스5 XML예약어 특수문자 수동삽입
@@ -89,7 +93,42 @@ public class Qwerty_Special_Character extends KeyType {
                 device.getUiDevice().click(70, 1690);
             }
         }else if(screenOrientation == KeyType.QWERTY_LANDSCAPE){
-
+            // &
+            if(targetChar.equals("&")){
+                device.getUiDevice().click(625, 780);
+                device.getUiDevice().click(120, 1020);
+                // ￦
+            }else if(targetChar.equals("￦")){
+                // 원화, 달러표기의 경우 현재 자판의 언어에 따라 표기페이지가 상이하여 조건문 분기
+                if(language == KeyType.QWERTY_KOREA){
+                    device.getUiDevice().click(450, 780);
+                    device.getUiDevice().click(120, 1020);
+                }else if(language == KeyType.QWERTY_ENGLISH){
+                    device.getUiDevice().click(120,900);
+                    device.getUiDevice().click(1075,900);
+                    device.getUiDevice().click(120, 1020);
+                }
+            }else if(targetChar.equals("$")){
+                if(language == KeyType.QWERTY_KOREA){
+                    device.getUiDevice().click(120,900);
+                    device.getUiDevice().click(1075,900);
+                    device.getUiDevice().click(120, 1020);
+                }else if(language == KeyType.QWERTY_ENGLISH){
+                    device.getUiDevice().click(450, 780);
+                    device.getUiDevice().click(120, 1020);
+                }
+                // <
+            }else if(targetChar.equals("<")){
+                device.getUiDevice().click(120,900);
+                device.getUiDevice().click(95,785);
+                device.getUiDevice().click(120, 1020);
+            }
+            // >
+            else if(targetChar.equals(">")){
+                device.getUiDevice().click(120,900);
+                device.getUiDevice().click(275,785);
+                device.getUiDevice().click(120, 1020);
+            }
         }
     }
 }
