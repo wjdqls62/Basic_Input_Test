@@ -78,22 +78,25 @@ public class Utility {
     }
 
     // 화면상 요소의 text값으로 객체를 터치한다
-    public void touchText(String inputText){
+    public boolean touchText(String inputText){
+        boolean result = false;
         try {
-            uiDevice.findObject(new UiSelector().text(inputText)).click();
+            result = uiDevice.findObject(new UiSelector().text(inputText)).click();
         } catch (UiObjectNotFoundException e) {
             e.printStackTrace();
         }
+        return result;
     }
 
     // 화면상 요소의id값으로 객체를 터치한다
-    public void touchObject(String id){
+    public boolean touchObject(String id){
         boolean result = false;
         try {
-            uiDevice.findObject(new UiSelector().resourceId(id)).click();
+            result = uiDevice.findObject(new UiSelector().resourceId(id)).click();
         } catch (UiObjectNotFoundException e) {
             e.printStackTrace();
         }
+        return result;
     }
 
     // Application을 실행한다

@@ -15,6 +15,7 @@ public class Qwerty extends KeyType {
     private XmlParser parser;
     private StringBuffer buffer;
     private char[] arrChar;
+    private Qwerty_Special_Character specialCharacter;
     private int spacebar_x, spacebar_y, language;
     private int shift_x, shift_y;
     boolean isSpecialChar = false;
@@ -29,6 +30,7 @@ public class Qwerty extends KeyType {
         // 문자키, 특수문자키를 XML로부터 읽어온다
         normalKeyList = parser.getKeyList();
         specialKeyList = parser.getSpecialKeyList();
+        specialCharacter = new Qwerty_Special_Character(utility, context, screenOrientation, language, specialKeyList);
 
         // 단어입력 후 띄어쓰기를 위해 Spacebar의 좌표를 Preload
         spacebar_x = normalKeyList.get("^").keyCordinates.get(0).x;
@@ -78,10 +80,7 @@ public class Qwerty extends KeyType {
             }
             // 특수문자의 경우
             else{
-                key = specialKeyList.get(targetChar);
-                for(int k=0; k<key.keyCordinates.size(); k++){
-                    utility.getUiDevice().click(key.keyCordinates.get(k).x, key.keyCordinates.get(k).y);
-                }
+                specialCharacter.input(targetChar);
             }
         }
     }
@@ -108,10 +107,7 @@ public class Qwerty extends KeyType {
             }
             // 특수문자의 경우
             else{
-                key = specialKeyList.get(targetChar);
-                for(int k=0; k<key.keyCordinates.size(); k++){
-                    utility.getUiDevice().click(key.keyCordinates.get(k).x, key.keyCordinates.get(k).y);
-                }
+                specialCharacter.input(targetChar);
             }
         }
     }
@@ -129,6 +125,8 @@ public class Qwerty extends KeyType {
         for(int i=0; i < str.length(); i++){
             if(!str.equals("^")){
                 if(!Character.isLetterOrDigit(str.charAt(i))){
+                    return true;
+                }else if(str.equals("π") || str.equals("ℓ")){
                     return true;
                 }
             }
