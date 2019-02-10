@@ -1,5 +1,9 @@
 package com.phillit.qa.basicinputtest.Common;
+import android.content.Context;
 import android.util.Log;
+
+import com.phillit.qa.basicinputtest.R;
+
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import java.io.FileInputStream;
@@ -16,8 +20,9 @@ public class TestCaseParser {
     private ArrayList<String> wordList;
     private int getContents = 0; // 행에서 몇번째 데이터를 갖고오는지?
 
-    public TestCaseParser(String mode){
+    public TestCaseParser(String mode, Context context){
         //int rowLength = 0;
+        filePath = context.getResources().getString(R.string.path_TestCase);
         word = new StringBuffer();
 
         try {

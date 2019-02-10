@@ -57,18 +57,22 @@ public class XmlParser {
     private void parseXML() throws IOException, XmlPullParserException {
 
         // 일반문자
-        if(parsingMode == KeyType.QWERTY_PORTRAIT){
+        if(parsingMode == KeyType.PORTRAIT){
             if(language == KeyType.QWERTY_KOREA){
                 parser = resource.getXml(R.xml.kor_qwerty_portrait);
             }else if(language == KeyType.QWERTY_ENGLISH){
                 parser = resource.getXml(R.xml.eng_qwerty_portrait);
+            }else if(language == KeyType.CHUNJIIN){
+                parser = resource.getXml(R.xml.kor_chunjiin_portrait);
             }
 
-        }else if(parsingMode == KeyType.QWERTY_LANDSCAPE){
+        }else if(parsingMode == KeyType.LANDSCAPE){
             if(language == KeyType.QWERTY_KOREA){
                 parser = resource.getXml(R.xml.kor_qwerty_landscape);
             }else if(language == KeyType.QWERTY_ENGLISH){
                 parser = resource.getXml(R.xml.eng_qwerty_landscape);
+            }else if(language == KeyType.CHUNJIIN){
+                parser = resource.getXml(R.xml.kor_chunjiin_landscape);
             }
         }
 
@@ -91,7 +95,7 @@ public class XmlParser {
             }else if(eventType == XmlResourceParser.END_TAG){
                 if(tagName.equals("Key")){
                     // Parsing된 Key 정보 출력
-                    key.logKeyinfo();
+                    //key.logKeyinfo();
                     keyList.put(key.keyValue, key);
                     key = null;
                 }
@@ -101,9 +105,9 @@ public class XmlParser {
 
 
         // 특수문자
-        if(parsingMode == KeyType.QWERTY_PORTRAIT){
+        if(parsingMode == KeyType.PORTRAIT){
             parser = resource.getXml(R.xml.common_special_character_portrait);
-        }else if(parsingMode == KeyType.QWERTY_LANDSCAPE){
+        }else if(parsingMode == KeyType.LANDSCAPE){
             parser = resource.getXml(R.xml.common_special_character_landscape);
         }
 

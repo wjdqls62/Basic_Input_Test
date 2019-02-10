@@ -6,11 +6,15 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.os.BatteryManager;
 import android.support.test.uiautomator.UiDevice;
+import android.support.test.uiautomator.UiObject;
+import android.support.test.uiautomator.UiObject2;
 import android.support.test.uiautomator.UiObjectNotFoundException;
 import android.support.test.uiautomator.UiSelector;
+import android.text.TextUtils;
 import android.util.Log;;
 import com.phillit.qa.basicinputtest.Common.KeyType.KeyType;
 import com.phillit.qa.basicinputtest.Common.KeyType.Qwerty;
+import com.phillit.qa.basicinputtest.R;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -74,6 +78,8 @@ public class Utility {
         userWait(500);
         uiDevice.pressBack();
         userWait(500);
+        uiDevice.pressBack();
+        userWait(500);
         uiDevice.pressHome();
     }
 
@@ -100,9 +106,10 @@ public class Utility {
     }
 
     // Application을 실행한다
-    public void launchApplication(String appName){
+    public boolean launchApplication(String appName){
         Intent intent;
         String targetPackageName = "";
+        boolean result = false;
 
         if(packageManager == null){
             packageManager = context.getPackageManager();
@@ -119,7 +126,15 @@ public class Utility {
         }
 
         intent = context.getPackageManager().getLaunchIntentForPackage(targetPackageName);
-        context.startActivity(intent);
+        try{
+            context.startActivity(intent);
+            result = true;
+        }catch(Exception e){
+            Log.i("@@@", "Not found application...");
+            e.printStackTrace();
+        }
+
+        return result;
     }
 
     // 메모리 덤프
@@ -140,7 +155,7 @@ public class Utility {
     }
 
     public void setTestPlan(){
-        TestCaseParser parser = new TestCaseParser("Env");
+        TestCaseParser parser = new TestCaseParser("Env", context);
         testPlan = parser.getTestPlan(testPlan);
         parser = null;
     }
@@ -150,7 +165,7 @@ public class Utility {
     }
 
     public void sendReport() throws UiObjectNotFoundException {
-        KeyType qwerty_eng = new Qwerty(this, context, KeyType.QWERTY_PORTRAIT, KeyType.QWERTY_ENGLISH);
+        KeyType qwerty_eng = new Qwerty(this, context, KeyType.PORTRAIT, KeyType.QWERTY_ENGLISH);
 
         // Solid Explorer 실행
         launchApplication("Solid Explorer");
@@ -255,5 +270,76 @@ public class Utility {
             }
             Log.i("@@@", "Test is pause. Battery charging... / " + getBatteryStatus() + "%");
         }
+    }
+
+    public boolean isNumber(String str){
+        boolean result = false;
+
+        try{
+            Double.parseDouble(str);
+            result = true;
+        }catch (Exception e){}
+
+        return result;
+    }
+
+    // 특수문자 체크
+    public boolean isSpecialCharacter(String str){
+        if(TextUtils.isEmpty(str)){
+            return false;
+        }
+        for(int i=0; i < str.length(); i++){
+            if(!str.equals("^")){
+                if(!Character.isLetterOrDigit(str.charAt(i))){
+                    return true;
+                }else if(str.equals("π") || str.equals("ℓ")){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public void changeKeyType(int keyType) throws UiObjectNotFoundException {
+        String aKeyboardAppName = getContext().getResources().getString(R.string.akeyboard_app_name);
+        UiObject object = null;
+
+        // 레빗 A키보드 실행
+        launchApplication(aKeyboardAppName);
+
+        // 언어메뉴 선택
+        object = uiDevice.findObject(new UiSelector().resourceId("com.phillit.akeyboard:id/setting_main_language"));
+        if(object.waitForExists(5000)){
+            object.click();
+        }
+
+        // Parameter에 맞는 언어메뉴 선택
+        if(keyType == KeyType.QWERTY_ENGLISH){
+            object = uiDevice.findObject(new UiSelector().resourceId("com.phillit.akeyboard:id/language_name").text("영어 (미국) / English(US)"));
+            if(object.waitForExists(3000)){
+                object.click();
+            }
+        }else if(keyType == KeyType.QWERTY_KOREA || keyType == KeyType.CHUNJIIN){
+            object = uiDevice.findObject(new UiSelector().resourceId("com.phillit.akeyboard:id/language_name").text("한국어"));
+            if(object.waitForExists(3000)){
+                object.click();
+            }
+        }
+
+        if(keyType == KeyType.QWERTY_KOREA || keyType == KeyType.QWERTY_ENGLISH){
+            object = uiDevice.findObject(new UiSelector().resourceId("com.phillit.akeyboard:id/keyboard_name").text("QWERTY"));
+            if(object.waitForExists(3000)){
+                object.click();
+            }
+        }else if(keyType == KeyType.CHUNJIIN){
+            object = uiDevice.findObject(new UiSelector().resourceId("com.phillit.akeyboard:id/keyboard_name").text("천지인"));
+            if(object.waitForExists(3000)){
+                object.click();
+            }
+        }
+
+        // 5초대기 후 홈스크린 진입
+        userWait(5000);
+        goToIdle();
     }
 }
