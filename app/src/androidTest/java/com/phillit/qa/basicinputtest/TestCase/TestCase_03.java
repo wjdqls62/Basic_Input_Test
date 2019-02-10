@@ -42,9 +42,9 @@ public class TestCase_03 {
 
     private void ReadyTest() throws RemoteException {
         // Parser, KeyType init
-        parser = new TestCaseParser("eng");
+        parser = new TestCaseParser("eng", device.getContext());
 
-        Qwerty_eng = new Qwerty(device, device.getContext(), KeyType.QWERTY_PORTRAIT, KeyType.QWERTY_ENGLISH);
+        Qwerty_eng = new Qwerty(device, device.getContext(), KeyType.PORTRAIT, KeyType.QWERTY_ENGLISH);
 
         // Monkey Input 실행
         device.launchApplication("Monkey Input");

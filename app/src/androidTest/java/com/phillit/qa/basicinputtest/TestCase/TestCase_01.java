@@ -1,7 +1,6 @@
 package com.phillit.qa.basicinputtest.TestCase;
 
 import android.os.RemoteException;
-import android.util.Log;
 
 import com.phillit.qa.basicinputtest.Common.TestCaseParser;
 import com.phillit.qa.basicinputtest.Common.KeyType.KeyType;
@@ -44,10 +43,10 @@ public class TestCase_01 {
 
     private void ReadyTest() throws RemoteException {
         // Parser, KeyType init
-        parser = new TestCaseParser("kor");
+        parser = new TestCaseParser("kor", device.getContext());
 
-        Qwerty_eng = new Qwerty(device, device.getContext(), KeyType.QWERTY_PORTRAIT, KeyType.QWERTY_ENGLISH);
-        Qwerty_kor = new Qwerty(device, device.getContext(), KeyType.QWERTY_PORTRAIT, KeyType.QWERTY_KOREA);
+        Qwerty_eng = new Qwerty(device, device.getContext(), KeyType.PORTRAIT, KeyType.QWERTY_ENGLISH);
+        Qwerty_kor = new Qwerty(device, device.getContext(), KeyType.PORTRAIT, KeyType.QWERTY_KOREA);
 
         // Monkey Input 실행
         device.launchApplication("Monkey Input");
