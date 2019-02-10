@@ -5,25 +5,22 @@ import android.os.RemoteException;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.uiautomator.UiDevice;
 import android.support.test.uiautomator.UiObjectNotFoundException;
-import android.util.Log;
 
-import com.phillit.qa.basicinputtest.Common.TestCaseParser;
-import com.phillit.qa.basicinputtest.Common.TestPlan;
+import com.phillit.qa.basicinputtest.Common.KeyType.Chunjiin;
+import com.phillit.qa.basicinputtest.Common.KeyType.KeyType;
+import com.phillit.qa.basicinputtest.Common.KeyType.Qwerty;
 import com.phillit.qa.basicinputtest.Common.Utility;
 import com.phillit.qa.basicinputtest.TestCase.TestCase_01;
 import com.phillit.qa.basicinputtest.TestCase.TestCase_02;
 import com.phillit.qa.basicinputtest.TestCase.TestCase_03;
 import com.phillit.qa.basicinputtest.TestCase.TestCase_04;
+import com.phillit.qa.basicinputtest.TestCase.TestCase_05;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 /**
  * Instrumented test, which will execute on an Android device.
@@ -36,15 +33,13 @@ public class Main {
     private Context context;
     private Utility device;
 
-
-
     @Before
     public void ReadyTest(){
         initTest();
     }
 
     @Test
-    public void Test() throws IOException, RemoteException {
+    public void Test() throws IOException, RemoteException, UiObjectNotFoundException {
 
         // 한글, 세로모드 입력
         if(device.getTestPlan().KOR_QWERTY_PORTRAIT){
@@ -64,6 +59,10 @@ public class Main {
         // 영문, 가로모드 입력
         if(device.getTestPlan().ENG_QWERTY_LANDSCAPE){
             new TestCase_04(device,"ENG_LANDSCAPE").start();
+        }
+
+        if(device.getTestPlan().KOR_CHUNJIIN_PORTRAIT){
+            new TestCase_05(device, "CHUNJIIN_PORTRAIT").start();
         }
     }
 
