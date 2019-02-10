@@ -62,7 +62,7 @@ public class Qwerty extends KeyType {
         for(int i=0; i<arrChar.length(); i++){
             targetChar = String.valueOf(arrChar.charAt(i));
 
-            isSpecialChar = isSpecialCharacter(targetChar);
+            isSpecialChar = utility.isSpecialCharacter(targetChar);
 
             // 특수문자가 아닐경우
             if(!isSpecialChar){
@@ -89,7 +89,7 @@ public class Qwerty extends KeyType {
         for(int i=0; i<arrChar.length; i++){
             String targetChar = String.valueOf(arrChar[i]);
 
-            isSpecialChar = isSpecialCharacter(targetChar);
+            isSpecialChar = utility.isSpecialCharacter(targetChar);
 
             // 특수문자가 아닐경우
             if(!isSpecialChar){
@@ -117,20 +117,5 @@ public class Qwerty extends KeyType {
         return str.matches("^[A-Z]*$");
     }
 
-    // 특수문자 체크
-    private boolean isSpecialCharacter(String str){
-        if(TextUtils.isEmpty(str)){
-            return false;
-        }
-        for(int i=0; i < str.length(); i++){
-            if(!str.equals("^")){
-                if(!Character.isLetterOrDigit(str.charAt(i))){
-                    return true;
-                }else if(str.equals("π") || str.equals("ℓ")){
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
+
 }

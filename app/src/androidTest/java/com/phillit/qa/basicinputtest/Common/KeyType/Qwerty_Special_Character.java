@@ -1,7 +1,6 @@
 package com.phillit.qa.basicinputtest.Common.KeyType;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.phillit.qa.basicinputtest.Common.Key;
 import com.phillit.qa.basicinputtest.Common.Utility;
@@ -45,7 +44,7 @@ public class Qwerty_Special_Character extends KeyType {
 
     // 넥서스5 특수문자 페이지 버튼튼
    private void Nexus5_specialKeyList_Btn(int screenOrientation){
-        if(screenOrientation == KeyType.QWERTY_PORTRAIT){
+        if(screenOrientation == KeyType.PORTRAIT){
             device.getUiDevice().click(70, 1690);
         }else{
             device.getUiDevice().click(120,1015);
@@ -55,7 +54,7 @@ public class Qwerty_Special_Character extends KeyType {
     // 넥서스5 XML예약어 특수문자 수동삽입
     private void Nexus5(String targetChar){
         // 세로모드
-        if(screenOrientation == KeyType.QWERTY_PORTRAIT){
+        if(screenOrientation == KeyType.PORTRAIT){
             // &
             if(targetChar.equals("&")){
                 device.getUiDevice().click(375, 1400);
@@ -92,7 +91,7 @@ public class Qwerty_Special_Character extends KeyType {
                 device.getUiDevice().click(165,1400);
                 device.getUiDevice().click(70, 1690);
             }
-        }else if(screenOrientation == KeyType.QWERTY_LANDSCAPE){
+        }else if(screenOrientation == KeyType.LANDSCAPE){
             // &
             if(targetChar.equals("&")){
                 device.getUiDevice().click(625, 780);
