@@ -84,6 +84,7 @@ public class Qwerty extends KeyType {
             }
         }
     }
+
     private void typingKeyboard(char[] arrChar){
         Key key;
         for(int i=0; i<arrChar.length; i++){
