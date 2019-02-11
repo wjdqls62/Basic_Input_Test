@@ -1,6 +1,7 @@
 package com.phillit.qa.basicinputtest.TestCase;
 
 import android.os.RemoteException;
+import android.support.test.uiautomator.UiObjectNotFoundException;
 
 import com.phillit.qa.basicinputtest.Common.KeyType.Chunjiin;
 import com.phillit.qa.basicinputtest.Common.TestCaseParser;
@@ -36,13 +37,16 @@ public class TestCase_06 {
         }
     }
 
-    public void start() throws IOException, RemoteException {
+    public void start() throws IOException, RemoteException, UiObjectNotFoundException {
         ReadyTest();
         Test();
         FinishTest();
     }
 
-    private void ReadyTest() throws RemoteException {
+    private void ReadyTest() throws RemoteException, UiObjectNotFoundException {
+        // 천지인 키타입으로 변경
+        device.changeKeyType(KeyType.CHUNJIIN);
+
         // Parser, KeyType init
         parser = new TestCaseParser("kor", device.getContext());
 
