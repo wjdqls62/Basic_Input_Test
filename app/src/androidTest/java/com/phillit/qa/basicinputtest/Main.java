@@ -5,10 +5,6 @@ import android.os.RemoteException;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.uiautomator.UiDevice;
 import android.support.test.uiautomator.UiObjectNotFoundException;
-
-import com.phillit.qa.basicinputtest.Common.KeyType.Chunjiin;
-import com.phillit.qa.basicinputtest.Common.KeyType.KeyType;
-import com.phillit.qa.basicinputtest.Common.KeyType.Qwerty;
 import com.phillit.qa.basicinputtest.Common.Utility;
 import com.phillit.qa.basicinputtest.TestCase.TestCase_01;
 import com.phillit.qa.basicinputtest.TestCase.TestCase_02;
