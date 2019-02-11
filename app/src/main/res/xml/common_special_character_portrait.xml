@@ -6,12 +6,16 @@
         <Value>,</Value>
         <X1>325</X1>
         <Y1>1690</Y1>
+        <X2>70</X2>
+        <Y2>1690</Y2>
     </Key>
 
     <Key>
         <Value>.</Value>
         <X1>855</X1>
         <Y1>1690</Y1>
+        <X2>70</X2>
+        <Y2>1690</Y2>
     </Key>
     <Key>
         <Value>~</Value>
