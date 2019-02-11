@@ -8,6 +8,9 @@ public abstract class KeyType {
     public static final int QWERTY_KOREA = 100;
     public static final int QWERTY_ENGLISH = 101;
     public static final int CHUNJIIN = 102;
+    public static final int SKY = 103;
+    public static final int NARAGUL = 104;
+    public static final int DANMOUM = 105;
 
     abstract public void input(String args);
     abstract public void input(StringBuffer args);
