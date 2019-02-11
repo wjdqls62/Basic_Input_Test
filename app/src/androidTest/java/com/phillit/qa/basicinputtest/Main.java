@@ -15,6 +15,7 @@ import com.phillit.qa.basicinputtest.TestCase.TestCase_02;
 import com.phillit.qa.basicinputtest.TestCase.TestCase_03;
 import com.phillit.qa.basicinputtest.TestCase.TestCase_04;
 import com.phillit.qa.basicinputtest.TestCase.TestCase_05;
+import com.phillit.qa.basicinputtest.TestCase.TestCase_06;
 
 import org.junit.After;
 import org.junit.Before;
@@ -64,10 +65,16 @@ public class Main {
         if(device.getTestPlan().KOR_CHUNJIIN_PORTRAIT){
             new TestCase_05(device, "CHUNJIIN_PORTRAIT").start();
         }
+
+        if(device.getTestPlan().KOR_CHUNJIIN_LANDSCAPE){
+            device.getUiDevice().setOrientationNatural();
+            new TestCase_06(device, "CHUNJIIN_LANDSCAPE").start();
+        }
     }
 
     @After
-    public void FinishTest() throws UiObjectNotFoundException {
+    public void FinishTest() throws UiObjectNotFoundException, RemoteException {
+        device.getUiDevice().setOrientationNatural();
         device.userWait(10000);
         device.TimeCheck("END");
 
@@ -85,4 +92,3 @@ public class Main {
         device.TimeCheck("START");
     }
 }
-

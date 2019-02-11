@@ -1,6 +1,8 @@
 package com.phillit.qa.basicinputtest.Common.KeyType;
 
 import android.content.Context;
+import android.util.Log;
+
 import com.phillit.qa.basicinputtest.Common.Key;
 import com.phillit.qa.basicinputtest.Common.Utility;
 import com.phillit.qa.basicinputtest.Common.XmlParser;
