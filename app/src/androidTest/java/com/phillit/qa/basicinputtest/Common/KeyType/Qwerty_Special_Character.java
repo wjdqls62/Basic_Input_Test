@@ -35,6 +35,7 @@ public class Qwerty_Special_Character extends KeyType {
             //넥서스5 하드코딩
             Nexus5(targetChar);
         }
+        device.userWait(50);
     }
 
     @Override
@@ -62,7 +63,7 @@ public class Qwerty_Special_Character extends KeyType {
             // ￦
             }else if(targetChar.equals("￦")){
                 // 원화, 달러표기의 경우 현재 자판의 언어에 따라 표기페이지가 상이하여 조건문 분기
-                if(language == KeyType.QWERTY_KOREA){
+                if(language == KeyType.QWERTY_KOREA || language == KeyType.CHUNJIIN || language == KeyType.SKY || language == KeyType.NARAGUL || language == KeyType.DANMOUM){
                     device.getUiDevice().click(1015, 1260);
                     device.getUiDevice().click(70, 1690);
                 }else if(language == KeyType.QWERTY_ENGLISH){
@@ -71,7 +72,7 @@ public class Qwerty_Special_Character extends KeyType {
                     device.getUiDevice().click(70, 1690);
                 }
             }else if(targetChar.equals("$")){
-                if(language == KeyType.QWERTY_KOREA){
+                if(language == KeyType.QWERTY_KOREA || language == KeyType.CHUNJIIN || language == KeyType.SKY || language == KeyType.NARAGUL || language == KeyType.DANMOUM){
                     device.getUiDevice().click(70,1545);
                     device.getUiDevice().click(650,1545);
                     device.getUiDevice().click(70, 1690);
@@ -99,7 +100,7 @@ public class Qwerty_Special_Character extends KeyType {
                 // ￦
             }else if(targetChar.equals("￦")){
                 // 원화, 달러표기의 경우 현재 자판의 언어에 따라 표기페이지가 상이하여 조건문 분기
-                if(language == KeyType.QWERTY_KOREA){
+                if(language == KeyType.QWERTY_KOREA || language == KeyType.CHUNJIIN || language == KeyType.SKY || language == KeyType.NARAGUL || language == KeyType.DANMOUM){
                     device.getUiDevice().click(450, 780);
                     device.getUiDevice().click(120, 1020);
                 }else if(language == KeyType.QWERTY_ENGLISH){
@@ -108,7 +109,7 @@ public class Qwerty_Special_Character extends KeyType {
                     device.getUiDevice().click(120, 1020);
                 }
             }else if(targetChar.equals("$")){
-                if(language == KeyType.QWERTY_KOREA){
+                if(language == KeyType.QWERTY_KOREA || language == KeyType.CHUNJIIN || language == KeyType.SKY || language == KeyType.NARAGUL || language == KeyType.DANMOUM){
                     device.getUiDevice().click(120,900);
                     device.getUiDevice().click(1075,900);
                     device.getUiDevice().click(120, 1020);
