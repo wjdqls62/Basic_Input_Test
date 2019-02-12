@@ -69,7 +69,7 @@ public class Main {
     }
 
     @After
-    public void FinishTest() throws UiObjectNotFoundException, RemoteException {
+    public void FinishTest() throws UiObjectNotFoundException, RemoteException, IOException {
         device.getUiDevice().setOrientationNatural();
         device.userWait(10000);
         device.TimeCheck("END");
@@ -77,7 +77,11 @@ public class Main {
         // InternalTest가 아닐경우에만 Report Mail 전송
         if(!device.getTestPlan().isInternalTest){
             device.sendReport();
+            device.userWait(10000);
         }
+
+        // Device Power Off
+        uiDevice.executeShellCommand("adb shell reboot -p");
     }
 
     private void initTest(){
