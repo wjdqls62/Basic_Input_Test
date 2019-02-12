@@ -38,6 +38,7 @@ public class TestCase_02 {
     }
 
     public void start() throws IOException, RemoteException, UiObjectNotFoundException {
+        Log.i("@@@", getClass().getName() + " start.");
         ReadyTest();
         Test();
         FinishTest();

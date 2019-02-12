@@ -13,7 +13,7 @@ import java.io.IOException;
 
 /**
  * 테스트 명   : TestCase_05
- * 테스트 목적 : 세로모드상태에서 한글QWERTY의 입력을 검증한다.
+ * 테스트 목적 : 세로모드상태에서 천지인의 입력을 검증한다.
  * 테스트 순서 :
  1. Monkey Input 실행
  2. 세로모드
