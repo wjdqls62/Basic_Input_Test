@@ -12,7 +12,7 @@ import com.phillit.qa.basicinputtest.Common.Utility;
 import java.io.IOException;
 
 /**
- * 테스트 명   : TestCase_01
+ * 테스트 명   : TestCase_05
  * 테스트 목적 : 세로모드상태에서 한글QWERTY의 입력을 검증한다.
  * 테스트 순서 :
  1. Monkey Input 실행
@@ -105,7 +105,7 @@ public class TestCase_05 {
     private void FinishTest() {
         // 언어변경(영어)
         device.getUiDevice().click(205, 1690);
-        device.userWait(1500);
+        device.userWait(5000);
 
         // 다음 테스트시 불필요한 객체 해제
         device.Release();
