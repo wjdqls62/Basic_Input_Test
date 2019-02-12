@@ -265,10 +265,10 @@ public class Utility {
         while (true){
             userWait(300000);
             if(getBatteryStatus() >= BATTERY_MAX_VALUE){
-                Log.i("@@@", "Test is Resume.../ " + getBatteryStatus() + "%");
+                Log.i("@@@", "Suspend the test to charge the battery.../ " + getBatteryStatus() + "%");
                 break;
             }
-            Log.i("@@@", "Test is pause. Battery charging... / " + getBatteryStatus() + "%");
+            Log.i("@@@", "Resume the test... / " + getBatteryStatus() + "%");
         }
     }
 
