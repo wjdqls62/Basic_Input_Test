@@ -2,6 +2,7 @@ package com.phillit.qa.basicinputtest.TestCase;
 
 import android.os.RemoteException;
 import android.support.test.uiautomator.UiObjectNotFoundException;
+import android.util.Log;
 
 import com.phillit.qa.basicinputtest.Common.TestCaseParser;
 import com.phillit.qa.basicinputtest.Common.KeyType.KeyType;
@@ -96,7 +97,7 @@ public class TestCase_04 {
             if(isInternalTest && i==100){
                 break;
             }
-            //Log.i("@@@", "WordCnt : " + i + " / Word : " + word);
+            Log.i("@@@", "WordCnt : " + i + " / Word : " + word);
             i++;
         }
         // 10초 대기

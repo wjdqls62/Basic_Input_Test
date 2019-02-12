@@ -95,7 +95,7 @@ public class TestCase_05 {
             if(isInternalTest && i==100){
                 break;
             }
-            //Log.i("@@@", "WordCnt : " + i + " / Word : " + word);
+            Log.i("@@@", "WordCnt : " + i + " / Word : " + word);
             i++;
         }
         // 10초 대기
