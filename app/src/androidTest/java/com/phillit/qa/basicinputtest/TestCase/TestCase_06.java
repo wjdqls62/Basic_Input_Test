@@ -66,8 +66,9 @@ public class TestCase_06 {
         device.touchObject("com.phillit.qa.monkeyinput:id/edt_input");
 
         // 언어변경(한글)
-        device.userWait(1500);
+        device.userWait(2000);
         device.getUiDevice().click(205, 1690);
+        device.userWait(2000);
 
         // 가로모드
         // 10초 대기
