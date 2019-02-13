@@ -67,10 +67,10 @@ public class TestCase_05 {
 
         // 입력필드 터치
         device.touchObject("com.phillit.qa.monkeyinput:id/edt_input");
+        device.userWait(3000);
 
         // 언어변경(한글)
-        device.userWait(1500);
-        device.getUiDevice().click(205, 1690);
+        device.changeKeyboardLanguage(device.getDeviceModelName(), KeyType.CHUNJIIN);
 
         // 세로모드
         // 10초 대기
@@ -107,8 +107,7 @@ public class TestCase_05 {
 
     private void FinishTest() {
         // 언어변경(영어)
-        device.getUiDevice().click(205, 1690);
-        device.userWait(5000);
+        device.changeKeyboardLanguage(device.getDeviceModelName(), KeyType.CHUNJIIN);
 
         // 다음 테스트시 불필요한 객체 해제
         device.Release();
