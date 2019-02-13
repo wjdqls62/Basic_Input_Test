@@ -65,7 +65,7 @@ public class Chunjiin extends KeyType{
     }
 
     // 현재 입력자음과 다음입력될 자음을 비교
-    private boolean consonantCrash(String targetChar, String nextChar){
+    protected boolean consonantCrash(String targetChar, String nextChar){
         if(targetChar.equals("ㄱ") || targetChar.equals("ㅋ") || targetChar.equals("ㄲ")){
             if(nextChar.equals("ㄱ") || nextChar.equals("ㅋ") || nextChar.equals("ㄲ")){
                 return true;

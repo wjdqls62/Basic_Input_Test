@@ -64,6 +64,8 @@ public class XmlParser {
                 parser = resource.getXml(R.xml.eng_qwerty_portrait);
             }else if(language == KeyType.CHUNJIIN){
                 parser = resource.getXml(R.xml.kor_chunjiin_portrait);
+            }else if(language == KeyType.SKY){
+                parser = resource.getXml(R.xml.kor_sky_portrait);
             }
 
         }else if(parsingMode == KeyType.LANDSCAPE){
@@ -73,6 +75,8 @@ public class XmlParser {
                 parser = resource.getXml(R.xml.eng_qwerty_landscape);
             }else if(language == KeyType.CHUNJIIN){
                 parser = resource.getXml(R.xml.kor_chunjiin_landscape);
+            }else if(language == KeyType.SKY){
+                parser = resource.getXml(R.xml.kor_sky_landscape);
             }
         }
 

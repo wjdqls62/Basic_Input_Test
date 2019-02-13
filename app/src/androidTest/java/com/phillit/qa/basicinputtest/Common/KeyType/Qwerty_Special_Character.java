@@ -25,7 +25,7 @@ public class Qwerty_Special_Character extends KeyType {
     @Override
     public void input(String args) {
         String targetChar = args;
-        Nexus5_specialKeyList_Btn(screenOrientation);
+        Nexus5_specialKeyList_Btn(screenOrientation, language);
         key = specialKeyList.get(targetChar);
         if(key != null){
             for(int k=0; k<key.keyCordinates.size(); k++){
@@ -44,11 +44,23 @@ public class Qwerty_Special_Character extends KeyType {
     }
 
     // 넥서스5 특수문자 페이지 버튼튼
-   private void Nexus5_specialKeyList_Btn(int screenOrientation){
+   private void Nexus5_specialKeyList_Btn(int screenOrientation, int keyType){
+        // 세로모드
         if(screenOrientation == KeyType.PORTRAIT){
-            device.getUiDevice().click(70, 1690);
-        }else{
-            device.getUiDevice().click(120,1015);
+            if(keyType == KeyType.SKY){
+                device.getUiDevice().click(865, 1500);
+            }else{
+                device.getUiDevice().click(70, 1690);
+            }
+        }
+        // 가로모드
+        else{
+            if(keyType == KeyType.SKY){
+                device.getUiDevice().click(1450,850);
+            }else{
+                device.getUiDevice().click(120,1015);
+            }
+
         }
     }
 

@@ -5,6 +5,7 @@ import android.os.RemoteException;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.uiautomator.UiDevice;
 import android.support.test.uiautomator.UiObjectNotFoundException;
+import com.phillit.qa.basicinputtest.Common.KeyType.KeyType;
 import com.phillit.qa.basicinputtest.Common.Utility;
 import com.phillit.qa.basicinputtest.TestCase.TestCase_01;
 import com.phillit.qa.basicinputtest.TestCase.TestCase_02;
@@ -12,11 +13,11 @@ import com.phillit.qa.basicinputtest.TestCase.TestCase_03;
 import com.phillit.qa.basicinputtest.TestCase.TestCase_04;
 import com.phillit.qa.basicinputtest.TestCase.TestCase_05;
 import com.phillit.qa.basicinputtest.TestCase.TestCase_06;
-
+import com.phillit.qa.basicinputtest.TestCase.TestCase_07;
+import com.phillit.qa.basicinputtest.TestCase.TestCase_08;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
 import java.io.IOException;
 
 /**
@@ -29,9 +30,10 @@ public class Main {
     private UiDevice uiDevice;
     private Context context;
     private Utility device;
+    private String runTime = "", totalRunTime = "";
 
     @Before
-    public void ReadyTest(){
+    public void ReadyTest() throws IOException {
         initTest();
     }
 
@@ -40,55 +42,76 @@ public class Main {
 
         // 한글, 세로모드 입력
         if(device.getTestPlan().KOR_QWERTY_PORTRAIT){
-            new TestCase_01(device,"KOR_PORTRAIT").start();
+            TestCase_01 TC01 = new TestCase_01(device, "KOR_PORTRAIT");
+            TC01.start();
+            runTime += TC01.getRunTime();
         }
 
         // 한글, 가로모드 입력
         if(device.getTestPlan().KOR_QWERTY_LANDSCAPE){
-            new TestCase_02(device,"KOR_LANDSCAPE").start();
+            TestCase_02 TC02 = new TestCase_02(device, "KOR_LANDSCAPE");
+            TC02.start();
+            runTime += TC02.getRunTime();
         }
 
         // 영문, 세로모드 입력
         if(device.getTestPlan().ENG_QWERTY_PORTRAIT){
-            new TestCase_03(device,"ENG_PORTRAIT").start();
+            TestCase_03 TC03 = new TestCase_03(device, "ENG_PORTRAIT");
+            TC03.start();
+            runTime += TC03.getRunTime();
         }
 
         // 영문, 가로모드 입력
         if(device.getTestPlan().ENG_QWERTY_LANDSCAPE){
-            new TestCase_04(device,"ENG_LANDSCAPE").start();
+            TestCase_04 TC04 = new TestCase_04(device, "ENG_LANDSCAPE");
+            TC04.start();
+            runTime += TC04.getRunTime();
         }
 
         if(device.getTestPlan().KOR_CHUNJIIN_PORTRAIT){
-            new TestCase_05(device, "CHUNJIIN_PORTRAIT").start();
+            TestCase_05 TC05 = new TestCase_05(device, "CHUNJIIN_PORTRAIT");
+            TC05.start();
+            runTime += TC05.getRunTime();
         }
 
         if(device.getTestPlan().KOR_CHUNJIIN_LANDSCAPE){
-            device.getUiDevice().setOrientationNatural();
-            new TestCase_06(device, "CHUNJIIN_LANDSCAPE").start();
+            TestCase_06 TC06 = new TestCase_06(device, "CHUNJIIN_PORTRAIT");
+            TC06.start();
+            runTime += TC06.getRunTime();
         }
+
+        if(device.getTestPlan().KOR_SKY_PORTRAIT){
+            TestCase_07 TC07 = new TestCase_07(device, "SKY_PORTRAIT");
+            TC07.start();
+            runTime += TC07.getRunTime();
+        }
+
+        if(device.getTestPlan().KOR_SKY_LANDSCAPE){
+            TestCase_08 TC08 = new TestCase_08(device, "SKY_LANDSCAPE");
+            TC08.start();
+            runTime += TC08.getRunTime();
+        }
+    }
+
+    private void initTest() throws IOException {
+        context = InstrumentationRegistry.getTargetContext();
+        uiDevice = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation());
+        device = new Utility(uiDevice, context);
+        device.setTestPlan();
+        totalRunTime += "=================" + "Total RunTime" + "=================\n";
+        totalRunTime += device.TotalRunTimeCheck("START");
     }
 
     @After
     public void FinishTest() throws UiObjectNotFoundException, RemoteException, IOException {
         device.getUiDevice().setOrientationNatural();
         device.userWait(10000);
-        device.TimeCheck("END");
+        totalRunTime += device.TotalRunTimeCheck("END");
 
-        // InternalTest가 아닐경우에만 Report Mail 전송
-        if(!device.getTestPlan().isInternalTest){
-            device.sendReport();
-            device.userWait(10000);
-        }
+        device.sendReport(runTime, totalRunTime);
+        device.userWait(10000);
 
         // Device Power Off
-        uiDevice.executeShellCommand("adb shell reboot -p");
-    }
-
-    private void initTest(){
-        context = InstrumentationRegistry.getTargetContext();
-        uiDevice = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation());
-        device = new Utility(uiDevice, context);
-        device.setTestPlan();
-        device.TimeCheck("START");
+        device.PowerOff();
     }
 }
