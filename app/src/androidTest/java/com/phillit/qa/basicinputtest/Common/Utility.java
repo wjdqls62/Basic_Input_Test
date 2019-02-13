@@ -7,15 +7,13 @@ import android.content.pm.PackageManager;
 import android.os.BatteryManager;
 import android.support.test.uiautomator.UiDevice;
 import android.support.test.uiautomator.UiObject;
-import android.support.test.uiautomator.UiObject2;
 import android.support.test.uiautomator.UiObjectNotFoundException;
 import android.support.test.uiautomator.UiSelector;
 import android.text.TextUtils;
-import android.util.Log;;
+import android.util.Log;
 import com.phillit.qa.basicinputtest.Common.KeyType.KeyType;
 import com.phillit.qa.basicinputtest.Common.KeyType.Qwerty;
 import com.phillit.qa.basicinputtest.R;
-
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -24,6 +22,7 @@ import java.util.Date;
 import java.util.List;
 
 public class Utility {
+    public final int WAIT_FOR_UIOBJECT_TIME = 10000;
     public final int BATTERY_MIN_VALUE = 40;
     public final int BATTERY_MAX_VALUE = 90;
     private UiDevice uiDevice;
@@ -86,22 +85,40 @@ public class Utility {
     // 화면상 요소의 text값으로 객체를 터치한다
     public boolean touchText(String inputText){
         boolean result = false;
+        UiObject object = null;
         try {
-            result = uiDevice.findObject(new UiSelector().text(inputText)).click();
+            object = uiDevice.findObject(new UiSelector().text(inputText));
+            result = object.click();
         } catch (UiObjectNotFoundException e) {
             e.printStackTrace();
         }
+        Log.i("@@@", "touchText() Result : " + result + " // " + object.getSelector().toString());
         return result;
     }
 
     // 화면상 요소의id값으로 객체를 터치한다
     public boolean touchObject(String id){
         boolean result = false;
+        UiObject object = null;
         try {
-            result = uiDevice.findObject(new UiSelector().resourceId(id)).click();
+            object = uiDevice.findObject(new UiSelector().resourceId(id));
+            result = object.click();
         } catch (UiObjectNotFoundException e) {
             e.printStackTrace();
         }
+        Log.i("@@@", "TouchObject Result : " + result + " // " + object.getSelector().toString());
+        return result;
+    }
+
+    // 화면상 요소의 Object값으로 객체를 터치한다
+    public boolean touchObject(UiObject object){
+        boolean result = false;
+        try {
+            result = object.click();
+        } catch (UiObjectNotFoundException e) {
+            e.printStackTrace();
+        }
+        Log.i("@@@", "TouchObject Result : " + result + " // " + object.getSelector().toString());
         return result;
     }
 
@@ -134,6 +151,7 @@ public class Utility {
             e.printStackTrace();
         }
 
+        Log.i("@@@", "launchApplication() Result : " + result + " / appName : " + appName);
         return result;
     }
 
@@ -164,94 +182,159 @@ public class Utility {
         return testPlan;
     }
 
-    public void sendReport() throws UiObjectNotFoundException {
+    public void sendReport(String runTime, String totalRunTime) throws UiObjectNotFoundException {
         KeyType qwerty_eng = new Qwerty(this, context, KeyType.PORTRAIT, KeyType.QWERTY_ENGLISH);
+        UiObject object = null;
 
         // Solid Explorer 실행
         launchApplication("Solid Explorer");
         userWait(5000);
 
         // 네비게이션 메뉴 선택
-        touchObject("pl.solidexplorer2:id/ab_icon");
-        userWait(3000);
-
+        object = uiDevice.findObject(new UiSelector().resourceId("pl.solidexplorer2:id/ab_icon"));
+        if(object.waitForExists(WAIT_FOR_UIOBJECT_TIME)){
+            touchObject(object);
+            userWait(3000);
+        }else{
+            return;
+        }
 
         // 북마크 선택
-        touchText("/storage/emulated/0/QA/InputTest");
-        userWait(3000);
+        object = uiDevice.findObject(new UiSelector().text("/storage/emulated/0/QA/InputTest"));
+        if(object.waitForExists(WAIT_FOR_UIOBJECT_TIME)){
+            touchObject(object);
+            userWait(3000);
+        }else{
+            return;
+        }
 
         // 메뉴버튼
-        touchObject("pl.solidexplorer2:id/action_overflow");
-        userWait(3000);
+        object = uiDevice.findObject(new UiSelector().resourceId("pl.solidexplorer2:id/action_overflow"));
+        if(object.waitForExists(WAIT_FOR_UIOBJECT_TIME)){
+            touchObject(object);
+            userWait(3000);
+        }else{
+            return;
+        }
 
         // 모두선택
-        touchText("모두 선택");
-        userWait(3000);
+        object = uiDevice.findObject(new UiSelector().text("모두 선택"));
+        if(object.waitForExists(WAIT_FOR_UIOBJECT_TIME)){
+            touchText("모두 선택");
+            userWait(3000);
 
-        // 메뉴버튼
-        touchObject("pl.solidexplorer2:id/action_overflow");
-        userWait(3000);
+            // 메뉴버튼
+            object = uiDevice.findObject(new UiSelector().resourceId("pl.solidexplorer2:id/action_overflow"));
+            if(object.waitForExists(WAIT_FOR_UIOBJECT_TIME)){
+                touchObject(object);
+                userWait(3000);
 
-        // 공유
-        touchText("공유");
-        userWait(3000);
+                // 공유
+                object = uiDevice.findObject(new UiSelector().text("공유"));
+                if(object.waitForExists(WAIT_FOR_UIOBJECT_TIME)){
+                    touchObject(object);
+                    userWait(3000);
 
-        // 네이버 메일 선택
-        touchText("네이버 메일");
-        userWait(5000);
+                    // 네이버 메일 선택
+                    object = uiDevice.findObject(new UiSelector().text("네이버 메일"));
+                    if(object.waitForExists(WAIT_FOR_UIOBJECT_TIME)){
+                        touchObject(object);
+                        userWait(5000);
+                    }else{
+                        return;
+                    }
+                }else{
+                    return;
+                }
+            }else{
+                return;
+            }
+        }else{
+            return;
+        }
 
         // 받는사람 EditText 터치
-        getUiDevice().findObject(new UiSelector().className("android.widget.EditText").index(0)).click();
-        userWait(3000);
-        inputMethod("paf617@phill-it.com", qwerty_eng);
-        userWait(1000);
-        // Enter 버튼
-        getUiDevice().click(990, 1690);
-        userWait(2000);
+        object = uiDevice.findObject(new UiSelector().className("android.widget.EditText").index(0));
+        if(object.waitForExists(WAIT_FOR_UIOBJECT_TIME)){
+            //touchObject(object);
+            userWait(3000);
 
-        // 제목 EditText 터치
-        touchObject("com.nhn.android.mail:id/mailWriteTitle");
-        userWait(3000);
-        inputMethod("[MonkeyTest]^Result", qwerty_eng);
-        userWait(3000);
+            // InternalTest가 아닐경우 GroupMail로 전송
+            if(!getTestPlan().isInternalTest){
+                object.setText("paf617@phill-it.com");
+                //inputMethod("paf617@phill-it.com", qwerty_eng);
+            }else{
+                object.setText("jeongbeen.son@phill-it.com");
+                //inputMethod("jeongbeen.son@phill-it.com", qwerty_eng);
+            }
+            userWait(3000);
 
-        // 내용
-        touchObject("com.nhn.android.mail:id/mailWriteRichEditView");
-        userWait(3000);
+            // 메일 제목 입력
+            object = uiDevice.findObject(new UiSelector().resourceId("com.nhn.android.mail:id/mailWriteTitle"));
+            if(object.waitForExists(WAIT_FOR_UIOBJECT_TIME)){
+                //touchObject(object);
+                userWait(3000);
+                // 제목 입력
+                object.setText("[MonkeyTest] Result");
+                //inputMethod("[MonkeyTest]^Result", qwerty_eng);
+                userWait(3000);
 
-        inputMethod("Hi.", qwerty_eng);
-        getUiDevice().click(990, 1690);
-        inputMethod("This^mail^is^automatically^sent^from^Monkey^Test.^Please^check^the^attached^file.", qwerty_eng);
-        getUiDevice().click(990, 1690);
-        inputMethod("Start:^", qwerty_eng);
-        inputMethod(start_Time, qwerty_eng);
-        inputMethod(start_Time2, qwerty_eng);
-        // Enter
-        getUiDevice().click(990, 1690);
-        userWait(3000);
-        inputMethod("End:^", qwerty_eng);
-        inputMethod(end_Time, qwerty_eng);
-        inputMethod(end_Time2, qwerty_eng);
-        userWait(3000);
+                // 내용 입력
+                object = uiDevice.findObject(new UiSelector().resourceId("com.nhn.android.mail:id/mailWriteRichEditView"));
+                if(object.waitForExists(WAIT_FOR_UIOBJECT_TIME)){
+                    object.setText("Hi.\nThis mail is automatically sent from Monkey Test. Please check the attached file.\n" + runTime + totalRunTime );
+                    userWait(WAIT_FOR_UIOBJECT_TIME);
 
-        touchObject("com.nhn.android.mail:id/actionSend");
-
-        userWait(10000);
-
+                    // 전송버튼
+                    object = uiDevice.findObject(new UiSelector().resourceId("com.nhn.android.mail:id/actionSend"));
+                    if(object.waitForExists(WAIT_FOR_UIOBJECT_TIME)){
+                        touchObject(object);
+                        userWait(WAIT_FOR_UIOBJECT_TIME * 2);
+                    }
+                }
+            }else{
+                return;
+            }
+        }else{
+            return;
+        }
         goToIdle();
     }
 
-    public void TimeCheck(String mode){
+    public String TotalRunTimeCheck(String mode){
         if(mode.equals("START")){
             date = new Date();
             start_Time = new SimpleDateFormat("yyyy-MM-dd").format(date);
             start_Time2 = new SimpleDateFormat("HH:mm:ss").format(date);
             date = null;
+            return "- Start : " + start_Time + " " + start_Time2 + "\n";
         }
         else if(mode.equals("END")){
             date = new Date();
             end_Time = new SimpleDateFormat("yyyy-MM-dd").format(date);
             end_Time2 = new SimpleDateFormat("HH:mm:ss").format(date);
+            return "- End : " + end_Time + " " + end_Time2 + "\n";
+        }else{
+            return "";
+        }
+    }
+
+    public String RunTimeCheck(String mode){
+        String start_Time, start_Time2, end_Time, end_Time2;
+        if(mode.equals("START")){
+            date = new Date();
+            start_Time = new SimpleDateFormat("yyyy-MM-dd").format(date);
+            start_Time2 = new SimpleDateFormat("HH:mm:ss").format(date);
+            date = null;
+            return "- Start : " + start_Time + " " + start_Time2 + "\n";
+        }
+        else if(mode.equals("END")){
+            date = new Date();
+            end_Time = new SimpleDateFormat("yyyy-MM-dd").format(date);
+            end_Time2 = new SimpleDateFormat("HH:mm:ss").format(date);
+            return "- End : " + end_Time + " " + end_Time2 + "\n";
+        }else{
+            return "";
         }
     }
 
@@ -298,6 +381,12 @@ public class Utility {
             }
         }
         return false;
+    }
+
+    public void PowerOff() throws IOException {
+        Log.i("@@@", "Test Finish. Shutdown device.");
+        userWait(10000);
+        uiDevice.executeShellCommand("reboot -p");
     }
 
     public void changeKeyType(int keyType) throws UiObjectNotFoundException {
