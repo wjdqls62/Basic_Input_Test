@@ -69,7 +69,7 @@ public class TestCase_01 {
         device.userWait(3000);
 
         // 언어변경(한글)
-        device.changeKeyboardLanguage(device.getDeviceModelName(), KeyType.QWERTY_KOREA);
+        device.changeKeyboardLanguage(KeyType.QWERTY_KOREA);
 
         // 세로모드
         // 10초 대기
@@ -104,9 +104,9 @@ public class TestCase_01 {
         device.userWait(10000);
     }
 
-    private void FinishTest() {
+    private void FinishTest() throws IOException {
         // 언어변경(영어)
-        device.changeKeyboardLanguage(device.getDeviceModelName(), KeyType.QWERTY_KOREA);
+        device.changeKeyboardLanguage(KeyType.QWERTY_KOREA);
 
         // 다음 테스트시 불필요한 객체 해제
         device.Release();
