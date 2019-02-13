@@ -1,7 +1,9 @@
 package com.phillit.qa.basicinputtest.TestCase;
 
 import android.os.RemoteException;
+import android.support.test.uiautomator.UiObject;
 import android.support.test.uiautomator.UiObjectNotFoundException;
+import android.support.test.uiautomator.UiSelector;
 import android.util.Log;
 import com.phillit.qa.basicinputtest.Common.KeyType.SKY;
 import com.phillit.qa.basicinputtest.Common.TestCaseParser;
@@ -24,7 +26,7 @@ public class TestCase_08 {
     String runTime;
     String word;
     Utility device;
-    KeyType SKY, Qwerty_eng;
+    KeyType SKY;
     TestCaseParser parser;
     boolean isInternalTest = false;
     int saveCnt = 1000;
@@ -54,15 +56,18 @@ public class TestCase_08 {
         // Parser, KeyType init
         parser = new TestCaseParser("kor", device.getContext());
 
-        Qwerty_eng = new Qwerty(device, device.getContext(), KeyType.PORTRAIT, KeyType.QWERTY_ENGLISH);
         SKY = new SKY(device, device.getContext(), KeyType.LANDSCAPE, KeyType.SKY);
 
         // Monkey Input 실행
         device.launchApplication("Monkey Input");
 
-        // 파일이름 터치
-        device.touchObject("edt_filename");
-        device.inputMethod(testType, Qwerty_eng);
+        // 파일이름(테스트 타입) 입력
+        UiObject object = device.getUiDevice().findObject(new UiSelector().resourceId("com.phillit.qa.monkeyinput:id/edt_filename"));
+        if(object.waitForExists(5000)){
+            device.userWait(3000);
+            object.setText(testType);
+            device.userWait(3000);
+        }
 
         // 입력필드 터치
         device.touchObject("com.phillit.qa.monkeyinput:id/edt_input");
@@ -75,8 +80,8 @@ public class TestCase_08 {
         // 10초 대기
         device.getUiDevice().setOrientationLeft();
         device.userWait(10000);
-
     }
+
     private void Test() throws IOException {
         int i=1;
         while(true){
