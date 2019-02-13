@@ -25,6 +25,7 @@ public class Utility {
     public final int WAIT_FOR_UIOBJECT_TIME = 10000;
     public final int BATTERY_MIN_VALUE = 40;
     public final int BATTERY_MAX_VALUE = 90;
+    public final String DEVICE_NEXUS5 = "AOSP on HammerHead";
     private UiDevice uiDevice;
     private UiSelector uiSelector;
     private TestPlan testPlan;
@@ -32,15 +33,16 @@ public class Utility {
     private BatteryManager batteryManager;
     private PackageManager packageManager;
     private File meminfoFile;
-    private String meminfo;
+    private String meminfo, deviceModelName;
     private Date date;
     private String start_Time, start_Time2, end_Time, end_Time2;
 
-    public Utility(UiDevice Device, Context context){
+    public Utility(UiDevice Device, Context context) throws IOException {
         this.uiDevice = Device;
         this.context = context;
         uiSelector = new UiSelector();
         testPlan = new TestPlan();
+        deviceModelName = getModelName();
         batteryManager = (BatteryManager) context.getSystemService(Context.BATTERY_SERVICE);
     }
 
@@ -399,36 +401,72 @@ public class Utility {
         // 언어메뉴 선택
         object = uiDevice.findObject(new UiSelector().resourceId("com.phillit.akeyboard:id/setting_main_language"));
         if(object.waitForExists(5000)){
-            object.click();
+            touchObject(object);
         }
 
         // Parameter에 맞는 언어메뉴 선택
         if(keyType == KeyType.QWERTY_ENGLISH){
             object = uiDevice.findObject(new UiSelector().resourceId("com.phillit.akeyboard:id/language_name").text("영어 (미국) / English(US)"));
             if(object.waitForExists(3000)){
-                object.click();
+                touchObject(object);
             }
-        }else if(keyType == KeyType.QWERTY_KOREA || keyType == KeyType.CHUNJIIN){
+        }else if(keyType == KeyType.QWERTY_KOREA || keyType == KeyType.CHUNJIIN || keyType == KeyType.SKY || keyType == KeyType.NARAGUL || keyType == KeyType.DANMOUM){
             object = uiDevice.findObject(new UiSelector().resourceId("com.phillit.akeyboard:id/language_name").text("한국어"));
             if(object.waitForExists(3000)){
-                object.click();
+                touchObject(object);
             }
         }
 
         if(keyType == KeyType.QWERTY_KOREA || keyType == KeyType.QWERTY_ENGLISH){
             object = uiDevice.findObject(new UiSelector().resourceId("com.phillit.akeyboard:id/keyboard_name").text("QWERTY"));
             if(object.waitForExists(3000)){
-                object.click();
+                touchObject(object);
             }
         }else if(keyType == KeyType.CHUNJIIN){
             object = uiDevice.findObject(new UiSelector().resourceId("com.phillit.akeyboard:id/keyboard_name").text("천지인"));
             if(object.waitForExists(3000)){
-                object.click();
+                touchObject(object);
+            }
+        }
+
+        else if(keyType == KeyType.SKY){
+            object = uiDevice.findObject(new UiSelector().resourceId("com.phillit.akeyboard:id/keyboard_name").text("스카이"));
+            if(object.waitForExists(3000)){
+                touchObject(object);
+            }
+        }
+
+        else if(keyType == KeyType.NARAGUL){
+            object = uiDevice.findObject(new UiSelector().resourceId("com.phillit.akeyboard:id/keyboard_name").text("나랏글"));
+            if(object.waitForExists(3000)){
+                touchObject(object);
+            }
+        }
+
+        else if(keyType == KeyType.DANMOUM){
+            object = uiDevice.findObject(new UiSelector().resourceId("com.phillit.akeyboard:id/keyboard_name").text("단모음"));
+            if(object.waitForExists(3000)){
+                touchObject(object);
             }
         }
 
         // 5초대기 후 홈스크린 진입
         userWait(5000);
         goToIdle();
+    }
+
+    public void changeKeyboardLanguage(int keyType){
+        if(deviceModelName.equals(DEVICE_NEXUS5)){
+            if(keyType == KeyType.SKY){
+                uiDevice.click(1000, 1500);
+            }else{
+                uiDevice.click(205, 1690);
+            }
+        }
+        userWait(WAIT_FOR_UIOBJECT_TIME);
+    }
+
+    private String getModelName() throws IOException {
+        return uiDevice.executeShellCommand("getprop ro.product.model").trim();
     }
 }
