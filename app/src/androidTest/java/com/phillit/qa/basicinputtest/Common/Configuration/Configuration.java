@@ -8,4 +8,8 @@ public abstract class Configuration {
     public static final int BATTERY_MIN_VALUE =  40;
     // 최대배터리까지 충전되었을 경우 테스트를 재개
     public static final int BATTERY_MAX_VALUE =  90;
+
+    public static final long DEFAULT_OBJECT_WAIT_TIME = 5000;
+    public static final long LARGE_OBJECT_WAIT_TIME = 10000;
+    public static final long SMALL_OBJECT_WAIT_TIME = 3000;
 }
