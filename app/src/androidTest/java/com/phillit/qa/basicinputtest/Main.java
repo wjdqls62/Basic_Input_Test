@@ -5,7 +5,6 @@ import android.os.RemoteException;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.uiautomator.UiDevice;
 import android.support.test.uiautomator.UiObjectNotFoundException;
-
 import com.phillit.qa.basicinputtest.Common.Device;
 import com.phillit.qa.basicinputtest.TestCase.TestCase_01;
 import com.phillit.qa.basicinputtest.TestCase.TestCase_02;
@@ -33,7 +32,7 @@ public class Main {
     private String runTime = "", totalRunTime = "";
 
     @Before
-    public void ReadyTest() throws IOException {
+    public void ReadyTest() throws IOException, UiObjectNotFoundException {
         initTest();
     }
 
@@ -42,28 +41,28 @@ public class Main {
 
         // 한글, 세로모드 입력
         if(device.getTestPlan().KOR_QWERTY_PORTRAIT){
-            TestCase_01 TC01 = new TestCase_01(device, "KOR_PORTRAIT");
+            TestCase_01 TC01 = new TestCase_01(device, "KOR_QWERTY_PORTRAIT");
             TC01.start();
             runTime += TC01.getRunTime();
         }
 
         // 한글, 가로모드 입력
         if(device.getTestPlan().KOR_QWERTY_LANDSCAPE){
-            TestCase_02 TC02 = new TestCase_02(device, "KOR_LANDSCAPE");
+            TestCase_02 TC02 = new TestCase_02(device, "KOR_QWERTYLANDSCAPE");
             TC02.start();
             runTime += TC02.getRunTime();
         }
 
         // 영문, 세로모드 입력
         if(device.getTestPlan().ENG_QWERTY_PORTRAIT){
-            TestCase_03 TC03 = new TestCase_03(device, "ENG_PORTRAIT");
+            TestCase_03 TC03 = new TestCase_03(device, "ENG_QWERTY_PORTRAIT");
             TC03.start();
             runTime += TC03.getRunTime();
         }
 
         // 영문, 가로모드 입력
         if(device.getTestPlan().ENG_QWERTY_LANDSCAPE){
-            TestCase_04 TC04 = new TestCase_04(device, "ENG_LANDSCAPE");
+            TestCase_04 TC04 = new TestCase_04(device, "ENG_QWERTY_LANDSCAPE");
             TC04.start();
             runTime += TC04.getRunTime();
         }
@@ -75,7 +74,7 @@ public class Main {
         }
 
         if(device.getTestPlan().KOR_CHUNJIIN_LANDSCAPE){
-            TestCase_06 TC06 = new TestCase_06(device, "CHUNJIIN_PORTRAIT_LANDSCAPE");
+            TestCase_06 TC06 = new TestCase_06(device, "CHUNJIIN_LANDSCAPE");
             TC06.start();
             runTime += TC06.getRunTime();
         }
@@ -91,17 +90,14 @@ public class Main {
             TC08.start();
             runTime += TC08.getRunTime();
         }
-
-        device.getUiDevice().sleep();
-        device.userWait(20000);
-        device.getUiDevice().wakeUp();
     }
 
-    private void initTest() throws IOException {
+    private void initTest() throws IOException, UiObjectNotFoundException {
         context = InstrumentationRegistry.getTargetContext();
         uiDevice = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation());
         device = new Device(uiDevice, context);
         device.setTestPlan();
+        device.Device_Precondition();
         totalRunTime += "=================" + "Total RunTime" + "=================\n";
         totalRunTime += device.TotalRunTimeCheck("START");
     }
