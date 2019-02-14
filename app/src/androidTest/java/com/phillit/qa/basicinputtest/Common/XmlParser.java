@@ -3,6 +3,8 @@ package com.phillit.qa.basicinputtest.Common;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.XmlResourceParser;
+
+import com.phillit.qa.basicinputtest.Common.DeviceType.DeviceType;
 import com.phillit.qa.basicinputtest.Common.KeyType.KeyType;
 import com.phillit.qa.basicinputtest.R;
 import org.xmlpull.v1.XmlPullParserException;
@@ -16,12 +18,12 @@ public class XmlParser {
     private HashMap<String, Key> specialKeyList;
     private Context context;
     private Resources resource;
-    private Utility device;
+    private Device device;
     private int parsingMode, language = 0;
     private String deviceModelName;
 
 
-    public XmlParser(Context context, int parsingMode, int language, Utility device){
+    public XmlParser(Context context, int parsingMode, int language, Device device){
         this.context = context;
         this.parsingMode = parsingMode;
         resource = context.getResources();
@@ -60,7 +62,7 @@ public class XmlParser {
 
     private void parseXML() throws IOException, XmlPullParserException {
 
-        if(deviceModelName.equals(device.DEVICE_NEXUS5)){
+        if(deviceModelName.equals(DeviceType.NEXUS5)){
             // 일반문자
             if(parsingMode == KeyType.PORTRAIT){
                 if(language == KeyType.QWERTY_KOREA){
@@ -113,7 +115,7 @@ public class XmlParser {
             eventType = parser.next();
         } // End while
 
-        if(deviceModelName.equals(device.DEVICE_NEXUS5)){
+        if(deviceModelName.equals(DeviceType.NEXUS5)){
             // 특수문자
             if(parsingMode == KeyType.PORTRAIT){
                 parser = resource.getXml(R.xml.nx5_common_special_character_portrait);

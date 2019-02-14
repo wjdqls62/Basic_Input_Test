@@ -1,13 +1,12 @@
 package com.phillit.qa.basicinputtest.Common.KeyType;
 
 import android.content.Context;
-import android.util.Log;
 
-import com.phillit.qa.basicinputtest.Common.Utility;
+import com.phillit.qa.basicinputtest.Common.Device;
 
 public class SKY extends Chunjiin {
-    public SKY(Utility utility, Context context, int screenOrientation, int language) {
-        super(utility, context, screenOrientation, language);
+    public SKY(Device device, Context context, int screenOrientation, int language) {
+        super(device, context, screenOrientation, language);
     }
 
     @Override

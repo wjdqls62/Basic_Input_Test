@@ -5,12 +5,16 @@ import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.os.BatteryManager;
+import android.os.RemoteException;
 import android.support.test.uiautomator.UiDevice;
 import android.support.test.uiautomator.UiObject;
 import android.support.test.uiautomator.UiObjectNotFoundException;
 import android.support.test.uiautomator.UiSelector;
 import android.text.TextUtils;
 import android.util.Log;
+
+import com.phillit.qa.basicinputtest.Common.Configuration.Configuration;
+import com.phillit.qa.basicinputtest.Common.DeviceType.DeviceType;
 import com.phillit.qa.basicinputtest.Common.KeyType.KeyType;
 import com.phillit.qa.basicinputtest.Common.KeyType.Qwerty;
 import com.phillit.qa.basicinputtest.R;
@@ -21,11 +25,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-public class Utility {
+public class Device {
     public final int WAIT_FOR_UIOBJECT_TIME = 10000;
-    public final int BATTERY_MIN_VALUE = 40;
-    public final int BATTERY_MAX_VALUE = 90;
-    public final String DEVICE_NEXUS5 = "AOSP on HammerHead";
     private UiDevice uiDevice;
     private UiSelector uiSelector;
     private TestPlan testPlan;
@@ -37,7 +38,7 @@ public class Utility {
     private Date date;
     private String start_Time, start_Time2, end_Time, end_Time2;
 
-    public Utility(UiDevice Device, Context context) throws IOException {
+    public Device(UiDevice Device, Context context) throws IOException {
         this.uiDevice = Device;
         this.context = context;
         uiSelector = new UiSelector();
@@ -346,11 +347,13 @@ public class Utility {
     }
 
     // 5분마다 배터리 %를 체크하여 90%가 될때까지 대기한다.
-    public void chargeDevice(){
+    public void chargeDevice() throws RemoteException {
+        uiDevice.sleep();
         while (true){
             userWait(300000);
-            if(getBatteryStatus() >= BATTERY_MAX_VALUE){
+            if(getBatteryStatus() >= Configuration.BATTERY_MAX_VALUE){
                 Log.i("@@@", "Suspend the test to charge the battery.../ " + getBatteryStatus() + "%");
+                uiDevice.wakeUp();
                 break;
             }
             Log.i("@@@", "Resume the test... / " + getBatteryStatus() + "%");
@@ -456,7 +459,7 @@ public class Utility {
     }
 
     public void changeKeyboardLanguage(int keyType){
-        if(deviceModelName.equals(DEVICE_NEXUS5)){
+        if(deviceModelName.equals(DeviceType.NEXUS5)){
             if(keyType == KeyType.SKY){
                 uiDevice.click(1000, 1500);
             }else{

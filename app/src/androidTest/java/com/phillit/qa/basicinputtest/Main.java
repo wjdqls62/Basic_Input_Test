@@ -5,8 +5,8 @@ import android.os.RemoteException;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.uiautomator.UiDevice;
 import android.support.test.uiautomator.UiObjectNotFoundException;
-import com.phillit.qa.basicinputtest.Common.KeyType.KeyType;
-import com.phillit.qa.basicinputtest.Common.Utility;
+
+import com.phillit.qa.basicinputtest.Common.Device;
 import com.phillit.qa.basicinputtest.TestCase.TestCase_01;
 import com.phillit.qa.basicinputtest.TestCase.TestCase_02;
 import com.phillit.qa.basicinputtest.TestCase.TestCase_03;
@@ -29,7 +29,7 @@ import java.io.IOException;
 public class Main {
     private UiDevice uiDevice;
     private Context context;
-    private Utility device;
+    private Device device;
     private String runTime = "", totalRunTime = "";
 
     @Before
@@ -75,7 +75,7 @@ public class Main {
         }
 
         if(device.getTestPlan().KOR_CHUNJIIN_LANDSCAPE){
-            TestCase_06 TC06 = new TestCase_06(device, "CHUNJIIN_PORTRAIT");
+            TestCase_06 TC06 = new TestCase_06(device, "CHUNJIIN_PORTRAIT_LANDSCAPE");
             TC06.start();
             runTime += TC06.getRunTime();
         }
@@ -91,12 +91,16 @@ public class Main {
             TC08.start();
             runTime += TC08.getRunTime();
         }
+
+        device.getUiDevice().sleep();
+        device.userWait(20000);
+        device.getUiDevice().wakeUp();
     }
 
     private void initTest() throws IOException {
         context = InstrumentationRegistry.getTargetContext();
         uiDevice = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation());
-        device = new Utility(uiDevice, context);
+        device = new Device(uiDevice, context);
         device.setTestPlan();
         totalRunTime += "=================" + "Total RunTime" + "=================\n";
         totalRunTime += device.TotalRunTimeCheck("START");

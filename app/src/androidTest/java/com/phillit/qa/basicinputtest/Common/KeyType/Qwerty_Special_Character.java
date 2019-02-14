@@ -3,19 +3,19 @@ package com.phillit.qa.basicinputtest.Common.KeyType;
 import android.content.Context;
 
 import com.phillit.qa.basicinputtest.Common.Key;
-import com.phillit.qa.basicinputtest.Common.Utility;
+import com.phillit.qa.basicinputtest.Common.Device;
 
 import java.util.HashMap;
 
 public class Qwerty_Special_Character extends KeyType {
-    private Utility device;
+    private Device device;
     private Context context;
     private int screenOrientation, language;
     private HashMap<String,Key> specialKeyList;
     private Key key;
 
-    public Qwerty_Special_Character(Utility utility, Context context, int screenOrientation, int language, HashMap<String, Key> specialKeyList){
-        this.device = utility;
+    public Qwerty_Special_Character(Device device, Context context, int screenOrientation, int language, HashMap<String, Key> specialKeyList){
+        this.device = device;
         this.context = context;
         this.screenOrientation = screenOrientation;
         this.language = language;

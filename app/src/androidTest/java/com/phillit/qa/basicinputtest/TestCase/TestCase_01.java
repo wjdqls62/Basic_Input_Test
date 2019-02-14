@@ -6,10 +6,11 @@ import android.support.test.uiautomator.UiObjectNotFoundException;
 import android.support.test.uiautomator.UiSelector;
 import android.util.Log;
 
+import com.phillit.qa.basicinputtest.Common.Configuration.Configuration;
 import com.phillit.qa.basicinputtest.Common.TestCaseParser;
 import com.phillit.qa.basicinputtest.Common.KeyType.KeyType;
 import com.phillit.qa.basicinputtest.Common.KeyType.Qwerty;
-import com.phillit.qa.basicinputtest.Common.Utility;
+import com.phillit.qa.basicinputtest.Common.Device;
 import java.io.IOException;
 
 /**
@@ -25,13 +26,13 @@ public class TestCase_01 {
     String testType;
     String runTime;
     StringBuffer word;
-    Utility device;
+    Device device;
     KeyType Qwerty_kor;
     TestCaseParser parser;
     boolean isInternalTest = false;
     int saveCnt = 1000;
 
-    public TestCase_01(Utility device, String testType) {
+    public TestCase_01(Device device, String testType) {
         this.device = device;
         this.testType = testType;
         this.runTime = "=================" + testType + "=================\n";
@@ -81,7 +82,7 @@ public class TestCase_01 {
         device.userWait(10000);
 
     }
-    private void Test() throws IOException {
+    private void Test() throws IOException, RemoteException {
         int i=1;
         while(true){
             word = parser.getWord(i);
@@ -94,11 +95,11 @@ public class TestCase_01 {
                 device.touchObject("com.phillit.qa.monkeyinput:id/btn_save");
                 device.dumpsysMemifo(testType + "_meminfo");
                 device.userWait(5000);
-                if(device.getBatteryStatus() <= device.BATTERY_MIN_VALUE){
+                if(device.getBatteryStatus() <= Configuration.BATTERY_MIN_VALUE){
                     device.chargeDevice();
                 }
             }
-            if(isInternalTest && i==100){
+            if(isInternalTest && i == Configuration.INTERNAL_TEST_COUNT){
                 break;
             }
             Log.i("@@@", "WordCnt : " + i + " / Word : " + word);

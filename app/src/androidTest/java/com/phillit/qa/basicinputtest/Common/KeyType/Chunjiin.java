@@ -1,15 +1,14 @@
 package com.phillit.qa.basicinputtest.Common.KeyType;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.phillit.qa.basicinputtest.Common.Key;
-import com.phillit.qa.basicinputtest.Common.Utility;
+import com.phillit.qa.basicinputtest.Common.Device;
 import com.phillit.qa.basicinputtest.Common.XmlParser;
 import java.util.HashMap;
 
 public class Chunjiin extends KeyType{
-    private Utility utility;
+    private Device device;
     private HashMap<String, Key> normalKeyList, specialKeyList;
     private XmlParser parser;
     private Qwerty_Special_Character specialCharacter;
@@ -17,15 +16,15 @@ public class Chunjiin extends KeyType{
     private int spacebar_x, spacebar_y, language;
     boolean isSpecialChar = false;
 
-    public Chunjiin(Utility utility, Context context, int screenOrientation, int language){
-        this.utility = utility;
-        parser = new XmlParser(context, screenOrientation, language);
+    public Chunjiin(Device device, Context context, int screenOrientation, int language){
+        this.device = device;
+        parser = new XmlParser(context, screenOrientation, language, device);
         this.language = language;
 
         // 문자키, 특수문자키를 XML로부터 읽어온다
         normalKeyList = parser.getKeyList();
         specialKeyList = parser.getSpecialKeyList();
-        specialCharacter = new Qwerty_Special_Character(utility, context, screenOrientation, language, specialKeyList);
+        specialCharacter = new Qwerty_Special_Character(device, context, screenOrientation, language, specialKeyList);
 
         // 단어입력 후 띄어쓰기를 위해 Spacebar의 좌표를 Preload
         spacebar_x = normalKeyList.get("^").keyCordinates.get(0).x;
@@ -39,14 +38,14 @@ public class Chunjiin extends KeyType{
             String targetChar = String.valueOf(arrChar[i]);
             String nextChar = "";
 
-            isSpecialChar = utility.isSpecialCharacter(targetChar);
+            isSpecialChar = device.isSpecialCharacter(targetChar);
 
             // 특수문자가 아닐경우
             if(!isSpecialChar){
                 key = normalKeyList.get(targetChar);
 
                 for(int j=0; j<key.keyCordinates.size(); j++){
-                    utility.getUiDevice().click(key.keyCordinates.get(j).x, key.keyCordinates.get(j).y);
+                    device.getUiDevice().click(key.keyCordinates.get(j).x, key.keyCordinates.get(j).y);
                 }
             }
             // 특수문자의 경우
@@ -58,7 +57,7 @@ public class Chunjiin extends KeyType{
             if(i != arrChar.length-1){
                 nextChar = String.valueOf(arrChar[i+1]);
                 if(consonantCrash(targetChar, nextChar)){
-                    utility.getUiDevice().click(spacebar_x, spacebar_y);
+                    device.getUiDevice().click(spacebar_x, spacebar_y);
                 }
             }
         }
@@ -111,11 +110,11 @@ public class Chunjiin extends KeyType{
 
         typingKeyboard(target);
 
-        if(utility.isNumber(lastStr) || utility.isSpecialCharacter(lastStr)){
-            utility.getUiDevice().click(spacebar_x, spacebar_y);
+        if(device.isNumber(lastStr) || device.isSpecialCharacter(lastStr)){
+            device.getUiDevice().click(spacebar_x, spacebar_y);
         }else{
-            utility.getUiDevice().click(spacebar_x, spacebar_y);
-            utility.getUiDevice().click(spacebar_x, spacebar_y);
+            device.getUiDevice().click(spacebar_x, spacebar_y);
+            device.getUiDevice().click(spacebar_x, spacebar_y);
         }
     }
 
