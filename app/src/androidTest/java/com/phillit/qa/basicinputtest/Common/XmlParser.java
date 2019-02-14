@@ -16,14 +16,18 @@ public class XmlParser {
     private HashMap<String, Key> specialKeyList;
     private Context context;
     private Resources resource;
+    private Utility device;
     private int parsingMode, language = 0;
+    private String deviceModelName;
 
 
-    public XmlParser(Context context, int parsingMode, int language){
+    public XmlParser(Context context, int parsingMode, int language, Utility device){
         this.context = context;
         this.parsingMode = parsingMode;
         resource = context.getResources();
+        this.device = device;
         this.language = language;
+        deviceModelName = device.getDeviceModelName();
         try {
             parseXML();
         } catch (IOException e) {
@@ -56,27 +60,29 @@ public class XmlParser {
 
     private void parseXML() throws IOException, XmlPullParserException {
 
-        // 일반문자
-        if(parsingMode == KeyType.PORTRAIT){
-            if(language == KeyType.QWERTY_KOREA){
-                parser = resource.getXml(R.xml.kor_qwerty_portrait);
-            }else if(language == KeyType.QWERTY_ENGLISH){
-                parser = resource.getXml(R.xml.eng_qwerty_portrait);
-            }else if(language == KeyType.CHUNJIIN){
-                parser = resource.getXml(R.xml.kor_chunjiin_portrait);
-            }else if(language == KeyType.SKY){
-                parser = resource.getXml(R.xml.kor_sky_portrait);
-            }
+        if(deviceModelName.equals(device.DEVICE_NEXUS5)){
+            // 일반문자
+            if(parsingMode == KeyType.PORTRAIT){
+                if(language == KeyType.QWERTY_KOREA){
+                    parser = resource.getXml(R.xml.nx5_kor_qwerty_portrait);
+                }else if(language == KeyType.QWERTY_ENGLISH){
+                    parser = resource.getXml(R.xml.nx5_eng_qwerty_portrait);
+                }else if(language == KeyType.CHUNJIIN){
+                    parser = resource.getXml(R.xml.nx5_kor_chunjiin_portrait);
+                }else if(language == KeyType.SKY){
+                    parser = resource.getXml(R.xml.nx5_kor_sky_portrait);
+                }
 
-        }else if(parsingMode == KeyType.LANDSCAPE){
-            if(language == KeyType.QWERTY_KOREA){
-                parser = resource.getXml(R.xml.kor_qwerty_landscape);
-            }else if(language == KeyType.QWERTY_ENGLISH){
-                parser = resource.getXml(R.xml.eng_qwerty_landscape);
-            }else if(language == KeyType.CHUNJIIN){
-                parser = resource.getXml(R.xml.kor_chunjiin_landscape);
-            }else if(language == KeyType.SKY){
-                parser = resource.getXml(R.xml.kor_sky_landscape);
+            }else if(parsingMode == KeyType.LANDSCAPE){
+                if(language == KeyType.QWERTY_KOREA){
+                    parser = resource.getXml(R.xml.nx5_kor_qwerty_landscape);
+                }else if(language == KeyType.QWERTY_ENGLISH){
+                    parser = resource.getXml(R.xml.nx5_eng_qwerty_landscape);
+                }else if(language == KeyType.CHUNJIIN){
+                    parser = resource.getXml(R.xml.nx5_kor_chunjiin_landscape);
+                }else if(language == KeyType.SKY){
+                    parser = resource.getXml(R.xml.nx5_kor_sky_landscape);
+                }
             }
         }
 
@@ -107,12 +113,13 @@ public class XmlParser {
             eventType = parser.next();
         } // End while
 
-
-        // 특수문자
-        if(parsingMode == KeyType.PORTRAIT){
-            parser = resource.getXml(R.xml.common_special_character_portrait);
-        }else if(parsingMode == KeyType.LANDSCAPE){
-            parser = resource.getXml(R.xml.common_special_character_landscape);
+        if(deviceModelName.equals(device.DEVICE_NEXUS5)){
+            // 특수문자
+            if(parsingMode == KeyType.PORTRAIT){
+                parser = resource.getXml(R.xml.nx5_common_special_character_portrait);
+            }else if(parsingMode == KeyType.LANDSCAPE){
+                parser = resource.getXml(R.xml.nx5_common_special_character_landscape);
+            }
         }
 
         specialKeyList = new HashMap<>();

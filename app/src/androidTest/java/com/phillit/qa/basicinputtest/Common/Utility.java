@@ -42,7 +42,7 @@ public class Utility {
         this.context = context;
         uiSelector = new UiSelector();
         testPlan = new TestPlan();
-        deviceModelName = getModelName();
+        deviceModelName = getProductModelName();
         batteryManager = (BatteryManager) context.getSystemService(Context.BATTERY_SERVICE);
     }
 
@@ -466,7 +466,11 @@ public class Utility {
         userWait(WAIT_FOR_UIOBJECT_TIME);
     }
 
-    private String getModelName() throws IOException {
+    public String getDeviceModelName(){
+        return deviceModelName;
+    }
+
+    private String getProductModelName() throws IOException {
         return uiDevice.executeShellCommand("getprop ro.product.model").trim();
     }
 }
