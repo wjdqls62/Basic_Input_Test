@@ -9,10 +9,10 @@ import android.os.RemoteException;
 import android.support.test.uiautomator.UiDevice;
 import android.support.test.uiautomator.UiObject;
 import android.support.test.uiautomator.UiObjectNotFoundException;
+import android.support.test.uiautomator.UiScrollable;
 import android.support.test.uiautomator.UiSelector;
 import android.text.TextUtils;
 import android.util.Log;
-
 import com.phillit.qa.basicinputtest.Common.Configuration.Configuration;
 import com.phillit.qa.basicinputtest.Common.DeviceType.DeviceType;
 import com.phillit.qa.basicinputtest.Common.KeyType.KeyType;
@@ -26,9 +26,7 @@ import java.util.Date;
 import java.util.List;
 
 public class Device {
-    public final int WAIT_FOR_UIOBJECT_TIME = 10000;
     private UiDevice uiDevice;
-    private UiSelector uiSelector;
     private TestPlan testPlan;
     private Context context;
     private BatteryManager batteryManager;
@@ -41,7 +39,6 @@ public class Device {
     public Device(UiDevice Device, Context context) throws IOException {
         this.uiDevice = Device;
         this.context = context;
-        uiSelector = new UiSelector();
         testPlan = new TestPlan();
         deviceModelName = getProductModelName();
         batteryManager = (BatteryManager) context.getSystemService(Context.BATTERY_SERVICE);
@@ -195,7 +192,7 @@ public class Device {
 
         // 네비게이션 메뉴 선택
         object = uiDevice.findObject(new UiSelector().resourceId("pl.solidexplorer2:id/ab_icon"));
-        if(object.waitForExists(WAIT_FOR_UIOBJECT_TIME)){
+        if(object.waitForExists(Configuration.DEFAULT_OBJECT_WAIT_TIME)){
             touchObject(object);
             userWait(3000);
         }else{
@@ -204,7 +201,7 @@ public class Device {
 
         // 북마크 선택
         object = uiDevice.findObject(new UiSelector().text("/storage/emulated/0/QA/InputTest"));
-        if(object.waitForExists(WAIT_FOR_UIOBJECT_TIME)){
+        if(object.waitForExists(Configuration.DEFAULT_OBJECT_WAIT_TIME)){
             touchObject(object);
             userWait(3000);
         }else{
@@ -213,7 +210,7 @@ public class Device {
 
         // 메뉴버튼
         object = uiDevice.findObject(new UiSelector().resourceId("pl.solidexplorer2:id/action_overflow"));
-        if(object.waitForExists(WAIT_FOR_UIOBJECT_TIME)){
+        if(object.waitForExists(Configuration.DEFAULT_OBJECT_WAIT_TIME)){
             touchObject(object);
             userWait(3000);
         }else{
@@ -222,25 +219,25 @@ public class Device {
 
         // 모두선택
         object = uiDevice.findObject(new UiSelector().text("모두 선택"));
-        if(object.waitForExists(WAIT_FOR_UIOBJECT_TIME)){
+        if(object.waitForExists(Configuration.DEFAULT_OBJECT_WAIT_TIME)){
             touchText("모두 선택");
             userWait(3000);
 
             // 메뉴버튼
             object = uiDevice.findObject(new UiSelector().resourceId("pl.solidexplorer2:id/action_overflow"));
-            if(object.waitForExists(WAIT_FOR_UIOBJECT_TIME)){
+            if(object.waitForExists(Configuration.DEFAULT_OBJECT_WAIT_TIME)){
                 touchObject(object);
                 userWait(3000);
 
                 // 공유
                 object = uiDevice.findObject(new UiSelector().text("공유"));
-                if(object.waitForExists(WAIT_FOR_UIOBJECT_TIME)){
+                if(object.waitForExists(Configuration.DEFAULT_OBJECT_WAIT_TIME)){
                     touchObject(object);
                     userWait(3000);
 
                     // 네이버 메일 선택
                     object = uiDevice.findObject(new UiSelector().text("네이버 메일"));
-                    if(object.waitForExists(WAIT_FOR_UIOBJECT_TIME)){
+                    if(object.waitForExists(Configuration.DEFAULT_OBJECT_WAIT_TIME)){
                         touchObject(object);
                         userWait(5000);
                     }else{
@@ -258,7 +255,7 @@ public class Device {
 
         // 받는사람 EditText 터치
         object = uiDevice.findObject(new UiSelector().className("android.widget.EditText").index(0));
-        if(object.waitForExists(WAIT_FOR_UIOBJECT_TIME)){
+        if(object.waitForExists(Configuration.DEFAULT_OBJECT_WAIT_TIME)){
             //touchObject(object);
             userWait(3000);
 
@@ -274,7 +271,7 @@ public class Device {
 
             // 메일 제목 입력
             object = uiDevice.findObject(new UiSelector().resourceId("com.nhn.android.mail:id/mailWriteTitle"));
-            if(object.waitForExists(WAIT_FOR_UIOBJECT_TIME)){
+            if(object.waitForExists(Configuration.DEFAULT_OBJECT_WAIT_TIME)){
                 //touchObject(object);
                 userWait(3000);
                 // 제목 입력
@@ -284,15 +281,15 @@ public class Device {
 
                 // 내용 입력
                 object = uiDevice.findObject(new UiSelector().resourceId("com.nhn.android.mail:id/mailWriteRichEditView"));
-                if(object.waitForExists(WAIT_FOR_UIOBJECT_TIME)){
+                if(object.waitForExists(Configuration.DEFAULT_OBJECT_WAIT_TIME)){
                     object.setText("Hi.\nThis mail is automatically sent from Monkey Test. Please check the attached file.\n" + runTime + totalRunTime );
-                    userWait(WAIT_FOR_UIOBJECT_TIME);
+                    userWait(Configuration.DEFAULT_OBJECT_WAIT_TIME);
 
                     // 전송버튼
                     object = uiDevice.findObject(new UiSelector().resourceId("com.nhn.android.mail:id/actionSend"));
-                    if(object.waitForExists(WAIT_FOR_UIOBJECT_TIME)){
+                    if(object.waitForExists(Configuration.DEFAULT_OBJECT_WAIT_TIME)){
                         touchObject(object);
-                        userWait(WAIT_FOR_UIOBJECT_TIME * 2);
+                        userWait(Configuration.DEFAULT_OBJECT_WAIT_TIME * 2);
                     }
                 }
             }else{
@@ -466,7 +463,7 @@ public class Device {
                 uiDevice.click(205, 1690);
             }
         }
-        userWait(WAIT_FOR_UIOBJECT_TIME);
+        userWait(Configuration.DEFAULT_OBJECT_WAIT_TIME);
     }
 
     public String getDeviceModelName(){
@@ -475,5 +472,37 @@ public class Device {
 
     private String getProductModelName() throws IOException {
         return uiDevice.executeShellCommand("getprop ro.product.model").trim();
+    }
+
+    // 테스트 시작 전 단말의 설정에서 필요한 설정을 변경한다.
+    public void Device_Precondition() throws UiObjectNotFoundException {
+        UiScrollable listview = null;
+        UiObject object = null;
+
+        // 넥서스5에서 화면잠금을 없음으로 변경
+        if(deviceModelName.equals(DeviceType.NEXUS5)){
+            launchApplication("설정");
+
+            listview = new UiScrollable(new UiSelector().scrollable(true));
+            listview.scrollIntoView(new UiSelector().text("보안"));
+            object = new UiObject(new UiSelector().text("보안"));
+            touchObject(object);
+
+            object = uiDevice.findObject(new UiSelector().text("화면 보안"));
+            if(object.waitForExists(Configuration.DEFAULT_OBJECT_WAIT_TIME)){
+                object = uiDevice.findObject(new UiSelector().text("화면 잠금"));
+                listview.scrollIntoView(new UiSelector().text("화면 잠금"));
+                object.click();
+
+                object = uiDevice.findObject(new UiSelector().text("없음"));
+                if(object.waitForExists(Configuration.DEFAULT_OBJECT_WAIT_TIME)){
+                    object.click();
+                    userWait(Configuration.DEFAULT_OBJECT_WAIT_TIME / 2);
+                }
+            }
+
+            goToIdle();
+
+        }
     }
 }
