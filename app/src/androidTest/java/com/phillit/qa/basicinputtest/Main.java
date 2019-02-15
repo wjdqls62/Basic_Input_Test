@@ -6,6 +6,8 @@ import android.support.test.InstrumentationRegistry;
 import android.support.test.uiautomator.UiDevice;
 import android.support.test.uiautomator.UiObjectNotFoundException;
 import com.phillit.qa.basicinputtest.Common.Device;
+import com.phillit.qa.basicinputtest.Common.KeyType.KeyType;
+import com.phillit.qa.basicinputtest.Common.KeyType.Naragul;
 import com.phillit.qa.basicinputtest.TestCase.TestCase_01;
 import com.phillit.qa.basicinputtest.TestCase.TestCase_02;
 import com.phillit.qa.basicinputtest.TestCase.TestCase_03;
@@ -14,6 +16,9 @@ import com.phillit.qa.basicinputtest.TestCase.TestCase_05;
 import com.phillit.qa.basicinputtest.TestCase.TestCase_06;
 import com.phillit.qa.basicinputtest.TestCase.TestCase_07;
 import com.phillit.qa.basicinputtest.TestCase.TestCase_08;
+import com.phillit.qa.basicinputtest.TestCase.TestCase_09;
+import com.phillit.qa.basicinputtest.TestCase.TestCase_10;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -89,6 +94,18 @@ public class Main {
             TestCase_08 TC08 = new TestCase_08(device, "SKY_LANDSCAPE");
             TC08.start();
             runTime += TC08.getRunTime();
+        }
+
+        if(device.getTestPlan().KOR_NARAGUL_PORTRAIT){
+            TestCase_09 TC09 = new TestCase_09(device, "NARAGUL_PORTRAIT");
+            TC09.start();
+            runTime += TC09.getRunTime();
+        }
+
+        if(device.getTestPlan().KOR_NARAGUL_LANDSCAPE){
+            TestCase_10 TC10 = new TestCase_10(device, "NARAGUL_LANDSCAPE");
+            TC10.start();
+            runTime += TC10.getRunTime();
         }
     }
 

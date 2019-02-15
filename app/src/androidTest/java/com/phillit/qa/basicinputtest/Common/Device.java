@@ -457,7 +457,7 @@ public class Device {
 
     public void changeKeyboardLanguage(int keyType){
         if(deviceModelName.equals(DeviceType.NEXUS5)){
-            if(keyType == KeyType.SKY){
+            if(keyType == KeyType.SKY || keyType == KeyType.NARAGUL){
                 uiDevice.click(1000, 1500);
             }else{
                 uiDevice.click(205, 1690);
@@ -479,30 +479,32 @@ public class Device {
         UiScrollable listview = null;
         UiObject object = null;
 
-        // 넥서스5에서 화면잠금을 없음으로 변경
-        if(deviceModelName.equals(DeviceType.NEXUS5)){
-            launchApplication("설정");
+        if(!testPlan.isInternalTest){
+            // 넥서스5에서 화면잠금을 없음으로 변경
+            if(deviceModelName.equals(DeviceType.NEXUS5)){
+                launchApplication("설정");
 
-            listview = new UiScrollable(new UiSelector().scrollable(true));
-            listview.scrollIntoView(new UiSelector().text("보안"));
-            object = new UiObject(new UiSelector().text("보안"));
-            touchObject(object);
+                listview = new UiScrollable(new UiSelector().scrollable(true));
+                listview.scrollIntoView(new UiSelector().text("보안"));
+                object = new UiObject(new UiSelector().text("보안"));
+                touchObject(object);
 
-            object = uiDevice.findObject(new UiSelector().text("화면 보안"));
-            if(object.waitForExists(Configuration.DEFAULT_OBJECT_WAIT_TIME)){
-                object = uiDevice.findObject(new UiSelector().text("화면 잠금"));
-                listview.scrollIntoView(new UiSelector().text("화면 잠금"));
-                object.click();
-
-                object = uiDevice.findObject(new UiSelector().text("없음"));
+                object = uiDevice.findObject(new UiSelector().text("화면 보안"));
                 if(object.waitForExists(Configuration.DEFAULT_OBJECT_WAIT_TIME)){
+                    object = uiDevice.findObject(new UiSelector().text("화면 잠금"));
+                    listview.scrollIntoView(new UiSelector().text("화면 잠금"));
                     object.click();
-                    userWait(Configuration.DEFAULT_OBJECT_WAIT_TIME / 2);
+
+                    object = uiDevice.findObject(new UiSelector().text("없음"));
+                    if(object.waitForExists(Configuration.DEFAULT_OBJECT_WAIT_TIME)){
+                        object.click();
+                        userWait(Configuration.DEFAULT_OBJECT_WAIT_TIME / 2);
+                    }
                 }
+
+                goToIdle();
+
             }
-
-            goToIdle();
-
         }
     }
 }
