@@ -7,26 +7,26 @@ public class TestPlan {
     public boolean isInternalTest = false;
 
     // 한글 QWERTY
-    public boolean KOR_QWERTY_PORTRAIT = false;
-    public boolean KOR_QWERTY_LANDSCAPE = false;
+    public static boolean KOR_QWERTY_PORTRAIT = false;
+    public static boolean KOR_QWERTY_LANDSCAPE = false;
 
     // 한글 천지인
-    public boolean KOR_CHUNJIIN_PORTRAIT = false;
-    public boolean KOR_CHUNJIIN_LANDSCAPE = false;
+    public static boolean KOR_CHUNJIIN_PORTRAIT = false;
+    public static boolean KOR_CHUNJIIN_LANDSCAPE = false;
 
     // 한글 스카이
-    public boolean KOR_SKY_PORTRAIT = false;
-    public boolean KOR_SKY_LANDSCAPE = false;
+    public static boolean KOR_SKY_PORTRAIT = false;
+    public static boolean KOR_SKY_LANDSCAPE = false;
 
     // 한글 나랏글
-    public boolean KOR_NARAGUL_PORTRAIT = false;
-    public boolean KOR_NARAGUL_LANDSCAPE = false;
+    public static boolean KOR_NARAGUL_PORTRAIT = false;
+    public static boolean KOR_NARAGUL_LANDSCAPE = false;
 
     // 한글 단모음
-    public boolean KOR_DANMOUM_PORTRAIT = false;
-    public boolean KOR_DANMOUM_LANDSCAPE = false;
+    public static boolean KOR_DANMOUM_PORTRAIT = false;
+    public static boolean KOR_DANMOUM_LANDSCAPE = false;
 
     // 영문 키타입
-    public boolean ENG_QWERTY_PORTRAIT = false;
-    public boolean ENG_QWERTY_LANDSCAPE = false;
+    public static boolean ENG_QWERTY_PORTRAIT = false;
+    public static boolean ENG_QWERTY_LANDSCAPE = false;
 }

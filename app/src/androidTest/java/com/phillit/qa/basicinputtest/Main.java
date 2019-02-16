@@ -3,8 +3,11 @@ package com.phillit.qa.basicinputtest;
 import android.content.Context;
 import android.os.RemoteException;
 import android.support.test.InstrumentationRegistry;
+import android.support.test.uiautomator.Configurator;
 import android.support.test.uiautomator.UiDevice;
 import android.support.test.uiautomator.UiObjectNotFoundException;
+import android.util.Log;
+
 import com.phillit.qa.basicinputtest.Common.Device;
 import com.phillit.qa.basicinputtest.Common.KeyType.KeyType;
 import com.phillit.qa.basicinputtest.Common.KeyType.Naragul;
@@ -31,10 +34,10 @@ import java.io.IOException;
  */
 
 public class Main {
+    private static String runTime = "", totalRunTime = "";
     private UiDevice uiDevice;
     private Context context;
     private Device device;
-    private String runTime = "", totalRunTime = "";
 
     @Before
     public void ReadyTest() throws IOException, UiObjectNotFoundException {
@@ -44,64 +47,70 @@ public class Main {
     @Test
     public void Test() throws IOException, RemoteException, UiObjectNotFoundException {
 
-        // 한글, 세로모드 입력
+        // 한글QWERTY(세로모드) 입력
         if(device.getTestPlan().KOR_QWERTY_PORTRAIT){
             TestCase_01 TC01 = new TestCase_01(device, "KOR_QWERTY_PORTRAIT");
             TC01.start();
             runTime += TC01.getRunTime();
         }
 
-        // 한글, 가로모드 입력
+        // 한글QWERTY(가로모드) 입력
         if(device.getTestPlan().KOR_QWERTY_LANDSCAPE){
             TestCase_02 TC02 = new TestCase_02(device, "KOR_QWERTYLANDSCAPE");
             TC02.start();
             runTime += TC02.getRunTime();
         }
 
-        // 영문, 세로모드 입력
+        // 영문QWERTY(세로모드) 입력
         if(device.getTestPlan().ENG_QWERTY_PORTRAIT){
             TestCase_03 TC03 = new TestCase_03(device, "ENG_QWERTY_PORTRAIT");
             TC03.start();
             runTime += TC03.getRunTime();
         }
 
-        // 영문, 가로모드 입력
+        // 영문QWERTY(가로모드) 입력
         if(device.getTestPlan().ENG_QWERTY_LANDSCAPE){
             TestCase_04 TC04 = new TestCase_04(device, "ENG_QWERTY_LANDSCAPE");
             TC04.start();
             runTime += TC04.getRunTime();
         }
 
+        // 천지인(세로모드) 입력
         if(device.getTestPlan().KOR_CHUNJIIN_PORTRAIT){
             TestCase_05 TC05 = new TestCase_05(device, "CHUNJIIN_PORTRAIT");
             TC05.start();
             runTime += TC05.getRunTime();
         }
 
+        // 천지인(가로모드) 입력
         if(device.getTestPlan().KOR_CHUNJIIN_LANDSCAPE){
             TestCase_06 TC06 = new TestCase_06(device, "CHUNJIIN_LANDSCAPE");
             TC06.start();
             runTime += TC06.getRunTime();
         }
 
+        // SKY(세로모드) 입력
         if(device.getTestPlan().KOR_SKY_PORTRAIT){
             TestCase_07 TC07 = new TestCase_07(device, "SKY_PORTRAIT");
             TC07.start();
             runTime += TC07.getRunTime();
         }
 
+        // SKY(가로모드) 입력
         if(device.getTestPlan().KOR_SKY_LANDSCAPE){
             TestCase_08 TC08 = new TestCase_08(device, "SKY_LANDSCAPE");
             TC08.start();
             runTime += TC08.getRunTime();
         }
 
+        // 나랏글(세로모드) 입력
         if(device.getTestPlan().KOR_NARAGUL_PORTRAIT){
             TestCase_09 TC09 = new TestCase_09(device, "NARAGUL_PORTRAIT");
             TC09.start();
             runTime += TC09.getRunTime();
         }
 
+        // 나랏글(가로모드) 입력
         if(device.getTestPlan().KOR_NARAGUL_LANDSCAPE){
             TestCase_10 TC10 = new TestCase_10(device, "NARAGUL_LANDSCAPE");
             TC10.start();
