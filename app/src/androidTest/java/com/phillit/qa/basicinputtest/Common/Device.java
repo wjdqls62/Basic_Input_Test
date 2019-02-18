@@ -351,6 +351,7 @@ public class Device {
             if(getBatteryStatus() >= Configuration.BATTERY_MAX_VALUE){
                 Log.i("@@@", "Suspend the test to charge the battery.../ " + getBatteryStatus() + "%");
                 uiDevice.wakeUp();
+                userWait(Configuration.DEFAULT_OBJECT_WAIT_TIME);
                 break;
             }
             Log.i("@@@", "Resume the test... / " + getBatteryStatus() + "%");
