@@ -24,7 +24,7 @@ import java.io.IOException;
 
 public class TestCase_10 {
     String testType = "";
-    String runTime;
+    //static String runTime;
     String word;
     Device device;
     KeyType Naragul;
@@ -35,7 +35,7 @@ public class TestCase_10 {
     public TestCase_10(Device device, String testType) {
         this.device = device;
         this.testType = testType;
-        this.runTime = "=================" + testType + "=================\n";
+        //this.runTime = "=================" + testType + "=================\n";
         isInternalTest = device.getTestPlan().isInternalTest;
         if(isInternalTest){
             saveCnt = 10;
@@ -50,7 +50,7 @@ public class TestCase_10 {
     }
 
     private void ReadyTest() throws RemoteException, UiObjectNotFoundException{
-        runTime += device.RunTimeCheck("START");
+        //runTime += device.RunTimeCheck("START");
         // 스카이 키타입으로 변경
         device.changeKeyType(KeyType.NARAGUL);
 
@@ -134,12 +134,6 @@ public class TestCase_10 {
         // 10초 대기
         device.userWait(10000);
 
-        runTime += device.RunTimeCheck("END");
-        Log.i("@@@", runTime);
+        //runTime += device.RunTimeCheck("END");
     }
-
-    public String getRunTime(){
-        return runTime;
-    }
-
 }

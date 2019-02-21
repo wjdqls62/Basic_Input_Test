@@ -9,6 +9,9 @@ public abstract class Configuration {
     // 최대배터리까지 충전되었을 경우 테스트를 재개
     public static final int BATTERY_MAX_VALUE =  90;
 
+    // MonkeyInput의 Save버튼을 누르는 주기(1000단어 입력 후 Save)
+    public static final int RESULT_SAVE_COUNT = 500;
+
     public static final long DEFAULT_OBJECT_WAIT_TIME = 5000;
     public static final long LARGE_OBJECT_WAIT_TIME = 10000;
     public static final long SMALL_OBJECT_WAIT_TIME = 3000;

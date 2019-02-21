@@ -1,5 +1,4 @@
 package com.phillit.qa.basicinputtest.Common;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
@@ -58,6 +57,8 @@ public class Device {
                 uiDevice.wait(milSeconds);
             } catch (InterruptedException e) {
                 e.printStackTrace();
+            }finally {
+                //Log.i("@@@", "userWait / " + milSeconds + "ms");
             }
         }
     }
@@ -80,6 +81,7 @@ public class Device {
         uiDevice.pressBack();
         userWait(500);
         uiDevice.pressHome();
+        Log.i("@@@", "goToIdle");
     }
 
     // 화면상 요소의 text값으로 객체를 터치한다
@@ -91,8 +93,9 @@ public class Device {
             result = object.click();
         } catch (UiObjectNotFoundException e) {
             e.printStackTrace();
+        }finally {
+            Log.i("@@@", "touchText() Result : " + result + " // " + object.getSelector().toString());
         }
-        Log.i("@@@", "touchText() Result : " + result + " // " + object.getSelector().toString());
         return result;
     }
 
@@ -105,8 +108,9 @@ public class Device {
             result = object.click();
         } catch (UiObjectNotFoundException e) {
             e.printStackTrace();
+        }finally {
+            Log.i("@@@", "TouchObject Result : " + result + " // " + object.getSelector().toString());
         }
-        Log.i("@@@", "TouchObject Result : " + result + " // " + object.getSelector().toString());
         return result;
     }
 
@@ -117,8 +121,9 @@ public class Device {
             result = object.click();
         } catch (UiObjectNotFoundException e) {
             e.printStackTrace();
+        }finally {
+            Log.i("@@@", "TouchObject Result : " + result + " // " + object.getSelector().toString());
         }
-        Log.i("@@@", "TouchObject Result : " + result + " // " + object.getSelector().toString());
         return result;
     }
 
@@ -149,9 +154,9 @@ public class Device {
         }catch(Exception e){
             Log.i("@@@", "Not found application...");
             e.printStackTrace();
+        }finally {
+            Log.i("@@@", "launchApplication() Result : " + result + " / appName : " + appName);
         }
-
-        Log.i("@@@", "launchApplication() Result : " + result + " / appName : " + appName);
         return result;
     }
 
@@ -172,10 +177,10 @@ public class Device {
         meminfoFile = null;
     }
 
-    public void setTestPlan(){
+    public TestCaseParser setTestPlan(){
         TestCaseParser parser = new TestCaseParser("Env", context);
         testPlan = parser.getTestPlan(testPlan);
-        parser = null;
+        return parser;
     }
 
     public TestPlan getTestPlan(){

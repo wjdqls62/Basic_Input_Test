@@ -3,14 +3,12 @@ package com.phillit.qa.basicinputtest;
 import android.content.Context;
 import android.os.RemoteException;
 import android.support.test.InstrumentationRegistry;
-import android.support.test.uiautomator.Configurator;
 import android.support.test.uiautomator.UiDevice;
 import android.support.test.uiautomator.UiObjectNotFoundException;
 import android.util.Log;
-
 import com.phillit.qa.basicinputtest.Common.Device;
 import com.phillit.qa.basicinputtest.Common.KeyType.KeyType;
-import com.phillit.qa.basicinputtest.Common.KeyType.Naragul;
+import com.phillit.qa.basicinputtest.Common.TestCaseParser;
 import com.phillit.qa.basicinputtest.TestCase.TestCase_01;
 import com.phillit.qa.basicinputtest.TestCase.TestCase_02;
 import com.phillit.qa.basicinputtest.TestCase.TestCase_03;
@@ -21,7 +19,6 @@ import com.phillit.qa.basicinputtest.TestCase.TestCase_07;
 import com.phillit.qa.basicinputtest.TestCase.TestCase_08;
 import com.phillit.qa.basicinputtest.TestCase.TestCase_09;
 import com.phillit.qa.basicinputtest.TestCase.TestCase_10;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -35,6 +32,7 @@ import java.io.IOException;
 
 public class Main {
     private static String runTime = "", totalRunTime = "";
+    private static TestCaseParser testPlan;
     private UiDevice uiDevice;
     private Context context;
     private Device device;
@@ -45,76 +43,157 @@ public class Main {
     }
 
     @Test
-    public void Test() throws IOException, RemoteException, UiObjectNotFoundException {
+    public void Test(){
 
-        // 한글QWERTY(세로모드) 입력
-        if(device.getTestPlan().KOR_QWERTY_PORTRAIT){
-            TestCase_01 TC01 = new TestCase_01(device, "KOR_QWERTY_PORTRAIT");
-            TC01.start();
-            runTime += TC01.getRunTime();
+        try{
+            Log.i("@@@", "KOR_QWERTY_PORTRAIT - " + testPlan.getTestPlan(KeyType.QWERTY_KOREA, KeyType.PORTRAIT));
+            // 한글QWERTY(세로모드) 입력
+            if(testPlan.getTestPlan(KeyType.QWERTY_KOREA, KeyType.PORTRAIT)){
+                TestCase_01 TC01 = new TestCase_01(device, "KOR_QWERTY_PORTRAIT");
+                runTime += "================= KOR_QWERTY_PORTRAIT =================\n";
+                runTime += device.RunTimeCheck("START");
+                TC01.start();
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally {
+            runTime += device.RunTimeCheck("END");
         }
 
-        // 한글QWERTY(가로모드) 입력
-        if(device.getTestPlan().KOR_QWERTY_LANDSCAPE){
-            TestCase_02 TC02 = new TestCase_02(device, "KOR_QWERTYLANDSCAPE");
-            TC02.start();
-            runTime += TC02.getRunTime();
+        try{
+            Log.i("@@@", "KOR_QWERTY_LANDSCAPE - " + testPlan.getTestPlan(KeyType.QWERTY_KOREA, KeyType.LANDSCAPE));
+            // 한글QWERTY(가로모드) 입력
+            if(testPlan.getTestPlan(KeyType.QWERTY_KOREA, KeyType.LANDSCAPE)){
+                TestCase_02 TC02 = new TestCase_02(device, "KOR_QWERTY_LANDSCAPE");
+                runTime += "================= KOR_QWERTY_LANDSCAPE =================\n";
+                runTime += device.RunTimeCheck("START");
+                TC02.start();
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally {
+            runTime += device.RunTimeCheck("END");
         }
 
-        // 영문QWERTY(세로모드) 입력
-        if(device.getTestPlan().ENG_QWERTY_PORTRAIT){
-            TestCase_03 TC03 = new TestCase_03(device, "ENG_QWERTY_PORTRAIT");
-            TC03.start();
-            runTime += TC03.getRunTime();
+        try{
+            Log.i("@@@", "ENG_QWERTY_PORTRAIT - " + testPlan.getTestPlan(KeyType.QWERTY_ENGLISH, KeyType.PORTRAIT));
+            // 영문QWERTY(세로모드) 입력
+            if(testPlan.getTestPlan(KeyType.QWERTY_ENGLISH, KeyType.PORTRAIT)){
+                TestCase_03 TC03 = new TestCase_03(device, "ENG_QWERTY_PORTRAIT");
+                runTime += "================= ENG_QWERTY_PORTRAIT =================\n";
+                runTime += device.RunTimeCheck("START");
+                TC03.start();
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally {
+            runTime += device.RunTimeCheck("END");
         }
 
-        // 영문QWERTY(가로모드) 입력
-        if(device.getTestPlan().ENG_QWERTY_LANDSCAPE){
-            TestCase_04 TC04 = new TestCase_04(device, "ENG_QWERTY_LANDSCAPE");
-            TC04.start();
-            runTime += TC04.getRunTime();
+        try{
+            Log.i("@@@", "ENG_QWERTY_LANDSCAPE - " + testPlan.getTestPlan(KeyType.QWERTY_ENGLISH, KeyType.LANDSCAPE));
+            // 영문QWERTY(가로모드) 입력
+            if(testPlan.getTestPlan(KeyType.QWERTY_ENGLISH, KeyType.LANDSCAPE)){
+                TestCase_04 TC04 = new TestCase_04(device, "ENG_QWERTY_LANDSCAPE");
+                runTime += "================= ENG_QWERTY_LANDSCAPE =================\n";
+                runTime += device.RunTimeCheck("START");
+                TC04.start();
+
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally {
+            runTime += device.RunTimeCheck("END");
         }
 
-        // 천지인(세로모드) 입력
-        if(device.getTestPlan().KOR_CHUNJIIN_PORTRAIT){
-            TestCase_05 TC05 = new TestCase_05(device, "CHUNJIIN_PORTRAIT");
-            TC05.start();
-            runTime += TC05.getRunTime();
+        try{
+            Log.i("@@@", "CHUNJIIN_PORTRAIT - " + testPlan.getTestPlan(KeyType.CHUNJIIN, KeyType.PORTRAIT));
+            // 천지인(세로모드) 입력
+            if(testPlan.getTestPlan(KeyType.CHUNJIIN, KeyType.PORTRAIT)){
+                TestCase_05 TC05 = new TestCase_05(device, "CHUNJIIN_PORTRAIT");
+                runTime += "================= CHUNJIIN_PORTRAIT =================\n";
+                runTime += device.RunTimeCheck("START");
+                TC05.start();
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            runTime += device.RunTimeCheck("END");
         }
 
-        // 천지인(가로모드) 입력
-        if(device.getTestPlan().KOR_CHUNJIIN_LANDSCAPE){
-            TestCase_06 TC06 = new TestCase_06(device, "CHUNJIIN_LANDSCAPE");
-            TC06.start();
-            runTime += TC06.getRunTime();
+        try{
+            Log.i("@@@", "CHUNJIIN_LANDSCAPE - " + testPlan.getTestPlan(KeyType.CHUNJIIN, KeyType.LANDSCAPE));
+            // 천지인(가로모드) 입력
+            if(testPlan.getTestPlan(KeyType.CHUNJIIN, KeyType.LANDSCAPE)){
+                TestCase_06 TC06 = new TestCase_06(device, "CHUNJIIN_LANDSCAPE");
+                runTime += "================= CHUNJIIN_LANDSCAPE =================\n";
+                runTime += device.RunTimeCheck("START");
+                TC06.start();
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            runTime += device.RunTimeCheck("END");
         }
 
-        // SKY(세로모드) 입력
-        if(device.getTestPlan().KOR_SKY_PORTRAIT){
-            TestCase_07 TC07 = new TestCase_07(device, "SKY_PORTRAIT");
-            TC07.start();
-            runTime += TC07.getRunTime();
+        try{
+            Log.i("@@@", "SKY_PORTRAIT - " + testPlan.getTestPlan(KeyType.SKY, KeyType.PORTRAIT));
+            // SKY(세로모드) 입력
+            if(testPlan.getTestPlan(KeyType.SKY, KeyType.PORTRAIT)){
+                TestCase_07 TC07 = new TestCase_07(device, "SKY_PORTRAIT");
+                runTime += "================= SKY_PORTRAIT =================\n";
+                runTime += device.RunTimeCheck("START");
+                TC07.start();
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            runTime += device.RunTimeCheck("END");
         }
 
-        // SKY(가로모드) 입력
-        if(device.getTestPlan().KOR_SKY_LANDSCAPE){
-            TestCase_08 TC08 = new TestCase_08(device, "SKY_LANDSCAPE");
-            TC08.start();
-            runTime += TC08.getRunTime();
+        try{
+            Log.i("@@@", "SKY_LANDSCAPE - " + testPlan.getTestPlan(KeyType.SKY, KeyType.LANDSCAPE));
+            // SKY(가로모드) 입력
+            if(testPlan.getTestPlan(KeyType.SKY, KeyType.LANDSCAPE)){
+                TestCase_08 TC08 = new TestCase_08(device, "SKY_LANDSCAPE");
+                runTime += "================= SKY_LANDSCAPE =================\n";
+                runTime += device.RunTimeCheck("START");
+                TC08.start();
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            runTime += device.RunTimeCheck("END");
         }
 
-        // 나랏글(세로모드) 입력
-        if(device.getTestPlan().KOR_NARAGUL_PORTRAIT){
-            TestCase_09 TC09 = new TestCase_09(device, "NARAGUL_PORTRAIT");
-            TC09.start();
-            runTime += TC09.getRunTime();
+        try{
+            Log.i("@@@", "NARAGUL_PORTRAIT - " + testPlan.getTestPlan(KeyType.NARAGUL, KeyType.PORTRAIT));
+            // 나랏글(세로모드) 입력
+            if(testPlan.getTestPlan(KeyType.NARAGUL, KeyType.PORTRAIT)){
+                TestCase_09 TC09 = new TestCase_09(device, "NARAGUL_PORTRAIT");
+                runTime += "================= NARAGUL_PORTRAIT =================\n";
+                runTime += device.RunTimeCheck("START");
+                TC09.start();
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            runTime += device.RunTimeCheck("END");
         }
 
-        // 나랏글(가로모드) 입력
-        if(device.getTestPlan().KOR_NARAGUL_LANDSCAPE){
-            TestCase_10 TC10 = new TestCase_10(device, "NARAGUL_LANDSCAPE");
-            TC10.start();
-            runTime += TC10.getRunTime();
+        try{
+            Log.i("@@@", "NARAGUL_LANDSCAPE - " + testPlan.getTestPlan(KeyType.NARAGUL, KeyType.LANDSCAPE));
+            // 나랏글(가로모드) 입력
+            if(testPlan.getTestPlan(KeyType.NARAGUL, KeyType.LANDSCAPE)){
+                TestCase_10 TC10 = new TestCase_10(device, "NARAGUL_LANDSCAPE");
+                runTime += "================= NARAGUL_LANDSCAPE =================\n";
+                runTime += device.RunTimeCheck("START");
+                TC10.start();
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            runTime += device.RunTimeCheck("END");
         }
     }
 
@@ -122,7 +201,7 @@ public class Main {
         context = InstrumentationRegistry.getTargetContext();
         uiDevice = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation());
         device = new Device(uiDevice, context);
-        device.setTestPlan();
+        testPlan = device.setTestPlan();
         device.Device_Precondition();
         totalRunTime += "=================" + "Total RunTime" + "=================\n";
         totalRunTime += device.TotalRunTimeCheck("START");

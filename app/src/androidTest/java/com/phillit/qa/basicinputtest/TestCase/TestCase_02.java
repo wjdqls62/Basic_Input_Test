@@ -30,12 +30,12 @@ public class TestCase_02 {
     KeyType Qwerty_kor;
     TestCaseParser parser;
     boolean isInternalTest = false;
-    int saveCnt = 1000;
+    int saveCnt = Configuration.RESULT_SAVE_COUNT;
 
     public TestCase_02(Device device, String testType) {
         this.device = device;
         this.testType = testType;
-        this.runTime = "=================" + testType + "=================\n";
+        //this.runTime = "=================" + testType + "=================\n";
         isInternalTest = device.getTestPlan().isInternalTest;
         if(isInternalTest){
             saveCnt = 10;
@@ -50,7 +50,7 @@ public class TestCase_02 {
     }
 
     private void ReadyTest() throws RemoteException, UiObjectNotFoundException{
-        runTime += device.RunTimeCheck("START");
+        //runTime += device.RunTimeCheck("START");
         // 천지인 키타입으로 변경
         device.changeKeyType(KeyType.QWERTY_KOREA);
 
@@ -134,12 +134,7 @@ public class TestCase_02 {
         // 10초 대기
         device.userWait(10000);
 
-        runTime += device.RunTimeCheck("END");
-        Log.i("@@@", runTime);
-    }
-
-    public String getRunTime(){
-        return runTime;
+        //runTime += device.RunTimeCheck("END");
     }
 
 }
