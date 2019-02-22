@@ -19,6 +19,9 @@ import com.phillit.qa.basicinputtest.TestCase.TestCase_07;
 import com.phillit.qa.basicinputtest.TestCase.TestCase_08;
 import com.phillit.qa.basicinputtest.TestCase.TestCase_09;
 import com.phillit.qa.basicinputtest.TestCase.TestCase_10;
+import com.phillit.qa.basicinputtest.TestCase.TestCase_11;
+import com.phillit.qa.basicinputtest.TestCase.TestCase_12;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -53,10 +56,11 @@ public class Main {
                 runTime += "================= KOR_QWERTY_PORTRAIT =================\n";
                 runTime += device.RunTimeCheck("START");
                 TC01.start();
+                runTime += device.RunTimeCheck("END");
             }
         }catch(Exception e){
             e.printStackTrace();
-        }finally {
+            runTime += "***Exception occurred***\n" + e.getMessage() + "\n";
             runTime += device.RunTimeCheck("END");
         }
 
@@ -68,10 +72,11 @@ public class Main {
                 runTime += "================= KOR_QWERTY_LANDSCAPE =================\n";
                 runTime += device.RunTimeCheck("START");
                 TC02.start();
+                runTime += device.RunTimeCheck("END");
             }
         }catch(Exception e){
             e.printStackTrace();
-        }finally {
+            runTime += "***Exception occurred***\n" + e.getMessage() + "\n";
             runTime += device.RunTimeCheck("END");
         }
 
@@ -83,10 +88,11 @@ public class Main {
                 runTime += "================= ENG_QWERTY_PORTRAIT =================\n";
                 runTime += device.RunTimeCheck("START");
                 TC03.start();
+                runTime += device.RunTimeCheck("END");
             }
         }catch(Exception e){
             e.printStackTrace();
-        }finally {
+            runTime += "***Exception occurred***\n" + e.getMessage() + "\n";
             runTime += device.RunTimeCheck("END");
         }
 
@@ -98,11 +104,11 @@ public class Main {
                 runTime += "================= ENG_QWERTY_LANDSCAPE =================\n";
                 runTime += device.RunTimeCheck("START");
                 TC04.start();
-
+                runTime += device.RunTimeCheck("END");
             }
         }catch(Exception e){
             e.printStackTrace();
-        }finally {
+            runTime += "***Exception occurred***\n" + e.getMessage() + "\n";
             runTime += device.RunTimeCheck("END");
         }
 
@@ -114,10 +120,11 @@ public class Main {
                 runTime += "================= CHUNJIIN_PORTRAIT =================\n";
                 runTime += device.RunTimeCheck("START");
                 TC05.start();
+                runTime += device.RunTimeCheck("END");
             }
         }catch (Exception e){
             e.printStackTrace();
-        }finally {
+            runTime += "***Exception occurred***\n" + e.getMessage() + "\n";
             runTime += device.RunTimeCheck("END");
         }
 
@@ -129,10 +136,11 @@ public class Main {
                 runTime += "================= CHUNJIIN_LANDSCAPE =================\n";
                 runTime += device.RunTimeCheck("START");
                 TC06.start();
+                runTime += device.RunTimeCheck("END");
             }
         }catch (Exception e){
             e.printStackTrace();
-        }finally {
+            runTime += "***Exception occurred***\n" + e.getMessage() + "\n";
             runTime += device.RunTimeCheck("END");
         }
 
@@ -144,10 +152,11 @@ public class Main {
                 runTime += "================= SKY_PORTRAIT =================\n";
                 runTime += device.RunTimeCheck("START");
                 TC07.start();
+                runTime += device.RunTimeCheck("END");
             }
         }catch (Exception e){
             e.printStackTrace();
-        }finally {
+            runTime += "***Exception occurred***\n" + e.getMessage() + "\n";
             runTime += device.RunTimeCheck("END");
         }
 
@@ -159,10 +168,11 @@ public class Main {
                 runTime += "================= SKY_LANDSCAPE =================\n";
                 runTime += device.RunTimeCheck("START");
                 TC08.start();
+                runTime += device.RunTimeCheck("END");
             }
         }catch (Exception e){
             e.printStackTrace();
-        }finally {
+            runTime += "***Exception occurred***\n" + e.getMessage() + "\n";
             runTime += device.RunTimeCheck("END");
         }
 
@@ -174,10 +184,11 @@ public class Main {
                 runTime += "================= NARAGUL_PORTRAIT =================\n";
                 runTime += device.RunTimeCheck("START");
                 TC09.start();
+                runTime += device.RunTimeCheck("END");
             }
         }catch (Exception e){
             e.printStackTrace();
-        }finally {
+            runTime += "***Exception occurred***\n" + e.getMessage() + "\n";
             runTime += device.RunTimeCheck("END");
         }
 
@@ -189,10 +200,43 @@ public class Main {
                 runTime += "================= NARAGUL_LANDSCAPE =================\n";
                 runTime += device.RunTimeCheck("START");
                 TC10.start();
+                runTime += device.RunTimeCheck("END");
             }
         }catch (Exception e){
             e.printStackTrace();
-        }finally {
+            runTime += "***Exception occurred***\n" + e.getMessage() + "\n";
+            runTime += device.RunTimeCheck("END");
+        }
+
+        try{
+            Log.i("@@@", "DANMOUM_PORTRAIT - " + testPlan.getTestPlan(KeyType.DANMOUM, KeyType.PORTRAIT));
+            // 나랏글(가로모드) 입력
+            if(testPlan.getTestPlan(KeyType.DANMOUM, KeyType.PORTRAIT)){
+                TestCase_11 TC11 = new TestCase_11(device, "DANMOUM_PORTRAIT");
+                runTime += "================= DANMOUM_PORTRAIT =================\n";
+                runTime += device.RunTimeCheck("START");
+                TC11.start();
+                runTime += device.RunTimeCheck("END");
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            runTime += "***Exception occurred***\n" + e.getMessage() + "\n";
+            runTime += device.RunTimeCheck("END");
+        }
+
+        try{
+            Log.i("@@@", "DANMOUM_LANDSCAPE - " + testPlan.getTestPlan(KeyType.DANMOUM, KeyType.LANDSCAPE));
+            // 단모음(가로모드) 입력
+            if(testPlan.getTestPlan(KeyType.DANMOUM, KeyType.LANDSCAPE)){
+                TestCase_12 TC12 = new TestCase_12(device, "DANMOUM_LANDSCAPE");
+                runTime += "================= DANMOUM_LANDSCAPE =================\n";
+                runTime += device.RunTimeCheck("START");
+                TC12.start();
+                runTime += device.RunTimeCheck("END");
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            runTime += "***Exception occurred***\n" + e.getMessage() + "\n";
             runTime += device.RunTimeCheck("END");
         }
     }

@@ -75,6 +75,8 @@ public class XmlParser {
                     parser = resource.getXml(R.xml.nx5_kor_sky_portrait);
                 }else if(language == KeyType.NARAGUL){
                     parser = resource.getXml(R.xml.nx5_kor_naragul_portrait);
+                }else if(language == KeyType.DANMOUM){
+                    parser = resource.getXml(R.xml.nx5_kor_danmoum_portrait);
                 }
 
             }else if(parsingMode == KeyType.LANDSCAPE){
@@ -88,6 +90,8 @@ public class XmlParser {
                     parser = resource.getXml(R.xml.nx5_kor_sky_landscape);
                 }else if(language == KeyType.NARAGUL){
                     parser = resource.getXml(R.xml.nx5_kor_naragul_landscape);
+                }else if(language == KeyType.DANMOUM){
+                    parser = resource.getXml(R.xml.nx5_kor_danmoum_landscape);
                 }
             }
         }
