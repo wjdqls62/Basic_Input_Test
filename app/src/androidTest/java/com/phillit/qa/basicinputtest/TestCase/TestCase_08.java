@@ -75,7 +75,7 @@ public class TestCase_08 {
         device.userWait(3000);
 
         // 언어변경(한글)
-        device.changeKeyboardLanguage(KeyType.SKY);
+        device.changeKeyboardLanguage(KeyType.QWERTY_ENGLISH);
 
         // 가로모드
         // 10초 대기
