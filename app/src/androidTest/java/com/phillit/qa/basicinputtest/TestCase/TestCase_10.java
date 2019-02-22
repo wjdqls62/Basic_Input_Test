@@ -7,6 +7,7 @@ import android.support.test.uiautomator.UiSelector;
 import android.util.Log;
 
 import com.phillit.qa.basicinputtest.Common.Configuration.Configuration;
+import com.phillit.qa.basicinputtest.Common.KeyType.Naragul;
 import com.phillit.qa.basicinputtest.Common.KeyType.SKY;
 import com.phillit.qa.basicinputtest.Common.TestCaseParser;
 import com.phillit.qa.basicinputtest.Common.KeyType.KeyType;
@@ -57,7 +58,7 @@ public class TestCase_10 {
         // Parser, KeyType init
         parser = new TestCaseParser("kor", device.getContext());
 
-        Naragul = new SKY(device, device.getContext(), KeyType.LANDSCAPE, KeyType.NARAGUL);
+        Naragul = new Naragul(device, device.getContext(), KeyType.LANDSCAPE, KeyType.NARAGUL);
 
         // Monkey Input 실행
         device.launchApplication("Monkey Input");
