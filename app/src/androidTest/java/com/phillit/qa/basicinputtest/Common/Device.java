@@ -480,8 +480,8 @@ public class Device {
         return uiDevice.executeShellCommand("getprop ro.product.model").trim();
     }
 
-    // 테스트 시작 전 단말의 설정에서 필요한 설정을 변경한다.
-    public void Device_Precondition() throws UiObjectNotFoundException {
+    // 단말의 설정에서 LockScreen을 '없음'으로 변경한다.
+    private void lockScreen_Release() throws UiObjectNotFoundException{
         UiScrollable listview = null;
         UiObject object = null;
 
@@ -509,8 +509,83 @@ public class Device {
                 }
 
                 goToIdle();
+                userWait(Configuration.DEFAULT_OBJECT_WAIT_TIME);
 
             }
         }
+    }
+
+    // A-Keyboard 를 아래와 같이 설정한다.
+    // 화면분할 OFF, 대문자 자동 입력 OFF, 그외 Default.
+    private void AKeyboardSetting() throws UiObjectNotFoundException {
+        UiScrollable listview = null;
+        UiObject object = null;
+
+        if(!testPlan.isInternalTest) {
+            launchApplication("REBIT A키보드");
+            object = uiDevice.findObject(new UiSelector().text("정보"));
+            if(object.waitForExists(Configuration.DEFAULT_OBJECT_WAIT_TIME)){
+                object.click();
+
+                object = uiDevice.findObject(new UiSelector().text("설정 초기화"));
+                if(object.waitForExists(Configuration.DEFAULT_OBJECT_WAIT_TIME)){
+                    object.click();
+
+                    object = uiDevice.findObject(new UiSelector().text("확인"));
+                    if(object.waitForExists(Configuration.DEFAULT_OBJECT_WAIT_TIME)){
+                        object.click();
+                        userWait(Configuration.DEFAULT_OBJECT_WAIT_TIME / 2);
+                        getUiDevice().pressBack();
+                    }
+
+                    object = uiDevice.findObject(new UiSelector().text("입력"));
+                    if(object.waitForExists(Configuration.DEFAULT_OBJECT_WAIT_TIME)){
+                        object.click();
+
+                        // 설정 - 입력 - 대문자 자동 입력 OFF
+                        object = uiDevice.findObject(new UiSelector().resourceId("com.phillit.akeyboard:id/switch_CapitalLetter"));
+                        if(object.waitForExists(Configuration.DEFAULT_OBJECT_WAIT_TIME)){
+                            if(object.isChecked()){
+                                object.click();
+                                userWait(Configuration.DEFAULT_OBJECT_WAIT_TIME / 2);
+                            }
+                        }
+                        getUiDevice().pressBack();
+                    }
+
+                    object = uiDevice.findObject(new UiSelector().text("레이아웃"));
+                    if(object.waitForExists(Configuration.DEFAULT_OBJECT_WAIT_TIME)){
+                        object.click();
+
+                        // 설정 - 레이아웃 - 화면 분할 OFF
+                        object = uiDevice.findObject(new UiSelector().resourceId("com.phillit.akeyboard:id/switch_size_divide"));
+                        if(object.waitForExists(Configuration.DEFAULT_OBJECT_WAIT_TIME)){
+                            if(object.isChecked()){
+                                object.click();
+                                userWait(Configuration.DEFAULT_OBJECT_WAIT_TIME / 2);
+                            }
+                        }
+
+                        // 설정 - 레이아웃 - 숫자키 추가 ON
+                        object = uiDevice.findObject(new UiSelector().resourceId("com.phillit.akeyboard:id/switch_layout_numberbar"));
+                        if(object.waitForExists(Configuration.DEFAULT_OBJECT_WAIT_TIME)){
+                            if(!object.isChecked()){
+                                object.click();
+                            }
+                        }
+                        getUiDevice().pressBack();
+                    }
+                }
+            }
+
+        }
+        userWait(Configuration.DEFAULT_OBJECT_WAIT_TIME);
+        goToIdle();
+    }
+
+    // 테스트 시작 전 단말의 설정에서 필요한 설정을 변경한다.
+    public void Device_Precondition() throws UiObjectNotFoundException {
+        lockScreen_Release();
+        AKeyboardSetting();
     }
 }
