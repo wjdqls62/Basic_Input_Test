@@ -1,7 +1,6 @@
 package com.phillit.qa.basicinputtest.Common.KeyType;
 
 import android.content.Context;
-
 import com.phillit.qa.basicinputtest.Common.Device;
 
 public class SKY extends Chunjiin {
@@ -16,7 +15,7 @@ public class SKY extends Chunjiin {
 
     @Override
     public void input(StringBuffer args) {
-
+        super.input(args);
     }
 
     @Override

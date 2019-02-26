@@ -18,7 +18,6 @@ public class Qwerty extends KeyType {
     private int shift_x, shift_y;
     boolean isSpecialChar = false;
 
-
     public Qwerty(Device device, Context context, int screenOrientation, int language){
         this.device = device;
         parser = new XmlParser(context, screenOrientation, language, device);
@@ -53,6 +52,7 @@ public class Qwerty extends KeyType {
         typingKeyboard(args);
         device.getUiDevice().click(spacebar_x, spacebar_y);
     }
+
     private void typingKeyboard(StringBuffer arrChar){
         Key key;
         String targetChar = "";
@@ -115,6 +115,4 @@ public class Qwerty extends KeyType {
     private boolean isUpper(String str){
         return str.matches("^[A-Z]*$");
     }
-
-
 }

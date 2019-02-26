@@ -63,6 +63,38 @@ public class Chunjiin extends KeyType{
         }
     }
 
+    private void typingKeyboard(StringBuffer arrChar){
+        Key key;
+
+        for(int i=0; i<arrChar.length(); i++){
+            String targetChar = String.valueOf(arrChar.charAt(i));
+            String nextChar = "";
+
+            isSpecialChar = device.isSpecialCharacter(targetChar);
+
+            // 특수문자가 아닐경우
+            if(!isSpecialChar){
+                key = normalKeyList.get(targetChar);
+
+                for(int j=0; j<key.keyCordinates.size(); j++){
+                    device.getUiDevice().click(key.keyCordinates.get(j).x, key.keyCordinates.get(j).y);
+                }
+            }
+            // 특수문자의 경우
+            else{
+                specialCharacter.input(targetChar);
+            }
+
+            // 자음충돌의 경우 현재문자와 다음 입력될 문자를 비교하여 동일하거나 같은 키패드에서 입력될때 컴포징해제
+            if(i != arrChar.length()-1){
+                nextChar = String.valueOf(arrChar.charAt(i+1));
+                if(consonantCrash(targetChar, nextChar)){
+                    device.getUiDevice().click(spacebar_x, spacebar_y);
+                }
+            }
+        }
+    }
+
     // 현재 입력자음과 다음입력될 자음을 비교
     protected boolean consonantCrash(String targetChar, String nextChar){
         if(targetChar.equals("ㄱ") || targetChar.equals("ㅋ") || targetChar.equals("ㄲ")){
@@ -120,6 +152,16 @@ public class Chunjiin extends KeyType{
 
     @Override
     public void input(StringBuffer args) {
+        lastStr = String.valueOf(args.charAt(args.length()-1));
+
+        typingKeyboard(args);
+
+        if(device.isNumber(lastStr) || device.isSpecialCharacter(lastStr)){
+            device.getUiDevice().click(spacebar_x, spacebar_y);
+        }else{
+            device.getUiDevice().click(spacebar_x, spacebar_y);
+            device.getUiDevice().click(spacebar_x, spacebar_y);
+        }
 
     }
 }

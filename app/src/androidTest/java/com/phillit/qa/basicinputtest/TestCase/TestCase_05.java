@@ -25,7 +25,7 @@ import java.io.IOException;
 public class TestCase_05 {
     String testType = "";
     //String runTime;
-    String word;
+    StringBuffer word;
     Device device;
     KeyType Chunjiin;
     TestCaseParser parser;
@@ -86,7 +86,7 @@ public class TestCase_05 {
     private void Test() throws IOException, RemoteException {
         int i=1;
         while(true){
-            word = parser.getWord(i).toString();
+            word = parser.getWord(i);
             if(word == null){
                 break;
             }else{
