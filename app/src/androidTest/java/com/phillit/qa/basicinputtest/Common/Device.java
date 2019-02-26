@@ -583,6 +583,25 @@ public class Device {
         goToIdle();
     }
 
+    public String getAKeyboardVersion() throws UiObjectNotFoundException {
+        UiObject object;
+        String testingVersion = "";
+
+        launchApplication(context.getResources().getString(R.string.akeyboard_app_name));
+
+        object = uiDevice.findObject(new UiSelector().text("정보"));
+        if(object.waitForExists(Configuration.DEFAULT_OBJECT_WAIT_TIME)){
+            object.click();
+
+            object = uiDevice.findObject(new UiSelector().resourceId("com.phillit.akeyboard:id/setting_theme_ex"));
+            if(object.waitForExists(Configuration.DEFAULT_OBJECT_WAIT_TIME)){
+                testingVersion = object.getText();
+            }
+            goToIdle();
+        }
+        return testingVersion;
+    }
+
     // 테스트 시작 전 단말의 설정에서 필요한 설정을 변경한다.
     public void Device_Precondition() throws UiObjectNotFoundException {
         lockScreen_Release();

@@ -34,7 +34,7 @@ import java.io.IOException;
  */
 
 public class Main {
-    private static String runTime = "", totalRunTime = "";
+    private static String runTime = "", totalRunTime = "", testingVersion = "";
     private static TestCaseParser testPlan;
     private UiDevice uiDevice;
     private Context context;
@@ -256,6 +256,8 @@ public class Main {
         device.getUiDevice().setOrientationNatural();
         device.userWait(10000);
         totalRunTime += device.TotalRunTimeCheck("END");
+        totalRunTime += "- Test Device : " + device.getDeviceModelName() + "\n";
+        totalRunTime += "- Test Version : " + device.getAKeyboardVersion();
 
         device.sendReport(runTime, totalRunTime);
         device.userWait(10000);
