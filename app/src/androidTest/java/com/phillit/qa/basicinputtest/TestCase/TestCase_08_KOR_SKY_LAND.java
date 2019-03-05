@@ -7,33 +7,32 @@ import android.support.test.uiautomator.UiSelector;
 import android.util.Log;
 
 import com.phillit.qa.basicinputtest.Common.Configuration.Configuration;
-import com.phillit.qa.basicinputtest.Common.KeyType.Danmoum;
-import com.phillit.qa.basicinputtest.Common.KeyType.Naragul;
+import com.phillit.qa.basicinputtest.Common.KeyType.KOR_ENG.SKY;
 import com.phillit.qa.basicinputtest.Common.TestCaseParser;
 import com.phillit.qa.basicinputtest.Common.KeyType.KeyType;
 import com.phillit.qa.basicinputtest.Common.Device;
 import java.io.IOException;
 
 /**
- * 테스트 명   : TestCase_09
- * 테스트 목적 : 세로모드상태에서 나랏글의 입력을 검증한다.
+ * 테스트 명   : TestCase_06_KOR_CHUNJIIN_LAND
+ * 테스트 목적 : 가로모드상태에서 스카이의 입력을 검증한다.
  * 테스트 순서 :
  1. Monkey Input 실행
- 2. 세로모드
+ 2. 가로모드
  3. /sdcard/QA/InputTest/TestWord.xls의 한글단어를 순차적으로 입력
  */
 
-public class TestCase_11 {
+public class TestCase_08_KOR_SKY_LAND {
     String testType = "";
     //String runTime;
     StringBuffer word;
     Device device;
-    KeyType Danmoum;
+    KeyType SKY;
     TestCaseParser parser;
     boolean isInternalTest = false;
     int saveCnt = Configuration.RESULT_SAVE_COUNT;
 
-    public TestCase_11(Device device, String testType) {
+    public TestCase_08_KOR_SKY_LAND(Device device, String testType) {
         this.device = device;
         this.testType = testType;
         //this.runTime = "=================" + testType + "=================\n";
@@ -50,15 +49,15 @@ public class TestCase_11 {
         FinishTest();
     }
 
-    private void ReadyTest() throws RemoteException, UiObjectNotFoundException {
+    private void ReadyTest() throws RemoteException, UiObjectNotFoundException{
         //runTime += device.RunTimeCheck("START");
         // 스카이 키타입으로 변경
-        device.changeKeyType(KeyType.DANMOUM);
+        device.changeKeyType(KeyType.SKY);
 
         // Parser, KeyType init
         parser = new TestCaseParser("kor", device.getContext());
 
-        Danmoum = new Danmoum(device, device.getContext(), KeyType.PORTRAIT, KeyType.DANMOUM);
+        SKY = new SKY(device, device.getContext(), KeyType.LANDSCAPE, KeyType.SKY);
 
         // Monkey Input 실행
         device.launchApplication("Monkey Input");
@@ -78,9 +77,9 @@ public class TestCase_11 {
         // 언어변경(한글)
         device.changeKeyboardLanguage(KeyType.QWERTY_ENGLISH);
 
-        // 세로모드
+        // 가로모드
         // 10초 대기
-        device.getUiDevice().setOrientationNatural();
+        device.getUiDevice().setOrientationLeft();
         device.userWait(10000);
     }
 
@@ -91,12 +90,20 @@ public class TestCase_11 {
             if(word == null){
                 break;
             }else{
-                device.inputMethod(word, Danmoum);
+                device.inputMethod(word, SKY);
             }
             if(i % saveCnt == 0){
+                // 가로모드 상태에서 SAVE버튼이 보이지 않아 Back버튼 1회 터치한다
+                device.getUiDevice().pressBack();
+                device.userWait(5000);
+
                 device.touchObject("com.phillit.qa.monkeyinput:id/btn_save");
                 device.dumpsysMemifo(testType + "_meminfo");
+
+                // 입력필드 터치
+                device.touchObject("com.phillit.qa.monkeyinput:id/edt_input");
                 device.userWait(5000);
+
                 if(device.getBatteryStatus() <= Configuration.BATTERY_MIN_VALUE){
                     device.chargeDevice();
                 }
@@ -111,10 +118,14 @@ public class TestCase_11 {
         device.userWait(10000);
     }
 
-    private void FinishTest(){
-        // 언어변경(영어)
-        device.changeKeyboardLanguage(KeyType.DANMOUM);
+    private void FinishTest() throws RemoteException{
+        // 세로모드
+        // 5초 대기
+        device.getUiDevice().setOrientationNatural();
         device.userWait(5000);
+
+        // 언어변경(영어)
+        device.changeKeyboardLanguage(KeyType.SKY);
 
         // 다음 테스트시 불필요한 객체 해제
         device.Release();

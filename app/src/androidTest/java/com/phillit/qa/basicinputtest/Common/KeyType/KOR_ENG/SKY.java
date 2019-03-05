@@ -1,4 +1,4 @@
-package com.phillit.qa.basicinputtest.Common.KeyType;
+package com.phillit.qa.basicinputtest.Common.KeyType.KOR_ENG;
 
 import android.content.Context;
 import com.phillit.qa.basicinputtest.Common.Device;

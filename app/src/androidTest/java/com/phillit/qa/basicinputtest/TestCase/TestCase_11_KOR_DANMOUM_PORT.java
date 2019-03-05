@@ -7,32 +7,32 @@ import android.support.test.uiautomator.UiSelector;
 import android.util.Log;
 
 import com.phillit.qa.basicinputtest.Common.Configuration.Configuration;
-import com.phillit.qa.basicinputtest.Common.KeyType.SKY;
+import com.phillit.qa.basicinputtest.Common.KeyType.KOR_ENG.Danmoum;
 import com.phillit.qa.basicinputtest.Common.TestCaseParser;
 import com.phillit.qa.basicinputtest.Common.KeyType.KeyType;
 import com.phillit.qa.basicinputtest.Common.Device;
 import java.io.IOException;
 
 /**
- * 테스트 명   : TestCase_07
- * 테스트 목적 : 세로모드상태에서 스카이의 입력을 검증한다.
+ * 테스트 명   : TestCase_11_KOR_DANMOUM_PORT
+ * 테스트 목적 : 세로모드상태에서 단모음의 입력을 검증한다.
  * 테스트 순서 :
  1. Monkey Input 실행
  2. 세로모드
  3. /sdcard/QA/InputTest/TestWord.xls의 한글단어를 순차적으로 입력
  */
 
-public class TestCase_07 {
+public class TestCase_11_KOR_DANMOUM_PORT {
     String testType = "";
     //String runTime;
     StringBuffer word;
     Device device;
-    KeyType SKY;
+    KeyType Danmoum;
     TestCaseParser parser;
     boolean isInternalTest = false;
     int saveCnt = Configuration.RESULT_SAVE_COUNT;
 
-    public TestCase_07(Device device, String testType) {
+    public TestCase_11_KOR_DANMOUM_PORT(Device device, String testType) {
         this.device = device;
         this.testType = testType;
         //this.runTime = "=================" + testType + "=================\n";
@@ -52,12 +52,12 @@ public class TestCase_07 {
     private void ReadyTest() throws RemoteException, UiObjectNotFoundException {
         //runTime += device.RunTimeCheck("START");
         // 스카이 키타입으로 변경
-        device.changeKeyType(KeyType.SKY);
+        device.changeKeyType(KeyType.DANMOUM);
 
         // Parser, KeyType init
         parser = new TestCaseParser("kor", device.getContext());
 
-        SKY = new SKY(device, device.getContext(), KeyType.PORTRAIT, KeyType.SKY);
+        Danmoum = new Danmoum(device, device.getContext(), KeyType.PORTRAIT, KeyType.DANMOUM);
 
         // Monkey Input 실행
         device.launchApplication("Monkey Input");
@@ -90,7 +90,7 @@ public class TestCase_07 {
             if(word == null){
                 break;
             }else{
-                device.inputMethod(word, SKY);
+                device.inputMethod(word, Danmoum);
             }
             if(i % saveCnt == 0){
                 device.touchObject("com.phillit.qa.monkeyinput:id/btn_save");
@@ -112,7 +112,7 @@ public class TestCase_07 {
 
     private void FinishTest(){
         // 언어변경(영어)
-        device.changeKeyboardLanguage(KeyType.SKY);
+        device.changeKeyboardLanguage(KeyType.DANMOUM);
         device.userWait(5000);
 
         // 다음 테스트시 불필요한 객체 해제

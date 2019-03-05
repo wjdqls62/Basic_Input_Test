@@ -15,7 +15,7 @@ import android.util.Log;
 import com.phillit.qa.basicinputtest.Common.Configuration.Configuration;
 import com.phillit.qa.basicinputtest.Common.DeviceType.DeviceType;
 import com.phillit.qa.basicinputtest.Common.KeyType.KeyType;
-import com.phillit.qa.basicinputtest.Common.KeyType.Qwerty;
+import com.phillit.qa.basicinputtest.Common.KeyType.KOR_ENG.Qwerty;
 import com.phillit.qa.basicinputtest.R;
 import java.io.File;
 import java.io.FileWriter;

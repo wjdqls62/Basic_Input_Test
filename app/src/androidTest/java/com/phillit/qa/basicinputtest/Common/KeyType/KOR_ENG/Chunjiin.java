@@ -1,13 +1,14 @@
-package com.phillit.qa.basicinputtest.Common.KeyType;
+package com.phillit.qa.basicinputtest.Common.KeyType.KOR_ENG;
 
 import android.content.Context;
 
 import com.phillit.qa.basicinputtest.Common.Key;
 import com.phillit.qa.basicinputtest.Common.Device;
+import com.phillit.qa.basicinputtest.Common.KeyType.KeyType;
 import com.phillit.qa.basicinputtest.Common.XmlParser;
 import java.util.HashMap;
 
-public class Chunjiin extends KeyType{
+public class Chunjiin extends KeyType {
     private Device device;
     private HashMap<String, Key> normalKeyList, specialKeyList;
     private XmlParser parser;

@@ -7,15 +7,14 @@ import android.support.test.uiautomator.UiSelector;
 import android.util.Log;
 
 import com.phillit.qa.basicinputtest.Common.Configuration.Configuration;
-import com.phillit.qa.basicinputtest.Common.KeyType.Naragul;
-import com.phillit.qa.basicinputtest.Common.KeyType.SKY;
+import com.phillit.qa.basicinputtest.Common.KeyType.KOR_ENG.Naragul;
 import com.phillit.qa.basicinputtest.Common.TestCaseParser;
 import com.phillit.qa.basicinputtest.Common.KeyType.KeyType;
 import com.phillit.qa.basicinputtest.Common.Device;
 import java.io.IOException;
 
 /**
- * 테스트 명   : TestCase_09
+ * 테스트 명   : TestCase_09_KOR_NARAGUL_PORT
  * 테스트 목적 : 세로모드상태에서 나랏글의 입력을 검증한다.
  * 테스트 순서 :
  1. Monkey Input 실행
@@ -23,7 +22,7 @@ import java.io.IOException;
  3. /sdcard/QA/InputTest/TestWord.xls의 한글단어를 순차적으로 입력
  */
 
-public class TestCase_09 {
+public class TestCase_09_KOR_NARAGUL_PORT {
     String testType = "";
     //String runTime;
     StringBuffer word;
@@ -33,7 +32,7 @@ public class TestCase_09 {
     boolean isInternalTest = false;
     int saveCnt = Configuration.RESULT_SAVE_COUNT;
 
-    public TestCase_09(Device device, String testType) {
+    public TestCase_09_KOR_NARAGUL_PORT(Device device, String testType) {
         this.device = device;
         this.testType = testType;
         //this.runTime = "=================" + testType + "=================\n";

@@ -7,33 +7,32 @@ import android.support.test.uiautomator.UiSelector;
 import android.util.Log;
 
 import com.phillit.qa.basicinputtest.Common.Configuration.Configuration;
-import com.phillit.qa.basicinputtest.Common.KeyType.Danmoum;
-import com.phillit.qa.basicinputtest.Common.KeyType.SKY;
+import com.phillit.qa.basicinputtest.Common.KeyType.KOR_ENG.Naragul;
 import com.phillit.qa.basicinputtest.Common.TestCaseParser;
 import com.phillit.qa.basicinputtest.Common.KeyType.KeyType;
 import com.phillit.qa.basicinputtest.Common.Device;
 import java.io.IOException;
 
 /**
- * 테스트 명   : TestCase_06
- * 테스트 목적 : 가로모드상태에서 스카이의 입력을 검증한다.
+ * 테스트 명   : TestCase_06_KOR_CHUNJIIN_LAND
+ * 테스트 목적 : 가로모드상태에서 나랏글의 입력을 검증한다.
  * 테스트 순서 :
  1. Monkey Input 실행
  2. 가로모드
  3. /sdcard/QA/InputTest/TestWord.xls의 한글단어를 순차적으로 입력
  */
 
-public class TestCase_12 {
+public class TestCase_10_KOR_NARAGUL_LAND {
     String testType = "";
     //static String runTime;
     StringBuffer word;
     Device device;
-    KeyType Danmoum;
+    KeyType Naragul;
     TestCaseParser parser;
     boolean isInternalTest = false;
     int saveCnt = 1000;
 
-    public TestCase_12(Device device, String testType) {
+    public TestCase_10_KOR_NARAGUL_LAND(Device device, String testType) {
         this.device = device;
         this.testType = testType;
         //this.runTime = "=================" + testType + "=================\n";
@@ -53,12 +52,12 @@ public class TestCase_12 {
     private void ReadyTest() throws RemoteException, UiObjectNotFoundException{
         //runTime += device.RunTimeCheck("START");
         // 스카이 키타입으로 변경
-        device.changeKeyType(KeyType.DANMOUM);
+        device.changeKeyType(KeyType.NARAGUL);
 
         // Parser, KeyType init
         parser = new TestCaseParser("kor", device.getContext());
 
-        Danmoum = new Danmoum(device, device.getContext(), KeyType.LANDSCAPE, KeyType.DANMOUM);
+        Naragul = new Naragul(device, device.getContext(), KeyType.LANDSCAPE, KeyType.NARAGUL);
 
         // Monkey Input 실행
         device.launchApplication("Monkey Input");
@@ -91,7 +90,7 @@ public class TestCase_12 {
             if(word == null){
                 break;
             }else{
-                device.inputMethod(word, Danmoum);
+                device.inputMethod(word, Naragul);
             }
             if(i % saveCnt == 0){
                 // 가로모드 상태에서 SAVE버튼이 보이지 않아 Back버튼 1회 터치한다
@@ -126,7 +125,7 @@ public class TestCase_12 {
         device.userWait(5000);
 
         // 언어변경(영어)
-        device.changeKeyboardLanguage(KeyType.DANMOUM);
+        device.changeKeyboardLanguage(KeyType.NARAGUL);
 
         // 다음 테스트시 불필요한 객체 해제
         device.Release();
