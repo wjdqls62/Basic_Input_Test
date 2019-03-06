@@ -52,12 +52,12 @@ public class TestCase_12_KOR_DANMOUM_LAND {
     private void ReadyTest() throws RemoteException, UiObjectNotFoundException{
         //runTime += device.RunTimeCheck("START");
         // 스카이 키타입으로 변경
-        device.changeKeyType(KeyType.DANMOUM);
+        device.changeKeyType(KeyType.KOR_DANMOUM);
 
         // Parser, KeyType init
         parser = new TestCaseParser("kor", device.getContext());
 
-        Danmoum = new Danmoum(device, device.getContext(), KeyType.LANDSCAPE, KeyType.DANMOUM);
+        Danmoum = new Danmoum(device, device.getContext(), KeyType.LANDSCAPE, KeyType.KOR_DANMOUM);
 
         // Monkey Input 실행
         device.launchApplication("Monkey Input");
@@ -75,7 +75,7 @@ public class TestCase_12_KOR_DANMOUM_LAND {
         device.userWait(3000);
 
         // 언어변경(한글)
-        device.changeKeyboardLanguage(KeyType.QWERTY_ENGLISH);
+        device.changeKeyboardLanguage(KeyType.ENG_QWERTY);
 
         // 가로모드
         // 10초 대기
@@ -125,7 +125,7 @@ public class TestCase_12_KOR_DANMOUM_LAND {
         device.userWait(5000);
 
         // 언어변경(영어)
-        device.changeKeyboardLanguage(KeyType.DANMOUM);
+        device.changeKeyboardLanguage(KeyType.KOR_DANMOUM);
 
         // 다음 테스트시 불필요한 객체 해제
         device.Release();

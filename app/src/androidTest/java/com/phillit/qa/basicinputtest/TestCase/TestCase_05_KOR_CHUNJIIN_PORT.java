@@ -52,12 +52,12 @@ public class TestCase_05_KOR_CHUNJIIN_PORT {
     private void ReadyTest() throws RemoteException, UiObjectNotFoundException {
         //runTime += device.RunTimeCheck("START");
         // 천지인 키타입으로 변경
-        device.changeKeyType(KeyType.CHUNJIIN);
+        device.changeKeyType(KeyType.KOR_CHUNJIIN);
 
         // Parser, KeyType init
         parser = new TestCaseParser("kor", device.getContext());
 
-        Chunjiin = new Chunjiin(device, device.getContext(), KeyType.PORTRAIT, KeyType.CHUNJIIN);
+        Chunjiin = new Chunjiin(device, device.getContext(), KeyType.PORTRAIT, KeyType.KOR_CHUNJIIN);
 
         // Monkey Input 실행
         device.launchApplication("Monkey Input");
@@ -75,7 +75,7 @@ public class TestCase_05_KOR_CHUNJIIN_PORT {
         device.userWait(3000);
 
         // 언어변경(한글)
-        device.changeKeyboardLanguage(KeyType.CHUNJIIN);
+        device.changeKeyboardLanguage(KeyType.KOR_CHUNJIIN);
 
         // 세로모드
         // 10초 대기
@@ -112,7 +112,7 @@ public class TestCase_05_KOR_CHUNJIIN_PORT {
 
     private void FinishTest() throws IOException {
         // 언어변경(영어)
-        device.changeKeyboardLanguage(KeyType.CHUNJIIN);
+        device.changeKeyboardLanguage(KeyType.KOR_CHUNJIIN);
 
         // 다음 테스트시 불필요한 객체 해제
         device.Release();

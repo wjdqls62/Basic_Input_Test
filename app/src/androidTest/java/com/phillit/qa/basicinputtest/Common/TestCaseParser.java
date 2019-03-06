@@ -62,66 +62,66 @@ public class TestCaseParser {
 
     public boolean getTestPlan(int keyType, int screenType){
         if(screenType == KeyType.PORTRAIT){
-            if(keyType == KeyType.QWERTY_KOREA){
+            if(keyType == KeyType.KOR_QWERTY){
                 if(sheet.getRow(4).getCell(getContents).getStringCellValue().equals("Y")){
-                    Log.i("@@@", "QWERTY_KOREA : " + true + " / ScreenType : " + screenType);
+                    Log.i("@@@", "KOR_QWERTY : " + true + " / ScreenType : " + screenType);
                     return true;
                 }
-            }else if(keyType == KeyType.QWERTY_ENGLISH){
+            }else if(keyType == KeyType.ENG_QWERTY){
                 if(sheet.getRow(17).getCell(getContents).getStringCellValue().equals("Y")){
-                    Log.i("@@@", "QWERTY_ENGLISH : " + true + " / ScreenType : " + screenType);
+                    Log.i("@@@", "ENG_QWERTY : " + true + " / ScreenType : " + screenType);
                     return true;
                 }
-            }else if(keyType == KeyType.CHUNJIIN){
+            }else if(keyType == KeyType.KOR_CHUNJIIN){
                 if(sheet.getRow(6).getCell(getContents).getStringCellValue().equals("Y")){
-                    Log.i("@@@", "CHUNJIIN : " + true + " / ScreenType : " + screenType);
+                    Log.i("@@@", "KOR_CHUNJIIN : " + true + " / ScreenType : " + screenType);
                     return true;
                 }
-            }else if(keyType == KeyType.SKY){
+            }else if(keyType == KeyType.KOR_SKY){
                 if(sheet.getRow(8).getCell(getContents).getStringCellValue().equals("Y")){
-                    Log.i("@@@", "SKY : " + true + " / ScreenType : " + screenType);
+                    Log.i("@@@", "KOR_SKY : " + true + " / ScreenType : " + screenType);
                     return true;
                 }
-            }else if(keyType == KeyType.NARAGUL){
+            }else if(keyType == KeyType.KOR_NARAGUL){
                 if(sheet.getRow(10).getCell(getContents).getStringCellValue().equals("Y")){
-                    Log.i("@@@", "NARAGUL : " + true + " / ScreenType : " + screenType);
+                    Log.i("@@@", "KOR_NARAGUL : " + true + " / ScreenType : " + screenType);
                     return true;
                 }
-            }else if(keyType == KeyType.DANMOUM){
+            }else if(keyType == KeyType.KOR_DANMOUM){
                 if(sheet.getRow(12).getCell(getContents).getStringCellValue().equals("Y")){
-                    Log.i("@@@", "DANMOUM : " + true + " / ScreenType : " + screenType);
+                    Log.i("@@@", "KOR_DANMOUM : " + true + " / ScreenType : " + screenType);
                     return true;
                 }
             }
         }else if(screenType == KeyType.LANDSCAPE){
-            if(keyType == KeyType.QWERTY_KOREA){
+            if(keyType == KeyType.KOR_QWERTY){
                 if(sheet.getRow(5).getCell(getContents).getStringCellValue().equals("Y")){
-                    Log.i("@@@", "QWERTY_KOREA : " + true + " / ScreenType : " + screenType);
+                    Log.i("@@@", "KOR_QWERTY : " + true + " / ScreenType : " + screenType);
                     return true;
                 }
-            }else if(keyType == KeyType.QWERTY_ENGLISH){
+            }else if(keyType == KeyType.ENG_QWERTY){
                 if(sheet.getRow(18).getCell(getContents).getStringCellValue().equals("Y")){
-                    Log.i("@@@", "QWERTY_ENGLISH : " + true + " / ScreenType : " + screenType);
+                    Log.i("@@@", "ENG_QWERTY : " + true + " / ScreenType : " + screenType);
                     return true;
                 }
-            }else if(keyType == KeyType.CHUNJIIN){
+            }else if(keyType == KeyType.KOR_CHUNJIIN){
                 if(sheet.getRow(7).getCell(getContents).getStringCellValue().equals("Y")){
-                    Log.i("@@@", "CHUNJIIN : " + true + " / ScreenType : " + screenType);
+                    Log.i("@@@", "KOR_CHUNJIIN : " + true + " / ScreenType : " + screenType);
                     return true;
                 }
-            }else if(keyType == KeyType.SKY){
+            }else if(keyType == KeyType.KOR_SKY){
                 if(sheet.getRow(9).getCell(getContents).getStringCellValue().equals("Y")){
-                    Log.i("@@@", "SKY : " + true + " / ScreenType : " + screenType);
+                    Log.i("@@@", "KOR_SKY : " + true + " / ScreenType : " + screenType);
                     return true;
                 }
-            }else if(keyType == KeyType.NARAGUL){
+            }else if(keyType == KeyType.KOR_NARAGUL){
                 if(sheet.getRow(11).getCell(getContents).getStringCellValue().equals("Y")){
-                    Log.i("@@@", "NARAGUL : " + true + " / ScreenType : " + screenType);
+                    Log.i("@@@", "KOR_NARAGUL : " + true + " / ScreenType : " + screenType);
                     return true;
                 }
-            }else if(keyType == KeyType.DANMOUM){
+            }else if(keyType == KeyType.KOR_DANMOUM){
                 if(sheet.getRow(13).getCell(getContents).getStringCellValue().equals("Y")){
-                    Log.i("@@@", "DANMOUM : " + true + " / ScreenType : " + screenType);
+                    Log.i("@@@", "KOR_DANMOUM : " + true + " / ScreenType : " + screenType);
                     return true;
                 }
             }

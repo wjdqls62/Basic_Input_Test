@@ -35,7 +35,7 @@ public class Qwerty extends KeyType {
         spacebar_y = normalKeyList.get("^").keyCordinates.get(0).y;
 
         // 영문의 경우 대문자 입력을 위해 Shift의 좌표를 Preload
-        if(language == KeyType.QWERTY_ENGLISH){
+        if(language == KeyType.ENG_QWERTY){
             shift_x = normalKeyList.get("↑").keyCordinates.get(0).x;
             shift_y = normalKeyList.get("↑").keyCordinates.get(0).y;
         }
@@ -66,7 +66,7 @@ public class Qwerty extends KeyType {
             // 특수문자가 아닐경우
             if(!isSpecialChar){
                 // 영문인데 대문자의 경우
-                if(language == KeyType.QWERTY_ENGLISH && isUpper(targetChar)){
+                if(language == KeyType.ENG_QWERTY && isUpper(targetChar)){
                     device.getUiDevice().click(shift_x, shift_y);
                     key = normalKeyList.get(targetChar.toLowerCase());
                 }else{
@@ -94,7 +94,7 @@ public class Qwerty extends KeyType {
             // 특수문자가 아닐경우
             if(!isSpecialChar){
                 // 영문인데 대문자의 경우
-                if(language == KeyType.QWERTY_ENGLISH && isUpper(targetChar)){
+                if(language == KeyType.ENG_QWERTY && isUpper(targetChar)){
                     device.getUiDevice().click(shift_x, shift_y);
                     key = normalKeyList.get(targetChar.toLowerCase());
                 }else{

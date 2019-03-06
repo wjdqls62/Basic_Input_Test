@@ -65,32 +65,32 @@ public class XmlParser {
         if(deviceModelName.equals(DeviceType.NEXUS5)){
             // 일반문자
             if(parsingMode == KeyType.PORTRAIT){
-                if(language == KeyType.QWERTY_KOREA){
+                if(language == KeyType.KOR_QWERTY){
                     parser = resource.getXml(R.xml.nx5_kor_qwerty_portrait);
-                }else if(language == KeyType.QWERTY_ENGLISH){
+                }else if(language == KeyType.ENG_QWERTY){
                     parser = resource.getXml(R.xml.nx5_eng_qwerty_portrait);
-                }else if(language == KeyType.CHUNJIIN){
+                }else if(language == KeyType.KOR_CHUNJIIN){
                     parser = resource.getXml(R.xml.nx5_kor_chunjiin_portrait);
-                }else if(language == KeyType.SKY){
+                }else if(language == KeyType.KOR_SKY){
                     parser = resource.getXml(R.xml.nx5_kor_sky_portrait);
-                }else if(language == KeyType.NARAGUL){
+                }else if(language == KeyType.KOR_NARAGUL){
                     parser = resource.getXml(R.xml.nx5_kor_naragul_portrait);
-                }else if(language == KeyType.DANMOUM){
+                }else if(language == KeyType.KOR_DANMOUM){
                     parser = resource.getXml(R.xml.nx5_kor_danmoum_portrait);
                 }
 
             }else if(parsingMode == KeyType.LANDSCAPE){
-                if(language == KeyType.QWERTY_KOREA){
+                if(language == KeyType.KOR_QWERTY){
                     parser = resource.getXml(R.xml.nx5_kor_qwerty_landscape);
-                }else if(language == KeyType.QWERTY_ENGLISH){
+                }else if(language == KeyType.ENG_QWERTY){
                     parser = resource.getXml(R.xml.nx5_eng_qwerty_landscape);
-                }else if(language == KeyType.CHUNJIIN){
+                }else if(language == KeyType.KOR_CHUNJIIN){
                     parser = resource.getXml(R.xml.nx5_kor_chunjiin_landscape);
-                }else if(language == KeyType.SKY){
+                }else if(language == KeyType.KOR_SKY){
                     parser = resource.getXml(R.xml.nx5_kor_sky_landscape);
-                }else if(language == KeyType.NARAGUL){
+                }else if(language == KeyType.KOR_NARAGUL){
                     parser = resource.getXml(R.xml.nx5_kor_naragul_landscape);
-                }else if(language == KeyType.DANMOUM){
+                }else if(language == KeyType.KOR_DANMOUM){
                     parser = resource.getXml(R.xml.nx5_kor_danmoum_landscape);
                 }
             }

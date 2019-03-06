@@ -188,7 +188,7 @@ public class Device {
     }
 
     public void sendReport(String runTime, String totalRunTime) throws UiObjectNotFoundException {
-        KeyType qwerty_eng = new Qwerty(this, context, KeyType.PORTRAIT, KeyType.QWERTY_ENGLISH);
+        KeyType qwerty_eng = new Qwerty(this, context, KeyType.PORTRAIT, KeyType.ENG_QWERTY);
         UiObject object = null;
 
         // Solid Explorer 실행
@@ -411,45 +411,45 @@ public class Device {
         }
 
         // Parameter에 맞는 언어메뉴 선택
-        if(keyType == KeyType.QWERTY_ENGLISH){
+        if(keyType == KeyType.ENG_QWERTY){
             object = uiDevice.findObject(new UiSelector().resourceId("com.phillit.akeyboard:id/language_name").text("영어 (미국) / English(US)"));
             if(object.waitForExists(3000)){
                 touchObject(object);
             }
-        }else if(keyType == KeyType.QWERTY_KOREA || keyType == KeyType.CHUNJIIN || keyType == KeyType.SKY || keyType == KeyType.NARAGUL || keyType == KeyType.DANMOUM){
+        }else if(keyType == KeyType.KOR_QWERTY || keyType == KeyType.KOR_CHUNJIIN || keyType == KeyType.KOR_SKY || keyType == KeyType.KOR_NARAGUL || keyType == KeyType.KOR_DANMOUM){
             object = uiDevice.findObject(new UiSelector().resourceId("com.phillit.akeyboard:id/language_name").text("한국어"));
             if(object.waitForExists(3000)){
                 touchObject(object);
             }
         }
 
-        if(keyType == KeyType.QWERTY_KOREA || keyType == KeyType.QWERTY_ENGLISH){
+        if(keyType == KeyType.KOR_QWERTY || keyType == KeyType.ENG_QWERTY){
             object = uiDevice.findObject(new UiSelector().resourceId("com.phillit.akeyboard:id/keyboard_name").text("QWERTY"));
             if(object.waitForExists(3000)){
                 touchObject(object);
             }
-        }else if(keyType == KeyType.CHUNJIIN){
+        }else if(keyType == KeyType.KOR_CHUNJIIN){
             object = uiDevice.findObject(new UiSelector().resourceId("com.phillit.akeyboard:id/keyboard_name").text("천지인"));
             if(object.waitForExists(3000)){
                 touchObject(object);
             }
         }
 
-        else if(keyType == KeyType.SKY){
+        else if(keyType == KeyType.KOR_SKY){
             object = uiDevice.findObject(new UiSelector().resourceId("com.phillit.akeyboard:id/keyboard_name").text("스카이"));
             if(object.waitForExists(3000)){
                 touchObject(object);
             }
         }
 
-        else if(keyType == KeyType.NARAGUL){
+        else if(keyType == KeyType.KOR_NARAGUL){
             object = uiDevice.findObject(new UiSelector().resourceId("com.phillit.akeyboard:id/keyboard_name").text("나랏글"));
             if(object.waitForExists(3000)){
                 touchObject(object);
             }
         }
 
-        else if(keyType == KeyType.DANMOUM){
+        else if(keyType == KeyType.KOR_DANMOUM){
             object = uiDevice.findObject(new UiSelector().resourceId("com.phillit.akeyboard:id/keyboard_name").text("단모음"));
             if(object.waitForExists(3000)){
                 touchObject(object);
@@ -463,7 +463,7 @@ public class Device {
 
     public void changeKeyboardLanguage(int keyType){
         if(deviceModelName.equals(DeviceType.NEXUS5)){
-            if(keyType == KeyType.SKY || keyType == KeyType.NARAGUL){
+            if(keyType == KeyType.KOR_SKY || keyType == KeyType.KOR_NARAGUL){
                 uiDevice.click(1000, 1500);
             }else{
                 uiDevice.click(205, 1690);

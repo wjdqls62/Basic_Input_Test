@@ -52,12 +52,12 @@ public class TestCase_10_KOR_NARAGUL_LAND {
     private void ReadyTest() throws RemoteException, UiObjectNotFoundException{
         //runTime += device.RunTimeCheck("START");
         // 스카이 키타입으로 변경
-        device.changeKeyType(KeyType.NARAGUL);
+        device.changeKeyType(KeyType.KOR_NARAGUL);
 
         // Parser, KeyType init
         parser = new TestCaseParser("kor", device.getContext());
 
-        Naragul = new Naragul(device, device.getContext(), KeyType.LANDSCAPE, KeyType.NARAGUL);
+        Naragul = new Naragul(device, device.getContext(), KeyType.LANDSCAPE, KeyType.KOR_NARAGUL);
 
         // Monkey Input 실행
         device.launchApplication("Monkey Input");
@@ -75,7 +75,7 @@ public class TestCase_10_KOR_NARAGUL_LAND {
         device.userWait(3000);
 
         // 언어변경(한글)
-        device.changeKeyboardLanguage(KeyType.QWERTY_ENGLISH);
+        device.changeKeyboardLanguage(KeyType.ENG_QWERTY);
 
         // 가로모드
         // 10초 대기
@@ -125,7 +125,7 @@ public class TestCase_10_KOR_NARAGUL_LAND {
         device.userWait(5000);
 
         // 언어변경(영어)
-        device.changeKeyboardLanguage(KeyType.NARAGUL);
+        device.changeKeyboardLanguage(KeyType.KOR_NARAGUL);
 
         // 다음 테스트시 불필요한 객체 해제
         device.Release();

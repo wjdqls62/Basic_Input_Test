@@ -48,7 +48,7 @@ public class Qwerty_Special_Character extends KeyType {
    private void Nexus5_specialKeyList_Btn(int screenOrientation, int keyType){
         // 세로모드
         if(screenOrientation == KeyType.PORTRAIT){
-            if(keyType == KeyType.SKY){
+            if(keyType == KeyType.KOR_SKY){
                 device.getUiDevice().click(865, 1500);
             }else{
                 device.getUiDevice().click(70, 1690);
@@ -56,7 +56,7 @@ public class Qwerty_Special_Character extends KeyType {
         }
         // 가로모드
         else{
-            if(keyType == KeyType.SKY){
+            if(keyType == KeyType.KOR_SKY){
                 device.getUiDevice().click(1450,850);
             }else{
                 device.getUiDevice().click(120,1015);
@@ -76,20 +76,20 @@ public class Qwerty_Special_Character extends KeyType {
             // ￦
             }else if(targetChar.equals("￦")){
                 // 원화, 달러표기의 경우 현재 자판의 언어에 따라 표기페이지가 상이하여 조건문 분기
-                if(language == KeyType.QWERTY_KOREA || language == KeyType.CHUNJIIN || language == KeyType.SKY || language == KeyType.NARAGUL || language == KeyType.DANMOUM){
+                if(language == KeyType.KOR_QWERTY || language == KeyType.KOR_CHUNJIIN || language == KeyType.KOR_SKY || language == KeyType.KOR_NARAGUL || language == KeyType.KOR_DANMOUM){
                     device.getUiDevice().click(1015, 1260);
                     device.getUiDevice().click(70, 1690);
-                }else if(language == KeyType.QWERTY_ENGLISH){
+                }else if(language == KeyType.ENG_QWERTY){
                     device.getUiDevice().click(70,1545);
                     device.getUiDevice().click(650,1545);
                     device.getUiDevice().click(70, 1690);
                 }
             }else if(targetChar.equals("$")){
-                if(language == KeyType.QWERTY_KOREA || language == KeyType.CHUNJIIN || language == KeyType.SKY || language == KeyType.NARAGUL || language == KeyType.DANMOUM){
+                if(language == KeyType.KOR_QWERTY || language == KeyType.KOR_CHUNJIIN || language == KeyType.KOR_SKY || language == KeyType.KOR_NARAGUL || language == KeyType.KOR_DANMOUM){
                     device.getUiDevice().click(70,1545);
                     device.getUiDevice().click(650,1545);
                     device.getUiDevice().click(70, 1690);
-                }else if(language == KeyType.QWERTY_ENGLISH){
+                }else if(language == KeyType.ENG_QWERTY){
                     device.getUiDevice().click(275, 1400);
                     device.getUiDevice().click(70, 1690);
                 }
@@ -113,20 +113,20 @@ public class Qwerty_Special_Character extends KeyType {
                 // ￦
             }else if(targetChar.equals("￦")){
                 // 원화, 달러표기의 경우 현재 자판의 언어에 따라 표기페이지가 상이하여 조건문 분기
-                if(language == KeyType.QWERTY_KOREA || language == KeyType.CHUNJIIN || language == KeyType.SKY || language == KeyType.NARAGUL || language == KeyType.DANMOUM){
+                if(language == KeyType.KOR_QWERTY || language == KeyType.KOR_CHUNJIIN || language == KeyType.KOR_SKY || language == KeyType.KOR_NARAGUL || language == KeyType.KOR_DANMOUM){
                     device.getUiDevice().click(450, 780);
                     device.getUiDevice().click(120, 1020);
-                }else if(language == KeyType.QWERTY_ENGLISH){
+                }else if(language == KeyType.ENG_QWERTY){
                     device.getUiDevice().click(120,900);
                     device.getUiDevice().click(1075,900);
                     device.getUiDevice().click(120, 1020);
                 }
             }else if(targetChar.equals("$")){
-                if(language == KeyType.QWERTY_KOREA || language == KeyType.CHUNJIIN || language == KeyType.SKY || language == KeyType.NARAGUL || language == KeyType.DANMOUM){
+                if(language == KeyType.KOR_QWERTY || language == KeyType.KOR_CHUNJIIN || language == KeyType.KOR_SKY || language == KeyType.KOR_NARAGUL || language == KeyType.KOR_DANMOUM){
                     device.getUiDevice().click(120,900);
                     device.getUiDevice().click(1075,900);
                     device.getUiDevice().click(120, 1020);
-                }else if(language == KeyType.QWERTY_ENGLISH){
+                }else if(language == KeyType.ENG_QWERTY){
                     device.getUiDevice().click(450, 780);
                     device.getUiDevice().click(120, 1020);
                 }

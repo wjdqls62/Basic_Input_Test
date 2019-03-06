@@ -52,12 +52,12 @@ public class TestCase_02_KOR_QWERTY_LAND {
     private void ReadyTest() throws RemoteException, UiObjectNotFoundException{
         //runTime += device.RunTimeCheck("START");
         // 천지인 키타입으로 변경
-        device.changeKeyType(KeyType.QWERTY_KOREA);
+        device.changeKeyType(KeyType.KOR_QWERTY);
 
         // Parser, KeyType init
         parser = new TestCaseParser("kor", device.getContext());
 
-        Qwerty_kor = new Qwerty(device, device.getContext(), KeyType.LANDSCAPE, KeyType.QWERTY_KOREA);
+        Qwerty_kor = new Qwerty(device, device.getContext(), KeyType.LANDSCAPE, KeyType.KOR_QWERTY);
 
         // Monkey Input 실행
         device.launchApplication("Monkey Input");
@@ -75,7 +75,7 @@ public class TestCase_02_KOR_QWERTY_LAND {
         device.userWait(3000);
 
         // 언어변경(한글)
-        device.changeKeyboardLanguage(KeyType.QWERTY_KOREA);
+        device.changeKeyboardLanguage(KeyType.KOR_QWERTY);
 
         // 가로모드
         // 10초 대기
@@ -125,7 +125,7 @@ public class TestCase_02_KOR_QWERTY_LAND {
         device.userWait(5000);
 
         // 언어변경(영어)
-        device.changeKeyboardLanguage(KeyType.QWERTY_KOREA);
+        device.changeKeyboardLanguage(KeyType.KOR_QWERTY);
 
         // 다음 테스트시 불필요한 객체 해제
         device.Release();
