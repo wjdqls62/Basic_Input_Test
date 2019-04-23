@@ -58,7 +58,11 @@ public class Chunjiin extends KeyType {
             if(i != arrChar.length-1){
                 nextChar = String.valueOf(arrChar[i+1]);
                 if(consonantCrash(targetChar, nextChar)){
-                    device.getUiDevice().click(spacebar_x, spacebar_y);
+                    if(language == KeyType.KOR_DANMOUM){
+                        device.userWait(350);
+                    }else{
+                        device.getUiDevice().click(spacebar_x, spacebar_y);
+                    }
                 }
             }
         }
@@ -90,7 +94,11 @@ public class Chunjiin extends KeyType {
             if(i != arrChar.length()-1){
                 nextChar = String.valueOf(arrChar.charAt(i+1));
                 if(consonantCrash(targetChar, nextChar)){
-                    device.getUiDevice().click(spacebar_x, spacebar_y);
+                    if(language == KeyType.KOR_DANMOUM){
+                        device.userWait(350);
+                    }else{
+                        device.getUiDevice().click(spacebar_x, spacebar_y);
+                    }
                 }
             }
         }
@@ -156,6 +164,11 @@ public class Chunjiin extends KeyType {
         lastStr = String.valueOf(args.charAt(args.length()-1));
 
         typingKeyboard(args);
+
+        if(language == KeyType.KOR_DANMOUM){
+            device.getUiDevice().click(spacebar_x, spacebar_y);
+            return;
+        }
 
         if(device.isNumber(lastStr) || device.isSpecialCharacter(lastStr)){
             device.getUiDevice().click(spacebar_x, spacebar_y);
