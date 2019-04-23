@@ -266,10 +266,10 @@ public class Device {
 
             // InternalTest가 아닐경우 GroupMail로 전송
             if(!getTestPlan().isInternalTest){
-                object.setText("paf617@phill-it.com");
+                object.setText("hypark@rebit.cc; hypark@rebit.cc; jeongbeen.son@rebit.cc;");
                 //inputMethod("paf617@phill-it.com", qwerty_eng);
             }else{
-                object.setText("jeongbeen.son@phill-it.com");
+                object.setText("jeongbeen.son@rebit.cc;");
                 //inputMethod("jeongbeen.son@phill-it.com", qwerty_eng);
             }
             userWait(3000);
@@ -413,12 +413,12 @@ public class Device {
         // Parameter에 맞는 언어메뉴 선택
         if(keyType == KeyType.ENG_QWERTY){
             object = uiDevice.findObject(new UiSelector().resourceId("com.phillit.akeyboard:id/language_name").text("영어 (미국) / English(US)"));
-            if(object.waitForExists(3000)){
+            if(object.waitForExists(Configuration.LARGE_OBJECT_WAIT_TIME * 6)){
                 touchObject(object);
             }
         }else if(keyType == KeyType.KOR_QWERTY || keyType == KeyType.KOR_CHUNJIIN || keyType == KeyType.KOR_SKY || keyType == KeyType.KOR_NARAGUL || keyType == KeyType.KOR_DANMOUM){
             object = uiDevice.findObject(new UiSelector().resourceId("com.phillit.akeyboard:id/language_name").text("한국어"));
-            if(object.waitForExists(3000)){
+            if(object.waitForExists(Configuration.LARGE_OBJECT_WAIT_TIME * 6)){
                 touchObject(object);
             }
         }
@@ -577,7 +577,6 @@ public class Device {
                     }
                 }
             }
-
         }
         userWait(Configuration.DEFAULT_OBJECT_WAIT_TIME);
         goToIdle();
